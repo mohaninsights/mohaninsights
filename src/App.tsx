@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef } from "react";
 import ThreeBackground from "./components/ThreeBackground";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
@@ -14,27 +14,6 @@ import Footer from "./components/Footer";
 
 export default function App() {
   const contactRef = useRef<ContactRef>(null);
-
-  // Initialize theme state with dark as the default
-  const [theme, setTheme] = useState<"dark" | "light">(() => {
-    const stored = localStorage.getItem("portfolio-theme");
-    return stored === "light" || stored === "dark" ? stored : "dark";
-  });
-
-  // Apply root element theme class on state change
-  useEffect(() => {
-    const root = document.documentElement;
-    if (theme === "light") {
-      root.classList.add("light");
-    } else {
-      root.classList.remove("light");
-    }
-    localStorage.setItem("portfolio-theme", theme);
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
-  };
 
   // Smooth scroll helper
   const scrollToSection = (id: string) => {
@@ -53,12 +32,12 @@ export default function App() {
   };
 
   return (
-    <div className="relative min-h-screen text-[var(--text-main)] bg-[var(--bg-main)] transition-colors duration-500 overflow-x-hidden">
+    <div className="relative min-h-screen text-[var(--text-main)] bg-[var(--bg-main)] overflow-x-hidden">
       {/* 3D Cosmic Particle Background */}
-      <ThreeBackground theme={theme} />
+      <ThreeBackground />
 
       {/* Sticky Glassmorphic Header */}
-      <Header onNavClick={scrollToSection} theme={theme} onToggleTheme={toggleTheme} />
+      <Header onNavClick={scrollToSection} />
 
       {/* Structured Sections */}
       <main>

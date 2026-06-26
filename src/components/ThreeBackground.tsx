@@ -1,11 +1,9 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 
-interface ThreeBackgroundProps {
-  theme: "dark" | "light";
-}
+interface ThreeBackgroundProps {}
 
-export default function ThreeBackground({ theme }: ThreeBackgroundProps) {
+export default function ThreeBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -37,10 +35,9 @@ export default function ThreeBackground({ theme }: ThreeBackgroundProps) {
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
 
-    const isLight = theme === "light";
-    const colorCyan = isLight ? new THREE.Color("#0066FF") : new THREE.Color("#00F2FF");
-    const colorPurple = isLight ? new THREE.Color("#7c3aed") : new THREE.Color("#0066FF");
-    const colorWhite = isLight ? new THREE.Color("#64748b") : new THREE.Color("#ffffff");
+    const colorCyan = new THREE.Color("#00F2FF");
+    const colorPurple = new THREE.Color("#0066FF");
+    const colorWhite = new THREE.Color("#ffffff");
 
     for (let i = 0; i < particleCount; i++) {
       // Position particles randomly in a large volume
@@ -67,11 +64,11 @@ export default function ThreeBackground({ theme }: ThreeBackgroundProps) {
 
     // Simple round dot material
     const material = new THREE.PointsMaterial({
-      size: isLight ? 0.14 : 0.12,
+      size: 0.12,
       vertexColors: true,
       transparent: true,
-      opacity: isLight ? 0.25 : 0.4,
-      blending: isLight ? THREE.NormalBlending : THREE.AdditiveBlending,
+      opacity: 0.4,
+      blending: THREE.AdditiveBlending,
     });
 
     const particles = new THREE.Points(geometry, material);
@@ -133,7 +130,7 @@ export default function ThreeBackground({ theme }: ThreeBackgroundProps) {
       material.dispose();
       renderer.dispose();
     };
-  }, [theme]);
+  }, []);
 
   return (
     <canvas

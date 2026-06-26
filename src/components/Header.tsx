@@ -1,14 +1,12 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Menu, X, ArrowUpRight, MessageSquare, Sun, Moon } from "lucide-react";
+import { Menu, X, ArrowUpRight, MessageSquare } from "lucide-react";
 
 interface HeaderProps {
   onNavClick: (sectionId: string) => void;
-  theme: "dark" | "light";
-  onToggleTheme: () => void;
 }
 
-export default function Header({ onNavClick, theme, onToggleTheme }: HeaderProps) {
+export default function Header({ onNavClick }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
@@ -110,15 +108,6 @@ export default function Header({ onNavClick, theme, onToggleTheme }: HeaderProps
 
           {/* Action Call to Action Button */}
           <div className="hidden lg:flex items-center gap-3">
-            {/* Theme Toggle Button */}
-            <button
-              onClick={onToggleTheme}
-              className="p-2.5 rounded-full glass-panel text-[var(--text-main)] hover:text-brand-cyan hover:border-brand-cyan transition-all duration-300 cursor-pointer flex items-center justify-center border border-white/10"
-              title={theme === "light" ? "Switch to Dark Mode" : "Switch to Light Mode"}
-            >
-              {theme === "light" ? <Moon className="w-4 h-4 text-brand-purple" /> : <Sun className="w-4 h-4 text-brand-cyan" />}
-            </button>
-
             <button
               onClick={() => handleLinkClick("contact")}
               className="relative group px-5 py-2.5 rounded-full font-display text-xs tracking-wider font-semibold text-black bg-white hover:bg-brand-cyan hover:text-black hover:scale-105 transition-all duration-300 shadow-md hover:shadow-[0_0_15px_rgba(0,242,254,0.4)] flex items-center gap-1.5 cursor-pointer border border-transparent hover:border-brand-cyan"
@@ -131,15 +120,6 @@ export default function Header({ onNavClick, theme, onToggleTheme }: HeaderProps
 
           {/* Mobile Actions block */}
           <div className="flex lg:hidden items-center gap-2">
-            {/* Theme Switcher Button */}
-            <button
-              onClick={onToggleTheme}
-              className="p-2.5 rounded-xl glass-panel text-[var(--text-main)] hover:text-brand-cyan transition-colors duration-300 cursor-pointer flex items-center justify-center"
-              title={theme === "light" ? "Switch to Dark Mode" : "Switch to Light Mode"}
-            >
-              {theme === "light" ? <Moon className="w-4.5 h-4.5 text-brand-purple" /> : <Sun className="w-4.5 h-4.5 text-brand-cyan" />}
-            </button>
-
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
