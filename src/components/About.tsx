@@ -1,5 +1,7 @@
 import { motion } from "motion/react";
 import { Check, MapPin, Globe, Calendar, ArrowRight, Zap, Award, Search, Percent } from "lucide-react";
+// @ts-ignore
+import mohanPortrait from "../assets/images/mohan_portrait_1782472920337.jpg";
 
 interface AboutProps {
   onBtnClick: (sectionId: string) => void;
@@ -43,81 +45,38 @@ export default function About({ onBtnClick }: AboutProps) {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
-          {/* Column 1: Premium Stylized Analytics Console */}
-          <div className="lg:col-span-5 order-2 lg:order-1">
+          {/* Column 1: Portrait Image Frame */}
+          <div className="lg:col-span-5 order-2 lg:order-1 flex justify-center">
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="glass-panel rounded-2xl p-6 border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.5)] relative overflow-hidden"
+              className="relative group max-w-sm lg:max-w-none w-full"
             >
-              {/* Card Title Bar */}
-              <div className="flex items-center justify-between pb-4 border-b border-white/[0.08] mb-6">
-                <div className="flex items-center gap-2">
-                  <span className="w-3 h-3 rounded-full bg-rose-500"></span>
-                  <span className="w-3 h-3 rounded-full bg-amber-500"></span>
-                  <span className="w-3 h-3 rounded-full bg-emerald-500"></span>
-                </div>
-                <span className="font-mono text-[10px] text-gray-500 uppercase tracking-widest">
-                  Live SEO Diagnostics
-                </span>
-              </div>
-
-              {/* Stats visual */}
-              <div className="space-y-5">
+              {/* Decorative Background Glows matching high-density theme */}
+              <div className="absolute -inset-1.5 bg-gradient-to-r from-brand-cyan to-brand-purple rounded-2xl blur-md opacity-25 group-hover:opacity-40 transition duration-1000 group-hover:duration-200" />
+              
+              {/* Outer Glass Border Frame */}
+              <div className="relative glass-panel rounded-2xl p-2 border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.6)] overflow-hidden">
+                <img
+                  src={mohanPortrait}
+                  alt="Mohan Kumar - SEO & SMO Specialist"
+                  className="w-full h-auto aspect-[3/4] object-cover rounded-xl border border-white/5 grayscale-[15%] group-hover:grayscale-0 transition-all duration-700"
+                  referrerPolicy="no-referrer"
+                />
                 
-                {/* Score Dial */}
-                <div className="flex items-center gap-4 p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.05]">
-                  <div className="relative w-14 h-14 rounded-full border-2 border-brand-cyan/30 flex items-center justify-center">
-                    <div className="absolute inset-0 rounded-full border-2 border-transparent border-t-brand-cyan animate-spin" />
-                    <span className="font-display font-bold text-base text-brand-cyan">99%</span>
-                  </div>
+                {/* Embedded dynamic badge */}
+                <div className="absolute bottom-5 left-5 right-5 p-3 rounded-xl glass-panel-heavy border border-white/10 flex items-center justify-between backdrop-blur-md">
                   <div>
-                    <h4 className="font-display text-xs font-semibold text-white">SEO Health Score</h4>
-                    <p className="font-sans text-[11px] text-gray-400 mt-0.5">Optimized site performance &amp; structure</p>
+                    <h4 className="font-display text-xs font-bold text-white tracking-wide">Mohan Kumar</h4>
+                    <p className="font-mono text-[9px] text-brand-cyan uppercase tracking-widest mt-0.5">SEO &amp; SMO Expert</p>
+                  </div>
+                  <div className="flex items-center gap-1.5 px-2 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                    <span className="font-mono text-[8px] text-emerald-400 font-bold uppercase tracking-wider">Active</span>
                   </div>
                 </div>
-
-                {/* Growth Chart bar visualization */}
-                <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.05]">
-                  <div className="flex justify-between items-center mb-3">
-                    <span className="font-display text-xs font-semibold text-white">Organic Monthly Traffic</span>
-                    <span className="font-mono text-xs text-emerald-400 font-medium">+248% Growth</span>
-                  </div>
-                  
-                  {/* Grid bars */}
-                  <div className="flex items-end gap-2.5 h-20 pt-2 px-1">
-                    {[35, 45, 40, 60, 55, 75, 70, 95, 90, 100].map((val, idx) => (
-                      <div key={idx} className="flex-1 flex flex-col items-center gap-1 h-full justify-end">
-                        <motion.div 
-                          initial={{ height: 0 }}
-                          whileInView={{ height: `${val}%` }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 1, delay: idx * 0.05 }}
-                          className={`w-full rounded-t-sm ${
-                            idx === 9 
-                              ? "bg-gradient-to-t from-brand-purple to-brand-cyan shadow-[0_0_10px_rgba(0,242,254,0.4)]" 
-                              : "bg-white/[0.08]"
-                          }`}
-                        />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Extra parameters list */}
-                <div className="grid grid-cols-2 gap-3 pt-2">
-                  <div className="p-3 rounded-lg bg-white/[0.01] border border-white/[0.03] text-center">
-                    <span className="block font-mono text-[10px] text-gray-500 uppercase">Crawl Index Rate</span>
-                    <span className="font-display font-semibold text-sm text-white mt-1 block">99.8%</span>
-                  </div>
-                  <div className="p-3 rounded-lg bg-white/[0.01] border border-white/[0.03] text-center">
-                    <span className="block font-mono text-[10px] text-gray-500 uppercase">CWV Diagnostic</span>
-                    <span className="font-display font-semibold text-sm text-emerald-400 mt-1 block">PASS</span>
-                  </div>
-                </div>
-
               </div>
             </motion.div>
           </div>
