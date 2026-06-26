@@ -52,9 +52,9 @@ export default function Hero({ onBtnClick }: HeroProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1 }}
-              className="font-display font-bold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-white leading-[1.1]"
+              className="font-display font-bold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-[var(--text-main)] leading-[1.1]"
             >
-              Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-brand-cyan to-brand-purple">Mohan Kumar</span>
+              Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--text-main)] via-brand-cyan to-brand-purple">Mohan Kumar</span>
             </motion.h1>
 
             <motion.h2
@@ -70,7 +70,7 @@ export default function Hero({ onBtnClick }: HeroProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.3 }}
-              className="font-sans text-base sm:text-lg text-gray-300 max-w-xl mx-auto lg:mx-0 mt-6 leading-relaxed"
+              className="font-sans text-base sm:text-lg text-[var(--text-sub)] max-w-xl mx-auto lg:mx-0 mt-6 leading-relaxed"
             >
               Helping Businesses Increase Organic Traffic, Rankings &amp; Online Visibility Through Data-Driven SEO &amp; SMO Strategies.
             </motion.p>
@@ -84,14 +84,14 @@ export default function Hero({ onBtnClick }: HeroProps) {
             >
               <button
                 onClick={() => onBtnClick("contact")}
-                className="w-full sm:w-auto px-8 py-3.5 rounded-full font-display text-sm tracking-wider font-semibold text-black bg-white hover:bg-brand-cyan hover:scale-105 transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_25px_rgba(0,242,254,0.4)] cursor-pointer"
+                className="w-full sm:w-auto px-8 py-3.5 rounded-full font-display text-sm tracking-wider font-semibold text-[var(--bg-main)] bg-[var(--text-main)] hover:bg-brand-cyan hover:text-black hover:scale-105 transition-all duration-300 shadow-md cursor-pointer"
               >
                 Hire Me
               </button>
               
               <button
                 onClick={() => onBtnClick("services")}
-                className="w-full sm:w-auto px-8 py-3.5 rounded-full font-display text-sm tracking-wider font-semibold text-white glass-panel hover:bg-white/[0.04] hover:scale-105 transition-all duration-300 border border-white/10 hover:border-brand-purple/40 cursor-pointer"
+                className="w-full sm:w-auto px-8 py-3.5 rounded-full font-display text-sm tracking-wider font-semibold text-[var(--text-main)] glass-panel hover:bg-white/[0.04] hover:scale-105 transition-all duration-300 border border-white/10 hover:border-brand-purple/40 cursor-pointer"
               >
                 View Portfolio
               </button>
@@ -102,17 +102,17 @@ export default function Hero({ onBtnClick }: HeroProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.5 }}
-              className="grid grid-cols-3 gap-4 sm:gap-6 mt-14 pt-8 border-t border-white/[0.06] max-w-lg mx-auto lg:mx-0 w-full"
+              className="grid grid-cols-3 gap-4 sm:gap-6 mt-14 pt-8 border-t border-[var(--glass-border)] max-w-lg mx-auto lg:mx-0 w-full"
             >
               {stats.map((stat, i) => (
                 <div key={i} className="text-center lg:text-left">
                   <div className="flex items-center justify-center lg:justify-start gap-1.5 mb-1">
                     <stat.icon className={`w-4 h-4 ${stat.color}`} />
-                    <span className="font-display font-bold text-2xl sm:text-3xl text-white tracking-tight">
+                    <span className="font-display font-bold text-2xl sm:text-3xl text-[var(--text-main)] tracking-tight">
                       {stat.value}
                     </span>
                   </div>
-                  <p className="font-sans text-[11px] sm:text-xs text-gray-400 font-medium uppercase tracking-wider leading-tight">
+                  <p className="font-sans text-[11px] sm:text-xs text-[var(--text-muted)] font-medium uppercase tracking-wider leading-tight">
                     {stat.label}
                   </p>
                 </div>

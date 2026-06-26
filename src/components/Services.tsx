@@ -89,10 +89,10 @@ export default function Services({ onBtnClick }: ServicesProps) {
           <span className="font-mono text-xs text-brand-cyan tracking-widest uppercase px-3 py-1 rounded-full bg-brand-cyan/10 border border-brand-cyan/20 inline-block mb-3">
             Services
           </span>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl text-white tracking-tight">
+          <h2 className="font-display font-bold text-3xl sm:text-4xl text-[var(--text-main)] tracking-tight">
             Premium SEO &amp; SMO Services
           </h2>
-          <p className="font-sans text-sm text-gray-400 max-w-xl mx-auto mt-4 leading-relaxed">
+          <p className="font-sans text-sm text-[var(--text-muted)] max-w-xl mx-auto mt-4 leading-relaxed">
             Data-driven execution scopes designed to conquer Google search results, streamline site mechanics, and engage digital social audiences.
           </p>
         </div>
@@ -108,32 +108,32 @@ export default function Services({ onBtnClick }: ServicesProps) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.05 }}
-                className="glass-panel border border-white/5 hover:border-brand-cyan/20 rounded-2xl p-6 hover:bg-white/[0.04] transition-all duration-300 flex flex-col justify-between group h-full shadow-lg"
+                className="glass-panel border border-[var(--glass-border)] hover:border-brand-cyan/20 rounded-2xl p-6 hover:bg-[var(--bg-card)] transition-all duration-300 flex flex-col justify-between group h-full shadow-lg"
               >
                 <div>
                   {/* Icon with gradient circle */}
                   <div className={`w-12 h-12 rounded-2xl bg-gradient-to-tr ${service.color} p-[1px] mb-5 shadow-[0_0_15px_rgba(255,255,255,0.02)] group-hover:scale-105 transition-transform duration-300`}>
-                    <div className="w-full h-full rounded-2xl bg-[#060a20] flex items-center justify-center text-white">
+                    <div className="w-full h-full rounded-2xl bg-[var(--bg-card-heavy)] flex items-center justify-center text-white">
                       <ServiceIcon className="w-5.5 h-5.5 text-brand-cyan" />
                     </div>
                   </div>
 
                   {/* Title Description */}
-                  <h3 className="font-display font-bold text-sm text-white tracking-wide mb-3 group-hover:text-brand-cyan transition-colors">
+                  <h3 className="font-display font-bold text-sm text-[var(--text-main)] tracking-wide mb-3 group-hover:text-brand-cyan transition-colors">
                     {service.title}
                   </h3>
                   
-                  <p className="font-sans text-xs text-gray-400 leading-relaxed mb-5">
+                  <p className="font-sans text-xs text-[var(--text-muted)] leading-relaxed mb-5">
                     {service.description}
                   </p>
 
                   {/* Key Deliverables Bullet List */}
-                  <div className="space-y-2 border-t border-white/[0.05] pt-4 mb-6">
-                    <span className="block font-mono text-[9px] text-gray-500 uppercase tracking-widest mb-1.5">Deliverables:</span>
+                  <div className="space-y-2 border-t border-[var(--glass-border)] pt-4 mb-6">
+                    <span className="block font-mono text-[9px] text-[var(--text-muted)] uppercase tracking-widest mb-1.5">Deliverables:</span>
                     {service.deliverables.map((del, idx) => (
                       <div key={idx} className="flex items-start gap-2.5">
                         <CheckCircle2 className="w-3.5 h-3.5 text-brand-cyan flex-shrink-0 mt-0.5" />
-                        <span className="font-sans text-[11px] text-gray-300 leading-normal">
+                        <span className="font-sans text-[11px] text-[var(--text-sub)] leading-normal">
                           {del}
                         </span>
                       </div>
@@ -144,7 +144,7 @@ export default function Services({ onBtnClick }: ServicesProps) {
                 {/* Card Bottom CTA Link */}
                 <button
                   onClick={() => onBtnClick("contact")}
-                  className="w-full mt-4 py-2.5 rounded-xl border border-white/10 hover:border-brand-cyan hover:bg-brand-cyan/10 font-display font-semibold text-[11px] tracking-wider text-white hover:text-white transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                  className="w-full mt-4 py-2.5 rounded-xl border border-[var(--glass-border)] hover:border-brand-cyan hover:bg-brand-cyan/10 font-display font-semibold text-[11px] tracking-wider text-[var(--text-main)] hover:text-white transition-all flex items-center justify-center gap-1.5 cursor-pointer"
                 >
                   Request Service
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />

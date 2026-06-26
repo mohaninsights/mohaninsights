@@ -43,10 +43,10 @@ export default function Skills() {
           <span className="font-mono text-xs text-brand-purple tracking-widest uppercase px-3 py-1 rounded-full bg-brand-purple/10 border border-brand-purple/20 inline-block mb-3">
             Core Expertise
           </span>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl text-white tracking-tight">
+          <h2 className="font-display font-bold text-3xl sm:text-4xl text-[var(--text-main)] tracking-tight">
             Advanced SEO &amp; SMO Capabilities
           </h2>
-          <p className="font-sans text-sm text-gray-400 max-w-xl mx-auto mt-4 leading-relaxed">
+          <p className="font-sans text-sm text-[var(--text-muted)] max-w-xl mx-auto mt-4 leading-relaxed">
             Data-backed search optimization, semantic structure audits, social engine syndication, and deep traffic diagnostics to establish high search authority.
           </p>
         </div>
@@ -114,22 +114,22 @@ function SkillCard({ skill, index }: { skill: Skill; index: number; key?: any })
           transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${isHovering ? 1.02 : 1})`,
           transition: isHovering ? "transform 0.05s ease-out" : "transform 0.5s ease-out",
         }}
-        className="glass-panel rounded-2xl p-5 border border-white/5 hover:border-white/15 hover:bg-white/[0.05] shadow-lg transition-all duration-300 relative group overflow-hidden"
+        className="glass-panel rounded-2xl p-5 border border-[var(--glass-border)] hover:bg-[var(--bg-card)] shadow-lg transition-all duration-300 relative group overflow-hidden"
       >
         {/* Subtle hover gradient background */}
         <div className={`absolute -right-20 -top-20 w-40 h-40 rounded-full bg-gradient-to-br ${skill.color} opacity-0 group-hover:opacity-[0.08] blur-2xl transition-opacity duration-500`} />
 
         <div className="flex items-center gap-4 mb-4">
           <div className={`w-10 h-10 rounded-xl bg-gradient-to-tr ${skill.color} p-[1px]`}>
-            <div className="w-full h-full rounded-xl bg-[#070b1e] flex items-center justify-center text-white">
+            <div className="w-full h-full rounded-xl bg-[var(--bg-card-heavy)] flex items-center justify-center text-white">
               <IconComponent className="w-4.5 h-4.5 text-brand-cyan group-hover:scale-110 transition-transform duration-300" />
             </div>
           </div>
           <div>
-            <h3 className="font-display text-sm font-semibold text-white tracking-wide leading-tight">
+            <h3 className="font-display text-sm font-semibold text-[var(--text-main)] tracking-wide leading-tight">
               {skill.name}
             </h3>
-            <span className="font-mono text-[9px] text-gray-500 uppercase tracking-widest mt-0.5 block">
+            <span className="font-mono text-[9px] text-[var(--text-muted)] uppercase tracking-widest mt-0.5 block">
               {skill.category}
             </span>
           </div>
@@ -138,10 +138,10 @@ function SkillCard({ skill, index }: { skill: Skill; index: number; key?: any })
         {/* Progress Bar Container */}
         <div className="mt-4 pt-2">
           <div className="flex justify-between items-center mb-1.5">
-            <span className="font-mono text-[10px] text-gray-500 uppercase tracking-wide">Expertise Level</span>
+            <span className="font-mono text-[10px] text-[var(--text-muted)] uppercase tracking-wide">Expertise Level</span>
             <span className="font-display font-bold text-xs text-brand-cyan">{skill.level}%</span>
           </div>
-          <div className="w-full h-1.5 rounded-full bg-white/[0.04] overflow-hidden">
+          <div className="w-full h-1.5 rounded-full bg-[var(--glass-border)] overflow-hidden">
             <motion.div
               initial={{ width: 0 }}
               whileInView={{ width: `${skill.level}%` }}

@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { Check, MapPin, Globe, Calendar, ArrowRight, Zap, Award, Search, Percent } from "lucide-react";
 // @ts-ignore
-import mohanPortrait from "../assets/images/mohan_portrait_1782472920337.jpg";
+import mohanPortrait from "../assets/images/mohan_portrait_1782472920337_1782473530886.jpg";
 
 interface AboutProps {
   onBtnClick: (sectionId: string) => void;
@@ -38,7 +38,7 @@ export default function About({ onBtnClick }: AboutProps) {
           <span className="font-mono text-xs text-brand-cyan tracking-widest uppercase px-3 py-1 rounded-full bg-brand-cyan/10 border border-brand-cyan/20 inline-block mb-3">
             About MohanInsights
           </span>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl text-white tracking-tight leading-tight max-w-3xl">
+          <h2 className="font-display font-bold text-3xl sm:text-4xl text-[var(--text-main)] tracking-tight leading-tight max-w-3xl">
             Driving Digital Growth Through Strategic SEO &amp; SMO
           </h2>
         </div>
@@ -84,24 +84,24 @@ export default function About({ onBtnClick }: AboutProps) {
           {/* Column 2: Bio Description & Details */}
           <div className="lg:col-span-7 order-1 lg:order-2 flex flex-col justify-center">
             
-            <p className="font-sans text-base sm:text-lg text-gray-300 leading-relaxed">
+            <p className="font-sans text-base sm:text-lg text-[var(--text-sub)] leading-relaxed">
               I'm a dedicated SEO &amp; SMO Expert helping businesses improve search rankings, organic traffic, and online visibility through proven optimization strategies.
             </p>
             
-            <p className="font-sans text-base text-gray-400 mt-4 leading-relaxed">
+            <p className="font-sans text-base text-[var(--text-muted)] mt-4 leading-relaxed">
               My approach combines in-depth technical audits, robust content strategies, rigorous competitor research, and data-driven decision making to deliver high-converting organic results.
             </p>
 
             {/* Profile Info Row */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8 py-6 border-y border-white/[0.06]">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8 py-6 border-y border-[var(--glass-border)]">
               {details.map((det, idx) => (
                 <div key={idx} className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-white/[0.03] border border-white/[0.06] flex items-center justify-center text-brand-cyan">
+                  <div className="w-10 h-10 rounded-xl bg-[var(--glass-bg)] border border-[var(--glass-border)] flex items-center justify-center text-brand-cyan">
                     <det.icon className="w-4 h-4" />
                   </div>
                   <div>
                     <span className="block font-mono text-[10px] text-gray-500 uppercase tracking-wider">{det.label}</span>
-                    <span className={`font-display text-xs font-semibold ${det.highlight ? "text-brand-cyan" : "text-white"}`}>
+                    <span className={`font-display text-xs font-semibold ${det.highlight ? "text-brand-cyan" : "text-[var(--text-main)]"}`}>
                       {det.value}
                     </span>
                   </div>
@@ -110,7 +110,7 @@ export default function About({ onBtnClick }: AboutProps) {
             </div>
 
             {/* Specializations list */}
-            <h3 className="font-display font-bold text-sm text-white tracking-widest uppercase mt-8 mb-4">
+            <h3 className="font-display font-bold text-sm text-[var(--text-main)] tracking-widest uppercase mt-8 mb-4">
               Core Specializations
             </h3>
 
@@ -120,7 +120,7 @@ export default function About({ onBtnClick }: AboutProps) {
                   <div className="mt-0.5 w-4 h-4 rounded-md bg-brand-purple/10 border border-brand-purple/30 flex items-center justify-center text-brand-cyan group-hover:bg-brand-cyan/20 group-hover:border-brand-cyan transition-colors">
                     <Check className="w-2.5 h-2.5" />
                   </div>
-                  <span className="font-sans text-sm text-gray-300 group-hover:text-white transition-colors">
+                  <span className="font-sans text-sm text-[var(--text-sub)] group-hover:text-[var(--text-main)] transition-colors">
                     {spec}
                   </span>
                 </div>
@@ -131,7 +131,7 @@ export default function About({ onBtnClick }: AboutProps) {
             <div className="flex flex-col sm:flex-row items-center gap-4 mt-10">
               <button
                 onClick={() => onBtnClick("contact")}
-                className="w-full sm:w-auto px-6 py-3 rounded-full font-display text-xs tracking-wider font-semibold text-black bg-white hover:bg-brand-cyan hover:scale-105 transition-all duration-300 cursor-pointer flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-6 py-3 rounded-full font-display text-xs tracking-wider font-semibold text-[var(--bg-main)] bg-[var(--text-main)] hover:bg-brand-cyan hover:text-black hover:scale-105 transition-all duration-300 cursor-pointer flex items-center justify-center gap-2"
               >
                 Get In Touch
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -139,7 +139,7 @@ export default function About({ onBtnClick }: AboutProps) {
 
               <button
                 onClick={() => onBtnClick("services")}
-                className="w-full sm:w-auto px-6 py-3 rounded-full font-display text-xs tracking-wider font-semibold text-white glass-panel hover:bg-white/[0.05] hover:scale-105 transition-all duration-300 border border-white/10 cursor-pointer"
+                className="w-full sm:w-auto px-6 py-3 rounded-full font-display text-xs tracking-wider font-semibold text-[var(--text-main)] glass-panel hover:bg-white/[0.05] hover:scale-105 transition-all duration-300 border border-white/10 cursor-pointer"
               >
                 My Services
               </button>

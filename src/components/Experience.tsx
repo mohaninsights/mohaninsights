@@ -62,10 +62,10 @@ export default function Experience() {
           <span className="font-mono text-xs text-brand-cyan tracking-widest uppercase px-3 py-1 rounded-full bg-brand-cyan/10 border border-brand-cyan/20 inline-block mb-3">
             Career Timeline
           </span>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl text-white tracking-tight">
+          <h2 className="font-display font-bold text-3xl sm:text-4xl text-[var(--text-main)] tracking-tight">
             Professional Experience
           </h2>
-          <p className="font-sans text-sm text-gray-400 max-w-xl mx-auto mt-4 leading-relaxed">
+          <p className="font-sans text-sm text-[var(--text-muted)] max-w-xl mx-auto mt-4 leading-relaxed">
             Delivering organic visibility leaps and clean crawling pipelines across high-growth corporate agencies and digital projects.
           </p>
         </div>
@@ -84,7 +84,7 @@ export default function Experience() {
                 <div key={index} className="relative flex flex-col md:flex-row md:justify-between items-stretch">
                   
                   {/* Timeline circular node marker */}
-                  <div className="absolute left-4 md:left-1/2 top-6 w-4.5 h-4.5 rounded-full bg-[#050816] border-2 border-brand-cyan -translate-x-1/2 z-10 flex items-center justify-center">
+                  <div className="absolute left-4 md:left-1/2 top-6 w-4.5 h-4.5 rounded-full bg-[var(--bg-main)] border-2 border-brand-cyan -translate-x-1/2 z-10 flex items-center justify-center">
                     <div className="w-1.5 h-1.5 rounded-full bg-brand-cyan animate-ping" />
                   </div>
 
@@ -99,10 +99,10 @@ export default function Experience() {
                     )}
                     {isEven && (
                       <div className="pr-6 pt-6">
-                        <h4 className="font-display text-base font-bold text-white leading-tight">
+                        <h4 className="font-display text-base font-bold text-[var(--text-main)] leading-tight">
                           {exp.company}
                         </h4>
-                        <p className="font-sans text-xs text-gray-400 mt-1">{exp.role}</p>
+                        <p className="font-sans text-xs text-[var(--text-muted)] mt-1">{exp.role}</p>
                       </div>
                     )}
                   </div>
@@ -114,14 +114,14 @@ export default function Experience() {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true, margin: "-100px" }}
                       transition={{ duration: 0.6, delay: index * 0.1 }}
-                      className="glass-panel border border-white/5 hover:border-brand-purple/20 rounded-2xl p-6 hover:bg-white/[0.04] transition-all duration-300 shadow-md"
+                      className="glass-panel border border-[var(--glass-border)] hover:border-brand-purple/20 rounded-2xl p-6 hover:bg-[var(--bg-card)] transition-all duration-300 shadow-md"
                     >
                       {/* Mobile block period or header */}
                       <div className="flex flex-col md:hidden mb-4">
                         <span className="self-start font-mono text-[10px] text-brand-cyan bg-brand-cyan/15 px-2.5 py-0.5 rounded-full border border-brand-cyan/10 mb-2">
                           {exp.period}
                         </span>
-                        <h4 className="font-display font-bold text-base text-white">{exp.company}</h4>
+                        <h4 className="font-display font-bold text-base text-[var(--text-main)]">{exp.company}</h4>
                         <p className="font-sans text-xs text-brand-cyan font-medium">{exp.role}</p>
                       </div>
 
@@ -129,7 +129,7 @@ export default function Experience() {
                       <div className="hidden md:block mb-4">
                         {!isEven && (
                           <>
-                            <h4 className="font-display font-bold text-base text-white leading-tight">{exp.company}</h4>
+                            <h4 className="font-display font-bold text-base text-[var(--text-main)] leading-tight">{exp.company}</h4>
                             <p className="font-sans text-xs text-brand-cyan font-medium mt-0.5">{exp.role}</p>
                           </>
                         )}
@@ -145,7 +145,7 @@ export default function Experience() {
                         {exp.responsibilities.map((resp, idx) => (
                           <li key={idx} className="flex items-start gap-2.5">
                             <ChevronRight className="w-3.5 h-3.5 mt-1 text-brand-cyan flex-shrink-0" />
-                            <p className="font-sans text-xs text-gray-300 leading-relaxed">
+                            <p className="font-sans text-xs text-[var(--text-sub)] leading-relaxed">
                               {resp}
                             </p>
                           </li>
@@ -153,9 +153,9 @@ export default function Experience() {
                       </ul>
 
                       {/* Tags under card */}
-                      <div className="mt-5 pt-4 border-t border-white/[0.05] flex flex-wrap gap-1.5">
+                      <div className="mt-5 pt-4 border-t border-[var(--glass-border)] flex flex-wrap gap-1.5">
                         {exp.techUsed.map((tech, idx) => (
-                          <span key={idx} className="font-mono text-[9px] bg-white/[0.02] text-gray-400 px-2 py-0.5 rounded-md border border-white/[0.05]">
+                          <span key={idx} className="font-mono text-[9px] bg-[var(--glass-bg)] text-[var(--text-muted)] px-2 py-0.5 rounded-md border border-[var(--glass-border)]">
                             {tech}
                           </span>
                         ))}

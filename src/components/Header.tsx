@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Menu, X, ArrowUpRight, MessageSquare } from "lucide-react";
+import { Menu, X, ArrowUpRight, MessageSquare, Sun, Moon } from "lucide-react";
 
 interface HeaderProps {
   onNavClick: (sectionId: string) => void;
+  theme: "dark" | "light";
+  onToggleTheme: () => void;
 }
 
-export default function Header({ onNavClick }: HeaderProps) {
+export default function Header({ onNavClick, theme, onToggleTheme }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
@@ -61,7 +63,7 @@ export default function Header({ onNavClick }: HeaderProps) {
         id="main-header"
         className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 ${
           isScrolled
-            ? "py-3 bg-[#050816]/80 backdrop-blur-md border-b border-white/[0.05]"
+            ? "py-3 bg-[var(--bg-nav)] backdrop-blur-md border-b border-white/[0.05]"
             : "py-5 bg-transparent"
         }`}
       >
@@ -73,17 +75,17 @@ export default function Header({ onNavClick }: HeaderProps) {
             className="flex items-center gap-3 group text-left cursor-pointer"
           >
             <div className="relative w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-purple to-brand-cyan p-[1px] shadow-[0_0_15px_rgba(128,77,238,0.2)] group-hover:shadow-[0_0_20px_rgba(0,242,254,0.4)] transition-all duration-300">
-              <div className="w-full h-full rounded-xl bg-[#0a0e23] flex items-center justify-center">
-                <span className="font-display font-bold text-base text-white tracking-wider group-hover:scale-110 transition-transform duration-300">
+              <div className="w-full h-full rounded-xl bg-[var(--bg-card-heavy)] flex items-center justify-center">
+                <span className="font-display font-bold text-base text-[var(--text-main)] tracking-wider group-hover:scale-110 transition-transform duration-300">
                   MK
                 </span>
               </div>
             </div>
             <div>
-              <span className="block font-display font-bold text-lg tracking-wider text-white group-hover:text-brand-cyan transition-colors duration-300">
+              <span className="block font-display font-bold text-lg tracking-wider text-[var(--text-main)] group-hover:text-brand-cyan transition-colors duration-300">
                 MohanInsights
               </span>
-              <span className="block font-sans text-[10px] text-gray-400 tracking-widest uppercase">
+              <span className="block font-sans text-[10px] text-[var(--text-muted)] tracking-widest uppercase">
                 SEO & SMO Expert
               </span>
             </div>
@@ -98,7 +100,7 @@ export default function Header({ onNavClick }: HeaderProps) {
                 className={`px-3.5 py-1.5 rounded-full font-sans text-xs tracking-wide font-medium transition-all duration-300 cursor-pointer ${
                   activeSection === item.id
                     ? "bg-gradient-to-r from-brand-purple to-brand-cyan text-black font-semibold shadow-[0_0_10px_rgba(0,242,254,0.2)]"
-                    : "text-gray-300 hover:text-white hover:bg-white/[0.03]"
+                    : "text-[var(--text-sub)] hover:text-[var(--text-main)] hover:bg-white/[0.03]"
                 }`}
               >
                 {item.name}
@@ -107,10 +109,19 @@ export default function Header({ onNavClick }: HeaderProps) {
           </nav>
 
           {/* Action Call to Action Button */}
-          <div className="hidden lg:block">
+          <div className="hidden lg:flex items-center gap-3">
+            {/* Theme Toggle Button */}
+            <button
+              onClick={onToggleTheme}
+              className="p-2.5 rounded-full glass-panel text-[var(--text-main)] hover:text-brand-cyan hover:border-brand-cyan transition-all duration-300 cursor-pointer flex items-center justify-center border border-white/10"
+              title={theme === "light" ? "Switch to Dark Mode" : "Switch to Light Mode"}
+            >
+              {theme === "light" ? <Moon className="w-4 h-4 text-brand-purple" /> : <Sun className="w-4 h-4 text-brand-cyan" />}
+            </button>
+
             <button
               onClick={() => handleLinkClick("contact")}
-              className="relative group px-5 py-2.5 rounded-full font-display text-xs tracking-wider font-semibold text-black bg-white hover:bg-brand-cyan hover:text-black hover:scale-105 transition-all duration-300 shadow-md hover:shadow-[0_0_15px_rgba(0,242,254,0.4)] flex items-center gap-1.5 cursor-pointer"
+              className="relative group px-5 py-2.5 rounded-full font-display text-xs tracking-wider font-semibold text-black bg-white hover:bg-brand-cyan hover:text-black hover:scale-105 transition-all duration-300 shadow-md hover:shadow-[0_0_15px_rgba(0,242,254,0.4)] flex items-center gap-1.5 cursor-pointer border border-transparent hover:border-brand-cyan"
             >
               <MessageSquare className="w-3.5 h-3.5" />
               Hire Me
@@ -118,14 +129,26 @@ export default function Header({ onNavClick }: HeaderProps) {
             </button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 rounded-xl glass-panel text-white hover:text-brand-cyan transition-colors duration-300 cursor-pointer"
-            aria-label="Toggle Menu"
-          >
-            {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
+          {/* Mobile Actions block */}
+          <div className="flex lg:hidden items-center gap-2">
+            {/* Theme Switcher Button */}
+            <button
+              onClick={onToggleTheme}
+              className="p-2.5 rounded-xl glass-panel text-[var(--text-main)] hover:text-brand-cyan transition-colors duration-300 cursor-pointer flex items-center justify-center"
+              title={theme === "light" ? "Switch to Dark Mode" : "Switch to Light Mode"}
+            >
+              {theme === "light" ? <Moon className="w-4.5 h-4.5 text-brand-purple" /> : <Sun className="w-4.5 h-4.5 text-brand-cyan" />}
+            </button>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2.5 rounded-xl glass-panel text-[var(--text-main)] hover:text-brand-cyan transition-colors duration-300 cursor-pointer flex items-center justify-center"
+              aria-label="Toggle Menu"
+            >
+              {isOpen ? <X className="w-4.5 h-4.5" /> : <Menu className="w-4.5 h-4.5" />}
+            </button>
+          </div>
         </div>
       </header>
 
@@ -142,13 +165,13 @@ export default function Header({ onNavClick }: HeaderProps) {
             <div className="flex flex-col gap-3">
               {menuItems.map((item) => (
                 <button
-                  key={item.id}
-                  onClick={() => handleLinkClick(item.id)}
-                  className={`w-full text-left py-2.5 px-4 rounded-xl font-sans text-sm tracking-wide font-medium transition-all duration-200 flex items-center justify-between ${
-                    activeSection === item.id
-                      ? "bg-gradient-to-r from-brand-purple to-brand-cyan text-black"
-                      : "text-gray-300 hover:text-white hover:bg-white/[0.04]"
-                  }`}
+                   key={item.id}
+                   onClick={() => handleLinkClick(item.id)}
+                   className={`w-full text-left py-2.5 px-4 rounded-xl font-sans text-sm tracking-wide font-medium transition-all duration-200 flex items-center justify-between ${
+                     activeSection === item.id
+                       ? "bg-gradient-to-r from-brand-purple to-brand-cyan text-black font-semibold"
+                       : "text-[var(--text-sub)] hover:text-[var(--text-main)] hover:bg-white/[0.04]"
+                   }`}
                 >
                   <span>{item.name}</span>
                   {activeSection === item.id && (

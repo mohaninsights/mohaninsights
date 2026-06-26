@@ -49,10 +49,10 @@ export default function Tools() {
           <span className="font-mono text-xs text-brand-cyan tracking-widest uppercase px-3 py-1 rounded-full bg-brand-cyan/10 border border-brand-cyan/20 inline-block mb-3">
             Digital Stack
           </span>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl text-white tracking-tight">
+          <h2 className="font-display font-bold text-3xl sm:text-4xl text-[var(--text-main)] tracking-tight">
             My Digital Marketing Stack
           </h2>
-          <p className="font-sans text-sm text-gray-400 max-w-2xl mx-auto mt-4 leading-relaxed">
+          <p className="font-sans text-sm text-[var(--text-muted)] max-w-2xl mx-auto mt-4 leading-relaxed">
             Professional tools I use daily to research keywords, analyze competition, optimize page markup, monitor rankings, and scale organic acquisition channels.
           </p>
         </div>
@@ -64,8 +64,8 @@ export default function Tools() {
         {/* Row 1 Slider: Left Scrolling */}
         <div className="flex w-full overflow-hidden relative">
           {/* Subtle gradient fades on borders to hide clipping */}
-          <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#050816] to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#050816] to-transparent z-10 pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[var(--bg-main)] to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[var(--bg-main)] to-transparent z-10 pointer-events-none" />
 
           <div className="animate-infinite-scroll flex gap-6">
             {dblRow1.map((tool, idx) => {
@@ -75,14 +75,14 @@ export default function Tools() {
                   key={idx}
                   className={`w-[260px] glass-panel border ${tool.color} p-4 rounded-2xl flex items-center gap-4 hover:scale-105 hover:-translate-y-1 transition-all duration-300`}
                 >
-                  <div className="w-10 h-10 rounded-xl bg-white/[0.02] flex items-center justify-center border border-white/5">
+                  <div className="w-10 h-10 rounded-xl bg-white/[0.02] flex items-center justify-center border border-[var(--glass-border)]">
                     <ToolIcon className="w-5 h-5 text-current" />
                   </div>
                   <div>
-                    <h4 className="font-display font-bold text-sm text-white tracking-wide">
+                    <h4 className="font-display font-bold text-sm text-[var(--text-main)] tracking-wide">
                       {tool.name}
                     </h4>
-                    <p className="font-sans text-[10px] text-gray-400 mt-0.5">
+                    <p className="font-sans text-[10px] text-[var(--text-muted)] mt-0.5">
                       {tool.category}
                     </p>
                     <span className="font-mono text-[9px] opacity-60 block mt-1">
@@ -97,8 +97,8 @@ export default function Tools() {
 
         {/* Row 2 Slider: Right Scrolling */}
         <div className="flex w-full overflow-hidden relative">
-          <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#050816] to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#050816] to-transparent z-10 pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[var(--bg-main)] to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[var(--bg-main)] to-transparent z-10 pointer-events-none" />
 
           {/* Reverse animation direction for second row */}
           <div className="animate-infinite-scroll flex gap-6 [animation-direction:reverse]">
@@ -109,14 +109,14 @@ export default function Tools() {
                   key={idx}
                   className={`w-[260px] glass-panel border ${tool.color} p-4 rounded-2xl flex items-center gap-4 hover:scale-105 hover:-translate-y-1 transition-all duration-300`}
                 >
-                  <div className="w-10 h-10 rounded-xl bg-white/[0.02] flex items-center justify-center border border-white/5">
+                  <div className="w-10 h-10 rounded-xl bg-white/[0.02] flex items-center justify-center border border-[var(--glass-border)]">
                     <ToolIcon className="w-5 h-5 text-current" />
                   </div>
                   <div>
-                    <h4 className="font-display font-bold text-sm text-white tracking-wide">
+                    <h4 className="font-display font-bold text-sm text-[var(--text-main)] tracking-wide">
                       {tool.name}
                     </h4>
-                    <p className="font-sans text-[10px] text-gray-400 mt-0.5">
+                    <p className="font-sans text-[10px] text-[var(--text-muted)] mt-0.5">
                       {tool.category}
                     </p>
                     <span className="font-mono text-[9px] opacity-60 block mt-1">

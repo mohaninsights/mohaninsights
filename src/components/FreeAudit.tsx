@@ -42,11 +42,11 @@ export default function FreeAudit({ onAuditClick }: FreeAuditProps) {
                 Boost Your Search Authority
               </span>
               
-              <h2 className="font-display font-bold text-3xl sm:text-4xl text-white tracking-tight leading-tight">
+              <h2 className="font-display font-bold text-3xl sm:text-4xl text-[var(--text-main)] tracking-tight leading-tight">
                 Get Your Free SEO Audit Report
               </h2>
               
-              <p className="font-sans text-sm text-gray-300 mt-4 leading-relaxed max-w-xl">
+              <p className="font-sans text-sm text-[var(--text-sub)] mt-4 leading-relaxed max-w-xl">
                 Discover critical technical issues, ranking gaps, page-speed bottlenecks, content optimization opportunities, and concrete action items to outrank your competitors.
               </p>
 
@@ -58,10 +58,10 @@ export default function FreeAudit({ onAuditClick }: FreeAuditProps) {
                       <Check className="w-3.5 h-3.5" />
                     </div>
                     <div>
-                      <h4 className="font-display font-semibold text-xs text-white group-hover:text-brand-cyan transition-colors leading-tight">
+                      <h4 className="font-display font-semibold text-xs text-[var(--text-main)] group-hover:text-brand-cyan transition-colors leading-tight">
                         {point.text}
                       </h4>
-                      <p className="font-sans text-[10px] text-gray-400 mt-0.5 leading-normal">
+                      <p className="font-sans text-[10px] text-[var(--text-muted)] mt-0.5 leading-normal">
                         {point.desc}
                       </p>
                     </div>
@@ -72,32 +72,32 @@ export default function FreeAudit({ onAuditClick }: FreeAuditProps) {
 
             {/* Right Column: High conversion callout dashboard */}
             <div className="lg:col-span-5 flex flex-col items-center">
-              <div className="glass-panel border border-white/10 rounded-2xl p-6 sm:p-8 w-full relative text-center shadow-lg bg-[#070b1e]/60">
+              <div className="glass-panel border border-[var(--glass-border)] rounded-2xl p-6 sm:p-8 w-full relative text-center shadow-lg bg-[var(--bg-card)]/60">
                 
                 {/* Simulated Audit Scan Circle */}
                 <div className="relative w-36 h-36 mx-auto mb-6 flex items-center justify-center">
-                  <div className="absolute inset-0 rounded-full border border-dashed border-white/10 animate-[spin_20s_linear_infinite]" />
+                  <div className="absolute inset-0 rounded-full border border-dashed border-[var(--glass-border)] animate-[spin_20s_linear_infinite]" />
                   <div className="absolute inset-2 rounded-full border border-brand-cyan/20" />
                   <div className="absolute inset-4 rounded-full border-2 border-transparent border-t-brand-cyan border-b-brand-purple animate-[spin_3s_linear_infinite]" />
                   
                   <div className="z-10 flex flex-col items-center">
                     <ClipboardCheck className="w-8 h-8 text-brand-cyan mb-1 animate-pulse" />
-                    <span className="font-display font-bold text-sm text-white tracking-widest uppercase">SCANNING</span>
+                    <span className="font-display font-bold text-sm text-[var(--text-main)] tracking-widest uppercase">SCANNING</span>
                   </div>
                 </div>
 
-                <h3 className="font-display font-bold text-base text-white tracking-wide">
+                <h3 className="font-display font-bold text-base text-[var(--text-main)] tracking-wide">
                   Claim Your Free Insight Scan
                 </h3>
                 
-                <p className="font-sans text-xs text-gray-400 mt-2 leading-relaxed">
+                <p className="font-sans text-xs text-[var(--text-muted)] mt-2 leading-relaxed">
                   Provide your website URL in our secure growth form below and our SEO engine will compile a full PDF report within 24 hours.
                 </p>
 
                 {/* Main Conversion Call To Action Button */}
                 <button
                   onClick={onAuditClick}
-                  className="w-full mt-6 py-4 rounded-xl font-display font-bold text-xs tracking-widest uppercase text-black bg-white hover:bg-brand-cyan hover:scale-102 hover:shadow-[0_0_20px_rgba(0,242,254,0.4)] transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full mt-6 py-4 rounded-xl font-display font-bold text-xs tracking-widest uppercase text-[var(--bg-main)] bg-[var(--text-main)] hover:bg-brand-cyan hover:text-black hover:scale-102 hover:shadow-[0_0_20px_rgba(0,242,254,0.4)] transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer border border-transparent hover:border-brand-cyan"
                 >
                   Get Free Audit
                   <ArrowUpRight className="w-4 h-4" />
