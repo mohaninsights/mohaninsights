@@ -113,3 +113,110 @@
     linear-gradient(to right, var(--glass-border) 1px, transparent 1px),
     linear-gradient(to bottom, var(--glass-border) 1px, transparent 1px);
 }
+
+/* Premium PDF / Print optimizations */
+@media print {
+  html, body {
+    background-color: #ffffff !important;
+    color: #111111 !important;
+    font-family: 'Inter', sans-serif !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Universal print overrides */
+  * {
+    background-color: transparent !important;
+    background-image: none !important;
+    color: #111111 !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  /* Keep basic structural boundaries clean in black-and-white */
+  .glass-panel, .glass-panel-heavy {
+    background-color: rgba(0, 0, 0, 0.02) !important;
+    border: 1px solid #e5e7eb !important;
+    border-radius: 12px !important;
+  }
+
+  .border, [class*="border-"] {
+    border-color: #e5e7eb !important;
+  }
+
+  /* Highlight titles and important sections in strong solid black */
+  .text-brand-cyan, .text-brand-purple, .text-glow {
+    color: #000000 !important;
+    font-weight: 700 !important;
+  }
+
+  .text-[var(--text-muted)], .text-[var(--text-sub)], p, span, li, h1, h2, h3, h4 {
+    color: #222222 !important;
+  }
+
+  /* Hide interactive widgets, menus, search boxes, and forms */
+  #main-header,
+  header,
+  footer,
+  button,
+  form,
+  input,
+  textarea,
+  iframe,
+  canvas,
+  #three-canvas-container,
+  .bg-stars,
+  .pointer-events-none,
+  [class*="blur-"],
+  #audit {
+    display: none !important;
+  }
+
+  /* Set main container to occupy full page with standard margins */
+  main {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 1.5rem !important;
+    margin: 0 !important;
+  }
+
+  /* Prepend a beautiful resume heading for recruiters */
+  body::before {
+    content: "MOHAN MALHOTRA  •  SEO & SMO EXPERT\aContact: mohankaka172004@gmail.com  •  Website: MohanInsights.com";
+    white-space: pre-wrap;
+    display: block;
+    text-align: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid #111111;
+    padding-bottom: 12px;
+    margin-bottom: 35px;
+    line-height: 1.6;
+  }
+
+  /* Layout flow & page-break safeguards */
+  section {
+    page-break-inside: avoid !important;
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+
+  h1, h2, h3, h4 {
+    page-break-after: avoid !important;
+  }
+
+  /* Adjust grid columns for single-column printing flow */
+  .grid {
+    display: block !important;
+  }
+
+  .grid > * {
+    margin-bottom: 1.5rem !important;
+    width: 100% !important;
+  }
+}
+

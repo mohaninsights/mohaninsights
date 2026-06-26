@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Menu, X, ArrowUpRight, MessageSquare } from "lucide-react";
+import { Menu, X, ArrowUpRight, MessageSquare, Printer } from "lucide-react";
 
 interface HeaderProps {
   onNavClick: (sectionId: string) => void;
@@ -14,12 +14,10 @@ export default function Header({ onNavClick }: HeaderProps) {
   const menuItems = [
     { name: "Home", id: "home" },
     { name: "About", id: "about" },
-    { name: "Skills", id: "skills" },
-    { name: "Tools", id: "tools" },
+    { name: "Skills & Tools", id: "skills" },
     { name: "Experience", id: "experience" },
-    { name: "Education", id: "education" },
     { name: "Services", id: "services" },
-    { name: "Free SEO Audit", id: "audit" },
+    { name: "Audit", id: "audit" },
     { name: "Contact", id: "contact" },
   ];
 
@@ -109,6 +107,14 @@ export default function Header({ onNavClick }: HeaderProps) {
           {/* Action Call to Action Button */}
           <div className="hidden lg:flex items-center gap-3">
             <button
+              onClick={() => window.print()}
+              className="px-4 py-2.5 rounded-full font-display text-xs tracking-wider font-semibold text-[var(--text-main)] hover:text-brand-cyan glass-panel hover:scale-105 transition-all duration-300 flex items-center gap-1.5 cursor-pointer"
+              title="Print Portfolio / Save to PDF"
+            >
+              <Printer className="w-3.5 h-3.5 text-brand-cyan" />
+              Export PDF
+            </button>
+            <button
               onClick={() => handleLinkClick("contact")}
               className="relative group px-5 py-2.5 rounded-full font-display text-xs tracking-wider font-semibold text-black bg-white hover:bg-brand-cyan hover:text-black hover:scale-105 transition-all duration-300 shadow-md hover:shadow-[0_0_15px_rgba(0,242,254,0.4)] flex items-center gap-1.5 cursor-pointer border border-transparent hover:border-brand-cyan"
             >
@@ -161,8 +167,19 @@ export default function Header({ onNavClick }: HeaderProps) {
               ))}
 
               <button
+                onClick={() => {
+                  setIsOpen(false);
+                  window.print();
+                }}
+                className="w-full mt-2 py-3 rounded-xl border border-[var(--glass-border)] text-[var(--text-main)] font-display font-semibold text-center text-sm flex items-center justify-center gap-2 hover:bg-white/[0.04]"
+              >
+                <Printer className="w-4 h-4 text-brand-cyan" />
+                Export PDF Resume
+              </button>
+
+              <button
                 onClick={() => handleLinkClick("contact")}
-                className="w-full mt-4 py-3 rounded-xl bg-gradient-to-r from-brand-purple to-brand-cyan text-black font-display font-semibold text-center text-sm shadow-[0_0_15px_rgba(0,242,254,0.3)] hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
+                className="w-full py-3 rounded-xl bg-gradient-to-r from-brand-purple to-brand-cyan text-black font-display font-semibold text-center text-sm shadow-[0_0_15px_rgba(0,242,254,0.3)] hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
               >
                 <MessageSquare className="w-4 h-4" />
                 Hire Me

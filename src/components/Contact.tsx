@@ -85,7 +85,9 @@ const Contact = forwardRef<ContactRef, {}>((props, ref) => {
   };
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden bg-stars">
+    <section id="contact" className="py-24 relative overflow-hidden">
+      {/* Background Star Overlay */}
+      <div className="absolute inset-0 bg-stars pointer-events-none" />
       {/* Background glowing gradients */}
       <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-brand-cyan/5 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-brand-purple/5 rounded-full blur-[140px] pointer-events-none" />
@@ -111,7 +113,7 @@ const Contact = forwardRef<ContactRef, {}>((props, ref) => {
           <div className="lg:col-span-5 flex flex-col gap-6">
             
             {/* Contact detail block */}
-            <div className="glass-panel border border-[var(--glass-border)] rounded-2xl p-6 relative overflow-hidden bg-[var(--bg-card)]/60">
+            <div className="glass-panel border border-[var(--glass-border)] rounded-2xl p-6 relative overflow-hidden bg-[var(--bg-card)]">
               <h3 className="font-display font-bold text-base text-[var(--text-main)] tracking-wide mb-6">
                 Contact Information
               </h3>
@@ -165,7 +167,7 @@ const Contact = forwardRef<ContactRef, {}>((props, ref) => {
             </div>
 
             {/* Direct Communication Channels (CTA Hub) */}
-            <div className="glass-panel border border-[var(--glass-border)] rounded-2xl p-6 relative bg-[var(--bg-card)]/60">
+            <div className="glass-panel border border-[var(--glass-border)] rounded-2xl p-6 relative bg-[var(--bg-card)]">
               <h3 className="font-display font-bold text-sm text-[var(--text-main)] tracking-wider uppercase mb-4">
                 Instant Chat &amp; Booking
               </h3>
@@ -196,7 +198,7 @@ const Contact = forwardRef<ContactRef, {}>((props, ref) => {
             </div>
 
             {/* Premium Google Maps Style Custom Graphic (Spider crawl network representation) */}
-            <div className="glass-panel border border-[var(--glass-border)] rounded-2xl p-5 relative overflow-hidden bg-[var(--bg-card)]/80 h-[220px]">
+            <div className="glass-panel border border-[var(--glass-border)] rounded-2xl p-5 relative overflow-hidden bg-[var(--bg-card)] h-[220px]">
               
               {/* Outer map style frame overlay */}
               <div className="absolute inset-0 opacity-20 pointer-events-none" style={{ backgroundImage: "radial-gradient(var(--text-muted) 1px, transparent 1px)", backgroundSize: "18px 18px" }} />
@@ -231,7 +233,7 @@ const Contact = forwardRef<ContactRef, {}>((props, ref) => {
 
           {/* Column 2: Interactive Intake Form */}
           <div className="lg:col-span-7">
-            <div className="glass-panel-heavy border border-[var(--glass-border)] rounded-2xl p-6 sm:p-8 relative bg-[var(--bg-card)]/80 shadow-xl">
+            <div className="glass-panel-heavy border border-[var(--glass-border)] rounded-2xl p-6 sm:p-8 relative bg-[var(--bg-card)] shadow-xl">
               
               <h3 className="font-display font-bold text-base text-[var(--text-main)] tracking-wide mb-6">
                 SEO Intake Form

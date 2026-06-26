@@ -37,7 +37,9 @@ export default function Tools() {
   const dblRow2 = [...row2Tools, ...row2Tools, ...row2Tools];
 
   return (
-    <section id="tools" className="py-24 relative overflow-hidden bg-stars">
+    <section id="tools" className="py-24 relative overflow-hidden">
+      {/* Background Star Overlay */}
+      <div className="absolute inset-0 bg-stars pointer-events-none" />
       {/* Light glow effects */}
       <div className="absolute top-1/2 left-0 w-80 h-80 bg-brand-cyan/5 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute top-1/2 right-0 w-80 h-80 bg-brand-purple/5 rounded-full blur-[100px] pointer-events-none" />

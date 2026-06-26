@@ -16,7 +16,9 @@ export default function FreeAudit({ onAuditClick }: FreeAuditProps) {
   ];
 
   return (
-    <section id="audit" className="py-24 relative overflow-hidden bg-stars">
+    <section id="audit" className="py-24 relative overflow-hidden">
+      {/* Background Star Overlay */}
+      <div className="absolute inset-0 bg-stars pointer-events-none" />
       {/* Background large glowing gradients */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-cyan/10 rounded-full blur-[140px] pointer-events-none" />
 
@@ -72,7 +74,7 @@ export default function FreeAudit({ onAuditClick }: FreeAuditProps) {
 
             {/* Right Column: High conversion callout dashboard */}
             <div className="lg:col-span-5 flex flex-col items-center">
-              <div className="glass-panel border border-[var(--glass-border)] rounded-2xl p-6 sm:p-8 w-full relative text-center shadow-lg bg-[var(--bg-card)]/60">
+              <div className="glass-panel border border-[var(--glass-border)] rounded-2xl p-6 sm:p-8 w-full relative text-center shadow-lg bg-[var(--bg-card)]">
                 
                 {/* Simulated Audit Scan Circle */}
                 <div className="relative w-36 h-36 mx-auto mb-6 flex items-center justify-center">

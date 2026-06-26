@@ -35,7 +35,9 @@ export default function Education() {
   ];
 
   return (
-    <section id="education" className="py-24 relative overflow-hidden bg-stars">
+    <section id="education" className="py-24 relative overflow-hidden">
+      {/* Background Star Overlay */}
+      <div className="absolute inset-0 bg-stars pointer-events-none" />
       {/* Background glowing shape */}
       <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-80 h-80 bg-brand-purple/5 rounded-full blur-[100px] pointer-events-none" />
 
