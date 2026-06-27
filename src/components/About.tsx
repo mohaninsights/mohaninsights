@@ -138,10 +138,10 @@ export default function About({ onBtnClick }: AboutProps) {
               </button>
 
               <button
-                onClick={() => onBtnClick("services")}
+                onClick={() => onBtnClick("experience")}
                 className="w-full sm:w-auto px-6 py-3 rounded-full font-display text-xs tracking-wider font-semibold text-[var(--text-main)] glass-panel hover:bg-white/[0.05] hover:scale-105 transition-all duration-300 border border-white/10 cursor-pointer"
               >
-                My Services
+                My Experience
               </button>
             </div>
 

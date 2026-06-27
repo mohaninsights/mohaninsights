@@ -17,10 +17,10 @@ export default function Footer({ onLinkClick }: FooterProps) {
   ];
 
   const servicesLinks = [
-    { name: "Technical SEO Auditing", id: "services" },
-    { name: "On Page Content Plan", id: "services" },
-    { name: "Authority Link Building", id: "services" },
-    { name: "Social Syndication (SMO)", id: "services" },
+    { name: "Technical SEO Auditing", id: "skills" },
+    { name: "On Page Content Plan", id: "skills" },
+    { name: "Authority Link Building", id: "skills" },
+    { name: "Social Syndication (SMO)", id: "skills" },
     { name: "Free Performance Scan", id: "audit" },
   ];
 

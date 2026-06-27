@@ -5,9 +5,8 @@ import Hero from "./components/Hero";
 import About from "./components/About";
 import Skills from "./components/Skills";
 import Tools from "./components/Tools";
-import Experience from "./components/Experience";
 import Education from "./components/Education";
-import Services from "./components/Services";
+import Experience from "./components/Experience";
 import FreeAudit from "./components/FreeAudit";
 import Contact, { ContactRef } from "./components/Contact";
 import Footer from "./components/Footer";
@@ -53,14 +52,11 @@ export default function App() {
         {/* Marketing Tools Slider Section */}
         <Tools />
 
-        {/* Experience Timeline Section */}
-        <Experience />
-
         {/* Education History Section */}
         <Education />
 
-        {/* Premium SEO Services Section */}
-        <Services onBtnClick={scrollToSection} />
+        {/* Professional Experience Section */}
+        <Experience />
 
         {/* Free Audit Conversion Callout Section */}
         <FreeAudit onAuditClick={handleAuditAction} />
