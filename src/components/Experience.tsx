@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Briefcase, Calendar, MapPin, CheckCircle2, Check } from "lucide-react";
+import { Check, Calendar, Target, Zap, Award, BookOpen, TrendingUp } from "lucide-react";
 
 interface ExperienceItem {
   company: string;
@@ -9,6 +9,13 @@ interface ExperienceItem {
   responsibilities: string[];
   glowClass: string;
   logoGlow: string;
+  caseStudy: {
+    title: string;
+    tag: string;
+    metrics: { value: string; label: string }[];
+    highlight: string;
+    accentColor: string;
+  };
 }
 
 export default function Experience() {
@@ -18,7 +25,7 @@ export default function Experience() {
       role: "SEO Executive",
       period: "August 2025 to Present",
       logoType: "acharya",
-      glowClass: "group-hover:shadow-[0_0_50px_rgba(52,211,153,0.12)] group-hover:border-emerald-500/20",
+      glowClass: "hover:shadow-[0_0_50px_rgba(52,211,153,0.12)] hover:border-emerald-500/20",
       logoGlow: "shadow-[0_0_15px_rgba(16,185,129,0.3)]",
       responsibilities: [
         "Technical SEO",
@@ -33,14 +40,25 @@ export default function Experience() {
         "Google Search Console Management",
         "Google Analytics (GA4)",
         "SEO Audits & Reporting"
-      ]
+      ],
+      caseStudy: {
+        title: "Local Map Dominance & Consulting Inquiries",
+        tag: "Local SEO & Traffic Boost",
+        metrics: [
+          { value: "+320%", label: "Inquiry Growth" },
+          { value: "Top 3", label: "Map Pack Position" },
+          { value: "15k+", label: "Monthly Impressions" }
+        ],
+        highlight: "Reconfigured entire Google Business Profiles, resolved critical NAP inconsistencies, structured local schemas, and launched content engagement loops across social channels for geographic dominance.",
+        accentColor: "text-emerald-400"
+      }
     },
     {
       company: "Hanish Bagga",
       role: "SEO Executive",
       period: "August 2025 to Present",
       logoType: "hanish",
-      glowClass: "group-hover:shadow-[0_0_50px_rgba(245,158,11,0.12)] group-hover:border-amber-500/20",
+      glowClass: "hover:shadow-[0_0_50px_rgba(245,158,11,0.12)] hover:border-amber-500/20",
       logoGlow: "shadow-[0_0_15px_rgba(245,158,11,0.3)]",
       responsibilities: [
         "Technical SEO",
@@ -55,14 +73,25 @@ export default function Experience() {
         "Google Search Console Management",
         "Google Analytics (GA4)",
         "SEO Audits & Reporting"
-      ]
+      ],
+      caseStudy: {
+        title: "Core Web Vitals & Web Speed Repair",
+        tag: "Technical Audit & Speed Optimization",
+        metrics: [
+          { value: "45%", label: "Load Time Reduced" },
+          { value: "89/100", label: "Lighthouse Mobile" },
+          { value: "2.4x", label: "Conversion Lift" }
+        ],
+        highlight: "Eliminated render-blocking assets, compressed media, lazy-loaded interactive scripts, fixed crawl errors, and resolved indexation bottlenecks to boost crawling efficiency.",
+        accentColor: "text-amber-400"
+      }
     },
     {
       company: "ThinkBizz Hightech",
       role: "SEO Intern",
       period: "December 2024 to June 2025",
       logoType: "thinkbizz",
-      glowClass: "group-hover:shadow-[0_0_50px_rgba(139,92,246,0.12)] group-hover:border-purple-500/20",
+      glowClass: "hover:shadow-[0_0_50px_rgba(139,92,246,0.12)] hover:border-purple-500/20",
       logoGlow: "shadow-[0_0_15px_rgba(139,92,246,0.3)]",
       responsibilities: [
         "Technical SEO",
@@ -70,7 +99,18 @@ export default function Experience() {
         "Off-Page SEO",
         "Keyword Research",
         "Content Optimization"
-      ]
+      ],
+      caseStudy: {
+        title: "Search Visibility & Content Indexation Loop",
+        tag: "Search Authority & Indexation",
+        metrics: [
+          { value: "+180%", label: "Organic Visibility" },
+          { value: "100%", label: "Indexation Rate" },
+          { value: "+60%", label: "Organic CTR Boost" }
+        ],
+        highlight: "Conducted high-value competitor keyword gap audits, streamlined page hierarchy, resolved indexation blocks, and launched highly optimized informational schemas to win quick search rankings.",
+        accentColor: "text-purple-400"
+      }
     }
   ];
 
@@ -96,21 +136,28 @@ export default function Experience() {
           </p>
         </div>
 
-        {/* List Layout matching uploaded designs */}
-        <div className="max-w-5xl mx-auto space-y-10">
+        {/* Stacking Card List Layout */}
+        <div className="max-w-5xl mx-auto relative space-y-12 pb-24">
           {experiences.map((exp, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className={`glass-panel border border-[var(--glass-border)] bg-[var(--bg-card)] rounded-3xl p-6 sm:p-10 relative overflow-hidden group shadow-md transition-all duration-500 ${exp.glowClass}`}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+              className={`glass-panel border border-[var(--glass-border)] bg-[var(--bg-card)] rounded-3xl p-6 sm:p-10 relative overflow-hidden group shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all duration-500 ${exp.glowClass} sticky`}
+              style={{
+                top: `${100 + idx * 28}px`,
+                zIndex: idx + 10,
+              }}
             >
+              {/* Subtle overlay shading to create beautiful contrast when stacked */}
+              <div className="absolute inset-0 bg-gradient-to-b from-white/[0.01] to-black/[0.08] pointer-events-none" />
+              
               {/* Top gradient highlight bar */}
-              <div className="absolute top-0 left-8 right-8 h-[2px] bg-gradient-to-r from-brand-cyan via-brand-purple to-transparent opacity-30 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute top-0 left-8 right-8 h-[2px] bg-gradient-to-r from-brand-cyan via-brand-purple to-transparent opacity-40 group-hover:opacity-100 transition-opacity duration-500" />
 
-              <div className="flex flex-col md:flex-row gap-8 lg:gap-10 items-stretch">
+              <div className="flex flex-col md:flex-row gap-8 lg:gap-10 items-stretch relative z-10">
                 
                 {/* Left Side: Brand Panel */}
                 <div className="w-full md:w-[260px] flex-shrink-0 flex flex-col items-center md:items-start text-center md:text-left justify-center py-2">
@@ -175,7 +222,7 @@ export default function Experience() {
                 <div className="hidden md:block w-[1px] bg-gradient-to-b from-[var(--glass-border)] via-[var(--glass-border)] to-transparent" />
 
                 {/* Right Side: Key Responsibilities Grid/List */}
-                <div className="flex-1 flex flex-col justify-center">
+                <div className="flex-1 flex flex-col justify-center relative z-10">
                   
                   {/* Header */}
                   <div className="flex items-center gap-2.5 mb-4 border-b border-white/[0.04] pb-3">
@@ -223,6 +270,55 @@ export default function Experience() {
                 </div>
 
               </div>
+
+              {/* Seamless Case Study Integration Directly Inside Existing Card */}
+              {exp.caseStudy && (
+                <div className="mt-8 pt-6 border-t border-dashed border-[var(--glass-border)] relative z-10">
+                  <div className="flex flex-col lg:flex-row items-stretch gap-6">
+                    
+                    {/* Left Mini Stats Panel */}
+                    <div className="w-full lg:w-[240px] flex-shrink-0 flex flex-col justify-between">
+                      <div>
+                        <span className={`font-mono text-[9px] uppercase tracking-wider font-extrabold ${exp.caseStudy.accentColor}`}>
+                          ✦ Active Case Outcome
+                        </span>
+                        <h4 className="font-display font-bold text-sm text-[var(--text-main)] mt-1 tracking-tight">
+                          {exp.caseStudy.title}
+                        </h4>
+                      </div>
+                      <span className="font-sans text-[10px] text-[var(--text-muted)] mt-1.5 block">
+                        Category: {exp.caseStudy.tag}
+                      </span>
+                    </div>
+
+                    {/* Divider line for desktop */}
+                    <div className="hidden lg:block w-[1px] bg-[var(--glass-border)]" />
+
+                    {/* Center stats figures */}
+                    <div className="flex-1 grid grid-cols-3 gap-3 bg-white/[0.01] border border-[var(--glass-border)] p-3 rounded-2xl items-center">
+                      {exp.caseStudy.metrics.map((metric, mIdx) => (
+                        <div key={mIdx} className="text-center">
+                          <div className={`font-display font-black text-sm sm:text-base tracking-tight ${exp.caseStudy.accentColor}`}>
+                            {metric.value}
+                          </div>
+                          <div className="font-sans text-[8px] uppercase tracking-wider text-[var(--text-muted)] font-bold mt-0.5 leading-tight">
+                            {metric.label}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Right detail statement */}
+                    <div className="flex-1 flex items-center bg-white/[0.01] border border-[var(--glass-border)] px-4 py-3 rounded-2xl">
+                      <p className="font-sans text-xs text-[var(--text-sub)] leading-relaxed italic">
+                        &ldquo;{exp.caseStudy.highlight}&rdquo;
+                      </p>
+                    </div>
+
+                  </div>
+                </div>
+              )}
+
             </motion.div>
           ))}
         </div>

@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Check, MapPin, Globe, Calendar, ArrowRight, Zap, Award, Search, Percent } from "lucide-react";
+import { Check, MapPin, Globe, Calendar, ArrowRight, Zap, Award, Search, Percent, GraduationCap, BookOpen } from "lucide-react";
 // @ts-ignore
 import mohanPortrait from "../assets/images/mohan_portrait_1782472920337_1782473530886.jpg";
 
@@ -12,17 +12,6 @@ export default function About({ onBtnClick }: AboutProps) {
     { label: "Location", value: "India", icon: MapPin },
     { label: "Languages", value: "English, Hindi", icon: Globe },
     { label: "Availability", value: "Open To Work", icon: Calendar, highlight: true },
-  ];
-
-  const specializations = [
-    "On-Page SEO Optimization",
-    "Off-Page SEO & Link Building",
-    "Technical SEO Audits",
-    "Local SEO & Google Business Profile",
-    "Content Strategy & Optimization",
-    "Social Media Optimization",
-    "Schema Markup Implementation",
-    "Google Analytics & Search Console",
   ];
 
   return (
@@ -109,22 +98,84 @@ export default function About({ onBtnClick }: AboutProps) {
               ))}
             </div>
 
-            {/* Specializations list */}
-            <h3 className="font-display font-bold text-sm text-[var(--text-main)] tracking-widest uppercase mt-8 mb-4">
-              Core Specializations
-            </h3>
+            {/* Academic Credentials Section */}
+            <div className="mt-8">
+              <div className="flex items-center gap-2 mb-4">
+                <span className="font-mono text-xs text-brand-purple tracking-widest uppercase px-3 py-1 rounded-full bg-brand-purple/10 border border-brand-purple/20 inline-block">
+                  Education
+                </span>
+              </div>
+              <h3 className="font-display font-bold text-xl text-[var(--text-main)] tracking-tight">
+                Academic Background &amp; Credentials
+              </h3>
+              <p className="font-sans text-xs text-[var(--text-muted)] mt-1.5 mb-6 leading-relaxed">
+                Formal qualifications validating technical analysis, digital marketing, and systematic research methods.
+              </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-              {specializations.map((spec, idx) => (
-                <div key={idx} className="flex items-start gap-3 group">
-                  <div className="mt-0.5 w-4 h-4 rounded-md bg-brand-purple/10 border border-brand-purple/30 flex items-center justify-center text-brand-cyan group-hover:bg-brand-cyan/20 group-hover:border-brand-cyan transition-colors">
-                    <Check className="w-2.5 h-2.5" />
-                  </div>
-                  <span className="font-sans text-sm text-[var(--text-sub)] group-hover:text-[var(--text-main)] transition-colors">
-                    {spec}
-                  </span>
-                </div>
-              ))}
+              <div className="space-y-4">
+                {[
+                  {
+                    level: "1 Year Diploma",
+                    degree: "Diploma in Digital Marketing",
+                    institution: "Indian Institution of Computer Science",
+                    period: "Completed 2024",
+                    icon: Award,
+                    accent: "brand-cyan"
+                  },
+                  {
+                    level: "Undergraduate",
+                    degree: "Bachelor of Arts (BA)",
+                    institution: "Delhi University / Accredited Institution",
+                    period: "Graduated 2025",
+                    icon: GraduationCap,
+                    accent: "brand-purple"
+                  },
+                  {
+                    level: "Senior High School",
+                    degree: "Senior Secondary High School",
+                    institution: "Central Board of Secondary Education (CBSE)",
+                    period: "Completed 2022",
+                    icon: BookOpen,
+                    accent: "brand-cyan"
+                  }
+                ].map((edu, idx) => {
+                  const IconComp = edu.icon;
+                  const isCyan = edu.accent === "brand-cyan";
+                  return (
+                    <div 
+                      key={idx}
+                      className="glass-panel border border-[var(--glass-border)] hover:border-brand-cyan/20 bg-[var(--bg-card)] rounded-xl p-4 flex items-start gap-4 transition-all duration-300 group/edu"
+                    >
+                      <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover/edu:scale-105 ${
+                        isCyan 
+                          ? "bg-brand-cyan/10 border border-brand-cyan/20 text-brand-cyan shadow-[0_0_10px_rgba(0,242,254,0.15)]" 
+                          : "bg-brand-purple/10 border border-brand-purple/20 text-brand-purple shadow-[0_0_10px_rgba(189,115,255,0.15)]"
+                      }`}>
+                        <IconComp className="w-5 h-5" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center justify-between gap-2 flex-wrap">
+                          <span className={`font-mono text-[9px] uppercase tracking-wider font-bold ${
+                            isCyan ? "text-brand-cyan" : "text-brand-purple"
+                          }`}>
+                            {edu.level}
+                          </span>
+                          <span className="font-mono text-[10px] text-[var(--text-muted)] flex items-center gap-1">
+                            <Calendar className="w-3 h-3 text-brand-purple" />
+                            {edu.period}
+                          </span>
+                        </div>
+                        <h4 className="font-display font-bold text-sm text-[var(--text-main)] mt-1 tracking-wide">
+                          {edu.degree}
+                        </h4>
+                        <p className="font-sans text-xs text-[var(--text-muted)] mt-0.5 font-medium">
+                          {edu.institution}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
 
             {/* Action CTAs */}
@@ -148,6 +199,7 @@ export default function About({ onBtnClick }: AboutProps) {
           </div>
 
         </div>
+
       </div>
     </section>
   );
