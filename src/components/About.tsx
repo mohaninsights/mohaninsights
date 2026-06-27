@@ -1,5 +1,6 @@
-import { motion } from "motion/react";
-import { Check, MapPin, Globe, Calendar, ArrowRight, Zap, Award, Search, Percent, GraduationCap, BookOpen } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { Check, MapPin, Globe, Calendar, ArrowRight, Zap, Award, Search, Percent, GraduationCap, BookOpen, User } from "lucide-react";
 // @ts-ignore
 import mohanPortrait from "../assets/images/mohan_portrait_1782472920337_1782473530886.jpg";
 
@@ -8,6 +9,8 @@ interface AboutProps {
 }
 
 export default function About({ onBtnClick }: AboutProps) {
+  const [activeTab, setActiveTab] = useState<"bio" | "education">("bio");
+
   const details = [
     { label: "Location", value: "India", icon: MapPin },
     { label: "Languages", value: "English, Hindi", icon: Globe },
@@ -15,7 +18,7 @@ export default function About({ onBtnClick }: AboutProps) {
   ];
 
   return (
-    <section id="about" className="py-24 relative overflow-hidden">
+    <section id="about" className="py-16 sm:py-20 relative overflow-hidden">
       {/* Background glowing shapes */}
       <div className="absolute top-1/2 right-0 -translate-y-1/2 w-80 h-80 bg-brand-cyan/5 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-0 left-10 w-96 h-96 bg-brand-purple/5 rounded-full blur-[120px] pointer-events-none" />
@@ -23,7 +26,7 @@ export default function About({ onBtnClick }: AboutProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Heading */}
-        <div className="text-center lg:text-left mb-16">
+        <div className="text-center lg:text-left mb-12">
           <span className="font-mono text-xs text-brand-cyan tracking-widest uppercase px-3 py-1 rounded-full bg-brand-cyan/10 border border-brand-cyan/20 inline-block mb-3">
             About MohanInsights
           </span>
@@ -32,10 +35,10 @@ export default function About({ onBtnClick }: AboutProps) {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           
           {/* Column 1: Portrait Image Frame */}
-          <div className="lg:col-span-5 order-2 lg:order-1 flex justify-center">
+          <div className="lg:col-span-5 order-2 lg:order-1 flex justify-center sticky lg:top-28">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -73,113 +76,155 @@ export default function About({ onBtnClick }: AboutProps) {
           {/* Column 2: Bio Description & Details */}
           <div className="lg:col-span-7 order-1 lg:order-2 flex flex-col justify-center">
             
-            <p className="font-sans text-base sm:text-lg text-[var(--text-sub)] leading-relaxed">
-              I'm a dedicated SEO &amp; SMO Expert helping businesses improve search rankings, organic traffic, and online visibility through proven optimization strategies.
-            </p>
-            
-            <p className="font-sans text-base text-[var(--text-muted)] mt-4 leading-relaxed">
-              My approach combines in-depth technical audits, robust content strategies, rigorous competitor research, and data-driven decision making to deliver high-converting organic results.
-            </p>
-
-            {/* Profile Info Row */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8 py-6 border-y border-[var(--glass-border)]">
-              {details.map((det, idx) => (
-                <div key={idx} className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-[var(--glass-bg)] border border-[var(--glass-border)] flex items-center justify-center text-brand-cyan">
-                    <det.icon className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="block font-mono text-[10px] text-gray-500 uppercase tracking-wider">{det.label}</span>
-                    <span className={`font-display text-xs font-semibold ${det.highlight ? "text-brand-cyan" : "text-[var(--text-main)]"}`}>
-                      {det.value}
-                    </span>
-                  </div>
-                </div>
-              ))}
+            {/* Interactive Section Tabs */}
+            <div className="flex items-center gap-2 mb-8 p-1 bg-white/[0.02] border border-[var(--glass-border)] rounded-full w-full max-w-md self-center lg:self-start">
+              <button
+                onClick={() => setActiveTab("bio")}
+                className={`flex-1 py-2.5 px-5 rounded-full font-display text-xs font-semibold tracking-wider transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer ${
+                  activeTab === "bio"
+                    ? "bg-brand-cyan text-black shadow-[0_0_20px_rgba(0,242,254,0.3)] font-bold"
+                    : "text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-white/[0.02]"
+                }`}
+              >
+                <User className="w-3.5 h-3.5" />
+                Profile Biography
+              </button>
+              <button
+                onClick={() => setActiveTab("education")}
+                className={`flex-1 py-2.5 px-5 rounded-full font-display text-xs font-semibold tracking-wider transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer ${
+                  activeTab === "education"
+                    ? "bg-brand-purple text-white shadow-[0_0_20px_rgba(189,115,255,0.3)] font-bold"
+                    : "text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-white/[0.02]"
+                }`}
+              >
+                <GraduationCap className="w-4 h-4" />
+                Education &amp; Academic
+              </button>
             </div>
 
-            {/* Academic Credentials Section */}
-            <div className="mt-8">
-              <div className="flex items-center gap-2 mb-4">
-                <span className="font-mono text-xs text-brand-purple tracking-widest uppercase px-3 py-1 rounded-full bg-brand-purple/10 border border-brand-purple/20 inline-block">
-                  Education
-                </span>
-              </div>
-              <h3 className="font-display font-bold text-xl text-[var(--text-main)] tracking-tight">
-                Academic Background &amp; Credentials
-              </h3>
-              <p className="font-sans text-xs text-[var(--text-muted)] mt-1.5 mb-6 leading-relaxed">
-                Formal qualifications validating technical analysis, digital marketing, and systematic research methods.
-              </p>
+            <AnimatePresence mode="wait">
+              {activeTab === "bio" ? (
+                <motion.div
+                  key="bio-tab"
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -15 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <p className="font-sans text-base sm:text-lg text-[var(--text-sub)] leading-relaxed">
+                    I'm a dedicated SEO &amp; SMO Expert helping businesses improve search rankings, organic traffic, and online visibility through proven optimization strategies.
+                  </p>
+                  
+                  <p className="font-sans text-base text-[var(--text-muted)] mt-4 leading-relaxed">
+                    My approach combines in-depth technical audits, robust content strategies, rigorous competitor research, and data-driven decision making to deliver high-converting organic results.
+                  </p>
 
-              <div className="space-y-4">
-                {[
-                  {
-                    level: "1 Year Diploma",
-                    degree: "Diploma in Digital Marketing",
-                    institution: "Indian Institution of Computer Science",
-                    period: "Completed 2024",
-                    icon: Award,
-                    accent: "brand-cyan"
-                  },
-                  {
-                    level: "Undergraduate",
-                    degree: "Bachelor of Arts (BA)",
-                    institution: "Delhi University / Accredited Institution",
-                    period: "Graduated 2025",
-                    icon: GraduationCap,
-                    accent: "brand-purple"
-                  },
-                  {
-                    level: "Senior High School",
-                    degree: "Senior Secondary High School",
-                    institution: "Central Board of Secondary Education (CBSE)",
-                    period: "Completed 2022",
-                    icon: BookOpen,
-                    accent: "brand-cyan"
-                  }
-                ].map((edu, idx) => {
-                  const IconComp = edu.icon;
-                  const isCyan = edu.accent === "brand-cyan";
-                  return (
-                    <div 
-                      key={idx}
-                      className="glass-panel border border-[var(--glass-border)] hover:border-brand-cyan/20 bg-[var(--bg-card)] rounded-xl p-4 flex items-start gap-4 transition-all duration-300 group/edu"
-                    >
-                      <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover/edu:scale-105 ${
-                        isCyan 
-                          ? "bg-brand-cyan/10 border border-brand-cyan/20 text-brand-cyan shadow-[0_0_10px_rgba(0,242,254,0.15)]" 
-                          : "bg-brand-purple/10 border border-brand-purple/20 text-brand-purple shadow-[0_0_10px_rgba(189,115,255,0.15)]"
-                      }`}>
-                        <IconComp className="w-5 h-5" />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center justify-between gap-2 flex-wrap">
-                          <span className={`font-mono text-[9px] uppercase tracking-wider font-bold ${
-                            isCyan ? "text-brand-cyan" : "text-brand-purple"
-                          }`}>
-                            {edu.level}
-                          </span>
-                          <span className="font-mono text-[10px] text-[var(--text-muted)] flex items-center gap-1">
-                            <Calendar className="w-3 h-3 text-brand-purple" />
-                            {edu.period}
+                  <p className="font-sans text-sm text-[var(--text-muted)] mt-4 leading-relaxed">
+                    By tailoring specific digital approaches for varied clients, I ensure search visibility adapts to shifting algorithmic paradigms and captures the maximum quality search intent possible.
+                  </p>
+
+                  {/* Profile Info Row */}
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8 py-6 border-y border-[var(--glass-border)]">
+                    {details.map((det, idx) => (
+                      <div key={idx} className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-xl bg-[var(--glass-bg)] border border-[var(--glass-border)] flex items-center justify-center text-brand-cyan">
+                          <det.icon className="w-4 h-4" />
+                        </div>
+                        <div>
+                          <span className="block font-mono text-[10px] text-gray-500 uppercase tracking-wider">{det.label}</span>
+                          <span className={`font-display text-xs font-semibold ${det.highlight ? "text-brand-cyan" : "text-[var(--text-main)]"}`}>
+                            {det.value}
                           </span>
                         </div>
-                        <h4 className="font-display font-bold text-sm text-[var(--text-main)] mt-1 tracking-wide">
-                          {edu.degree}
-                        </h4>
-                        <p className="font-sans text-xs text-[var(--text-muted)] mt-0.5 font-medium">
-                          {edu.institution}
-                        </p>
                       </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
+                    ))}
+                  </div>
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="edu-tab"
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -15 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <h3 className="font-display font-bold text-xl text-[var(--text-main)] tracking-tight">
+                    Academic Background &amp; Credentials
+                  </h3>
+                  <p className="font-sans text-xs text-[var(--text-muted)] mt-1.5 mb-6 leading-relaxed">
+                    Formal qualifications validating technical analysis, digital marketing, and systematic research methods.
+                  </p>
+
+                  <div className="space-y-4">
+                    {[
+                      {
+                        level: "1 Year Diploma",
+                        degree: "Diploma in Digital Marketing",
+                        institution: "Indian Institution of Computer Science",
+                        period: "Completed 2024",
+                        icon: Award,
+                        accent: "brand-cyan"
+                      },
+                      {
+                        level: "Undergraduate",
+                        degree: "Bachelor of Arts (BA)",
+                        institution: "Delhi University / Accredited Institution",
+                        period: "Graduated 2025",
+                        icon: GraduationCap,
+                        accent: "brand-purple"
+                      },
+                      {
+                        level: "Senior High School",
+                        degree: "Senior Secondary High School",
+                        institution: "Central Board of Secondary Education (CBSE)",
+                        period: "Completed 2022",
+                        icon: BookOpen,
+                        accent: "brand-cyan"
+                      }
+                    ].map((edu, idx) => {
+                      const IconComp = edu.icon;
+                      const isCyan = edu.accent === "brand-cyan";
+                      return (
+                        <div 
+                          key={idx}
+                          className="glass-panel border border-[var(--glass-border)] hover:border-brand-cyan/20 bg-[var(--bg-card)] rounded-xl p-4 flex items-start gap-4 transition-all duration-300 group/edu"
+                        >
+                          <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover/edu:scale-105 ${
+                            isCyan 
+                              ? "bg-brand-cyan/10 border border-brand-cyan/20 text-brand-cyan shadow-[0_0_10px_rgba(0,242,254,0.15)]" 
+                              : "bg-brand-purple/10 border border-brand-purple/20 text-brand-purple shadow-[0_0_10px_rgba(189,115,255,0.15)]"
+                          }`}>
+                            <IconComp className="w-5 h-5" />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center justify-between gap-2 flex-wrap">
+                              <span className={`font-mono text-[9px] uppercase tracking-wider font-bold ${
+                                isCyan ? "text-brand-cyan" : "text-brand-purple"
+                              }`}>
+                                {edu.level}
+                              </span>
+                              <span className="font-mono text-[10px] text-[var(--text-muted)] flex items-center gap-1">
+                                <Calendar className="w-3 h-3 text-brand-purple" />
+                                {edu.period}
+                              </span>
+                            </div>
+                            <h4 className="font-display font-bold text-sm text-[var(--text-main)] mt-1 tracking-wide">
+                              {edu.degree}
+                            </h4>
+                            <p className="font-sans text-xs text-[var(--text-muted)] mt-0.5 font-medium">
+                              {edu.institution}
+                            </p>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
 
             {/* Action CTAs */}
-            <div className="flex flex-col sm:flex-row items-center gap-4 mt-10">
+            <div className="flex flex-col sm:flex-row items-center gap-4 mt-8">
               <button
                 onClick={() => onBtnClick("contact")}
                 className="w-full sm:w-auto px-6 py-3 rounded-full font-display text-xs tracking-wider font-semibold text-[var(--bg-main)] bg-[var(--text-main)] hover:bg-brand-cyan hover:text-black hover:scale-105 transition-all duration-300 cursor-pointer flex items-center justify-center gap-2"

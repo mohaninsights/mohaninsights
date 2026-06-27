@@ -37,7 +37,7 @@ export default function Tools() {
   const dblRow2 = [...row2Tools, ...row2Tools, ...row2Tools];
 
   return (
-    <section id="tools" className="py-24 relative overflow-hidden">
+    <section id="tools" className="py-14 sm:py-16 relative overflow-hidden">
       {/* Background Star Overlay */}
       <div className="absolute inset-0 bg-stars pointer-events-none" />
       {/* Light glow effects */}
@@ -47,14 +47,14 @@ export default function Tools() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Heading */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <span className="font-mono text-xs text-brand-cyan tracking-widest uppercase px-3 py-1 rounded-full bg-brand-cyan/10 border border-brand-cyan/20 inline-block mb-3">
             Digital Stack
           </span>
           <h2 className="font-display font-bold text-3xl sm:text-4xl text-[var(--text-main)] tracking-tight">
             My Digital Marketing Stack
           </h2>
-          <p className="font-sans text-sm text-[var(--text-muted)] max-w-2xl mx-auto mt-4 leading-relaxed">
+          <p className="font-sans text-sm text-[var(--text-muted)] max-w-2xl mx-auto mt-3 leading-relaxed">
             Professional tools I use daily to research keywords, analyze competition, optimize page markup, monitor rankings, and scale organic acquisition channels.
           </p>
         </div>

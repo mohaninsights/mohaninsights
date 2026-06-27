@@ -115,7 +115,7 @@ export default function Experience() {
   ];
 
   return (
-    <section id="experience" className="py-24 relative overflow-hidden">
+    <section id="experience" className="py-16 sm:py-20 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 bg-stars pointer-events-none" />
       <div className="absolute top-1/4 left-1/4 -translate-y-1/2 w-96 h-96 bg-brand-cyan/5 rounded-full blur-[120px] pointer-events-none" />
@@ -124,20 +124,20 @@ export default function Experience() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Heading */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <span className="font-mono text-xs text-brand-cyan tracking-widest uppercase px-3 py-1 rounded-full bg-brand-cyan/10 border border-brand-cyan/20 inline-block mb-3">
             Career Timeline
           </span>
           <h2 className="font-display font-bold text-3xl sm:text-4xl text-[var(--text-main)] tracking-tight">
             Professional Experience
           </h2>
-          <p className="font-sans text-sm text-[var(--text-muted)] max-w-xl mx-auto mt-4 leading-relaxed">
+          <p className="font-sans text-sm text-[var(--text-muted)] max-w-xl mx-auto mt-3 leading-relaxed">
             Proven tracking of planning organic search visibility, tuning webpage structures, and managing corporate search engine profiles.
           </p>
         </div>
 
         {/* Stacking Card List Layout */}
-        <div className="max-w-5xl mx-auto relative space-y-12 pb-24">
+        <div className="max-w-5xl mx-auto relative space-y-8 pb-16">
           {experiences.map((exp, idx) => (
             <motion.div
               key={idx}
@@ -147,7 +147,7 @@ export default function Experience() {
               transition={{ duration: 0.7, ease: "easeOut" }}
               className={`glass-panel border border-[var(--glass-border)] bg-[var(--bg-card)] rounded-3xl p-6 sm:p-10 relative overflow-hidden group shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all duration-500 ${exp.glowClass} sticky`}
               style={{
-                top: `${100 + idx * 28}px`,
+                top: `${80 + idx * 24}px`,
                 zIndex: idx + 10,
               }}
             >

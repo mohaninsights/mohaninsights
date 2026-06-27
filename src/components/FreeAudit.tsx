@@ -16,7 +16,7 @@ export default function FreeAudit({ onAuditClick }: FreeAuditProps) {
   ];
 
   return (
-    <section id="audit" className="py-24 relative overflow-hidden">
+    <section id="audit" className="py-14 sm:py-16 relative overflow-hidden">
       {/* Background Star Overlay */}
       <div className="absolute inset-0 bg-stars pointer-events-none" />
       {/* Background large glowing gradients */}

@@ -1,8 +1,9 @@
 import { useState, useRef, MouseEvent } from "react";
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import { 
   FileText, Network, Settings, MapPin, ClipboardList, Key, 
-  TrendingUp, Globe, Code, LineChart, Cpu, Share2, Edit3, Link2 
+  TrendingUp, Globe, Code, LineChart, Cpu, Share2, Edit3, Link2,
+  Grid, Compass, Cpu as PlatformsIcon
 } from "lucide-react";
 
 interface Skill {
@@ -14,6 +15,8 @@ interface Skill {
 }
 
 export default function Skills() {
+  const [selectedCategory, setSelectedCategory] = useState<"All" | "Technical" | "Strategy" | "Platforms">("All");
+
   const skillsData: Skill[] = [
     { name: "On Page SEO", category: "Technical", level: 98, icon: FileText, color: "from-blue-500 to-brand-cyan" },
     { name: "Off Page SEO", category: "Strategy", level: 92, icon: Network, color: "from-brand-purple to-brand-cyan" },
@@ -31,15 +34,26 @@ export default function Skills() {
     { name: "Link Building", category: "Strategy", level: 91, icon: Link2, color: "from-brand-purple to-brand-cyan" },
   ];
 
+  const categories: { id: "All" | "Technical" | "Strategy" | "Platforms"; label: string; icon: any }[] = [
+    { id: "All", label: "All Skills", icon: Grid },
+    { id: "Technical", label: "Technical", icon: Settings },
+    { id: "Strategy", label: "Strategy", icon: Compass },
+    { id: "Platforms", label: "Platforms & Tools", icon: PlatformsIcon },
+  ];
+
+  const filteredSkills = selectedCategory === "All" 
+    ? skillsData 
+    : skillsData.filter(s => s.category === selectedCategory);
+
   return (
-    <section id="skills" className="py-24 relative overflow-hidden grid-mesh">
+    <section id="skills" className="py-16 sm:py-20 relative overflow-hidden grid-mesh">
       {/* Background radial highlight */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-brand-purple/5 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Heading */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <span className="font-mono text-xs text-brand-purple tracking-widest uppercase px-3 py-1 rounded-full bg-brand-purple/10 border border-brand-purple/20 inline-block mb-3">
             Core Expertise
           </span>
@@ -51,12 +65,45 @@ export default function Skills() {
           </p>
         </div>
 
-        {/* Skills Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {skillsData.map((skill, index) => (
-            <SkillCard key={index} skill={skill} index={index} />
-          ))}
+        {/* Categories Tab Selector */}
+        <div className="flex flex-wrap items-center justify-center gap-2 mb-10 max-w-2xl mx-auto p-1.5 bg-white/[0.01] border border-[var(--glass-border)] rounded-2xl sm:rounded-full">
+          {categories.map((cat) => {
+            const CatIcon = cat.icon;
+            const isSelected = selectedCategory === cat.id;
+            return (
+              <button
+                key={cat.id}
+                onClick={() => setSelectedCategory(cat.id)}
+                className={`flex items-center gap-2 px-4 py-2 rounded-xl sm:rounded-full font-display text-xs font-semibold tracking-wider transition-all duration-300 cursor-pointer ${
+                  isSelected
+                    ? cat.id === "Technical"
+                      ? "bg-brand-cyan text-black shadow-[0_0_15px_rgba(0,242,254,0.3)] font-bold"
+                      : cat.id === "Strategy"
+                      ? "bg-brand-purple text-white shadow-[0_0_15px_rgba(189,115,255,0.3)] font-bold"
+                      : cat.id === "Platforms"
+                      ? "bg-emerald-500 text-black shadow-[0_0_15px_rgba(16,185,129,0.3)] font-bold"
+                      : "bg-white text-black font-bold"
+                    : "text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-white/[0.02]"
+                }`}
+              >
+                <CatIcon className="w-3.5 h-3.5" />
+                {cat.label}
+              </button>
+            );
+          })}
         </div>
+
+        {/* Skills Grid */}
+        <motion.div 
+          layout
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+        >
+          <AnimatePresence mode="popLayout">
+            {filteredSkills.map((skill, index) => (
+              <SkillCard key={skill.name} skill={skill} index={index} />
+            ))}
+          </AnimatePresence>
+        </motion.div>
 
       </div>
     </section>
@@ -64,7 +111,7 @@ export default function Skills() {
 }
 
 // 3D Tilt Card Component
-function SkillCard({ skill, index }: { skill: Skill; index: number; key?: any }) {
+function SkillCard({ skill, index }: { skill: Skill; index: number; key?: string }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [coords, setCoords] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
@@ -99,10 +146,12 @@ function SkillCard({ skill, index }: { skill: Skill; index: number; key?: any })
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.5, delay: index * 0.04 }}
+      layout
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.2 } }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4, delay: index * 0.02 }}
       style={{ perspective: 1000 }}
     >
       <div
@@ -146,7 +195,7 @@ function SkillCard({ skill, index }: { skill: Skill; index: number; key?: any })
               initial={{ width: 0 }}
               whileInView={{ width: `${skill.level}%` }}
               viewport={{ once: true }}
-              transition={{ duration: 1.2, delay: 0.2 }}
+              transition={{ duration: 1.2, delay: 0.1 }}
               className={`h-full rounded-full bg-gradient-to-r ${skill.color}`}
             />
           </div>

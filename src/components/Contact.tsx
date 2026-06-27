@@ -85,7 +85,7 @@ const Contact = forwardRef<ContactRef, {}>((props, ref) => {
   };
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden">
+    <section id="contact" className="py-16 sm:py-20 relative overflow-hidden">
       {/* Background Star Overlay */}
       <div className="absolute inset-0 bg-stars pointer-events-none" />
       {/* Background glowing gradients */}
@@ -95,7 +95,7 @@ const Contact = forwardRef<ContactRef, {}>((props, ref) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Heading */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <span className="font-mono text-xs text-brand-cyan tracking-widest uppercase px-3 py-1 rounded-full bg-brand-cyan/10 border border-brand-cyan/20 inline-block mb-3">
             Inquire Now
           </span>
