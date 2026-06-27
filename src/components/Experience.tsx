@@ -236,14 +236,14 @@ export default function Experience() {
 
                   {/* Render 2-column bullet layout for Acharya / Hanish, or full-width outline row layout for ThinkBizz */}
                   {exp.logoType === "thinkbizz" ? (
-                    <div className="flex flex-col gap-2.5">
+                    <div className="grid grid-cols-2 gap-2.5">
                       {exp.responsibilities.map((resp, rIdx) => (
                         <div
                           key={rIdx}
-                          className="flex items-center gap-3 bg-white/[0.01] border border-[var(--glass-border)] hover:border-purple-500/20 px-4 py-3.5 rounded-xl transition-all duration-300 group/item w-full"
+                          className="flex items-center gap-3 bg-white/[0.01] border border-[var(--glass-border)] hover:border-purple-500/20 px-4 py-3 rounded-xl transition-all duration-300 group/item"
                         >
-                          <div className="w-4.5 h-4.5 rounded-full border border-emerald-400/60 flex items-center justify-center flex-shrink-0 bg-emerald-500/5 group-hover/item:border-emerald-400 transition-colors">
-                            <Check className="w-3 h-3 text-emerald-400" />
+                          <div className="w-4 h-4 rounded-full border border-emerald-400/60 flex items-center justify-center flex-shrink-0 bg-emerald-500/5 group-hover/item:border-emerald-400 transition-colors">
+                            <Check className="w-2.5 h-2.5 text-emerald-400" />
                           </div>
                           <span className="font-sans text-xs text-[var(--text-sub)] font-semibold tracking-wide">
                             {resp}
@@ -252,7 +252,7 @@ export default function Experience() {
                       ))}
                     </div>
                   ) : (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    <div className="grid grid-cols-2 gap-2.5">
                       {exp.responsibilities.map((resp, rIdx) => (
                         <div
                           key={rIdx}
