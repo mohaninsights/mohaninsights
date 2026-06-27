@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import ThreeBackground from "./components/ThreeBackground";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
@@ -9,9 +9,12 @@ import Experience from "./components/Experience";
 import FreeAudit from "./components/FreeAudit";
 import Contact, { ContactRef } from "./components/Contact";
 import Footer from "./components/Footer";
+import Preloader from "./components/Preloader";
+import { AnimatePresence, motion } from "motion/react";
 
 export default function App() {
   const contactRef = useRef<ContactRef>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   // Smooth scroll helper
   const scrollToSection = (id: string) => {
@@ -31,38 +34,51 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen text-[var(--text-main)] bg-[var(--bg-main)] overflow-x-hidden">
-      {/* 3D Cosmic Particle Background */}
-      <ThreeBackground />
+      <AnimatePresence mode="wait">
+        {isLoading ? (
+          <Preloader key="preloader" onComplete={() => setIsLoading(false)} />
+        ) : (
+          <motion.div
+            key="content"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            {/* 3D Cosmic Particle Background */}
+            <ThreeBackground />
 
-      {/* Sticky Glassmorphic Header */}
-      <Header onNavClick={scrollToSection} />
+            {/* Sticky Glassmorphic Header */}
+            <Header onNavClick={scrollToSection} />
 
-      {/* Structured Sections */}
-      <main>
-        {/* Home Section */}
-        <Hero onBtnClick={scrollToSection} />
+            {/* Structured Sections */}
+            <main>
+              {/* Home Section */}
+              <Hero onBtnClick={scrollToSection} />
 
-        {/* About Section */}
-        <About onBtnClick={scrollToSection} />
+              {/* About Section */}
+              <About onBtnClick={scrollToSection} />
 
-        {/* Skills Section */}
-        <Skills />
+              {/* Skills Section */}
+              <Skills />
 
-        {/* Marketing Tools Slider Section */}
-        <Tools />
+              {/* Marketing Tools Slider Section */}
+              <Tools />
 
-        {/* Professional Experience Section */}
-        <Experience />
+              {/* Professional Experience Section */}
+              <Experience />
 
-        {/* Free Audit Conversion Callout Section */}
-        <FreeAudit onAuditClick={handleAuditAction} />
+              {/* Free Audit Conversion Callout Section */}
+              <FreeAudit onAuditClick={handleAuditAction} />
 
-        {/* Contact form & direct lines with spider grid */}
-        <Contact ref={contactRef} />
-      </main>
+              {/* Contact form & direct lines with spider grid */}
+              <Contact ref={contactRef} />
+            </main>
 
-      {/* Footer Section */}
-      <Footer onLinkClick={scrollToSection} />
+            {/* Footer Section */}
+            <Footer onLinkClick={scrollToSection} />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
