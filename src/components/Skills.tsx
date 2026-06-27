@@ -15,7 +15,7 @@ interface Skill {
 }
 
 export default function Skills() {
-  const [selectedCategory, setSelectedCategory] = useState<"All" | "Technical" | "Strategy" | "Platforms">("All");
+  const [selectedCategory, setSelectedCategory] = useState<"All" | "Technical" | "Strategy" | "Platforms">("Technical");
 
   const skillsData: Skill[] = [
     { name: "On Page SEO", category: "Technical", level: 98, icon: FileText, color: "from-blue-500 to-brand-cyan" },
@@ -35,10 +35,10 @@ export default function Skills() {
   ];
 
   const categories: { id: "All" | "Technical" | "Strategy" | "Platforms"; label: string; icon: any }[] = [
-    { id: "All", label: "All Skills", icon: Grid },
     { id: "Technical", label: "Technical", icon: Settings },
     { id: "Strategy", label: "Strategy", icon: Compass },
     { id: "Platforms", label: "Platforms & Tools", icon: PlatformsIcon },
+    { id: "All", label: "All Skills", icon: Grid },
   ];
 
   const filteredSkills = selectedCategory === "All" 
@@ -96,7 +96,7 @@ export default function Skills() {
         {/* Skills Grid */}
         <motion.div 
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+          className="grid grid-cols-2 gap-4 sm:gap-6"
         >
           <AnimatePresence mode="popLayout">
             {filteredSkills.map((skill, index) => (
