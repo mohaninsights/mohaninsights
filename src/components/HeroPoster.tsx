@@ -79,9 +79,9 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="absolute inset-x-0 bottom-2 sm:bottom-4 md:bottom-6 flex items-end justify-center select-none z-20 pointer-events-none px-2"
+          className="absolute -inset-x-4 sm:-inset-x-6 lg:-inset-x-8 bottom-2 sm:bottom-4 md:bottom-6 flex items-end justify-center select-none z-20 pointer-events-none"
         >
-          <h1 className="font-druk font-black text-[16vw] sm:text-[12.5vw] md:text-[14vw] lg:text-[15vw] xl:text-[16vw] tracking-[-0.04em] sm:tracking-[-0.06em] leading-[0.75] text-white uppercase text-center select-none whitespace-nowrap drop-shadow-[0_20px_50px_rgba(0,0,0,0.95)] scale-y-[1.4] origin-bottom flex items-center justify-center overflow-hidden py-4 gap-[0.01em]">
+          <h1 className="font-druk font-black text-[24vw] sm:text-[22vw] md:text-[22vw] lg:text-[22vw] xl:text-[22vw] tracking-normal leading-[0.7] text-white uppercase select-none whitespace-nowrap drop-shadow-[0_25px_60px_rgba(0,0,0,0.95)] scale-y-[1.5] origin-bottom flex items-center justify-between w-full overflow-visible py-2 px-4 sm:px-6 md:px-8">
             {"PORTFOLIO".split("").map((char, idx) => (
               <motion.span
                 key={idx}
