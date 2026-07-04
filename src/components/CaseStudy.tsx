@@ -7,7 +7,7 @@ import {
 // @ts-ignore
 import websitePreviewImg from "../assets/images/seo_case_study_website_preview_1783138866610.jpg";
 // @ts-ignore
-import gscImg from "../assets/images/seo_case_study_gsc_1783138881738.jpg";
+import gscImg from "../assets/images/regenerated_image_1783164641025.png";
 // @ts-ignore
 import rankingsImg from "../assets/images/seo_case_study_rankings_1783138894670.jpg";
 
@@ -90,11 +90,11 @@ export default function CaseStudy() {
               </div>
 
               {/* Inner preview frame */}
-              <div className="relative rounded-2xl overflow-hidden border border-white/5 aspect-[16/9] bg-[#030712]">
+              <div className="relative rounded-xl overflow-hidden border border-white/5 bg-[var(--bg-card-heavy)]">
                 <img
                   src={websitePreviewImg}
                   alt="Client Web App Mockup"
-                  className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+                  className="w-full h-auto block transition-transform duration-500 group-hover:scale-[1.02]"
                   referrerPolicy="no-referrer"
                 />
               </div>
@@ -118,11 +118,11 @@ export default function CaseStudy() {
               </div>
 
               {/* Inner screenshot frame */}
-              <div className="relative rounded-xl overflow-hidden border border-white/5 aspect-[16/9] bg-[var(--bg-card-heavy)]">
+              <div className="relative rounded-xl overflow-hidden border border-white/5 bg-[var(--bg-card-heavy)]">
                 <img
                   src={gscImg}
                   alt="GSC Performance Chart"
-                  className="w-full h-full object-cover"
+                  className="w-full h-auto block"
                   referrerPolicy="no-referrer"
                 />
                 {/* Premium hover scanner line */}
@@ -214,11 +214,11 @@ export default function CaseStudy() {
               </div>
 
               {/* Inner Sheet rankings screenshot frame */}
-              <div className="relative rounded-xl overflow-hidden border border-white/5 aspect-[16/9] bg-[var(--bg-card-heavy)]">
+              <div className="relative rounded-xl overflow-hidden border border-white/5 bg-[var(--bg-card-heavy)]">
                 <img
                   src={rankingsImg}
                   alt="Keyword Rankings Tracking Spreadsheet"
-                  className="w-full h-full object-cover"
+                  className="w-full h-auto block"
                   referrerPolicy="no-referrer"
                 />
                 {/* Horizontal high-contrast glowing divider */}

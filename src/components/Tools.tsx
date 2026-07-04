@@ -49,7 +49,7 @@ export default function Tools() {
         {/* Section Heading */}
         <div className="text-left mb-16 overflow-visible py-4 border-b border-white/[0.04] pb-6">
           <h2 className="font-druk font-black text-[15vw] sm:text-[13vw] md:text-[12vw] lg:text-[10vw] xl:text-[9.5vw] tracking-normal leading-[0.7] text-white uppercase select-none whitespace-nowrap drop-shadow-[0_15px_35px_rgba(0,0,0,0.6)] scale-y-[1.5] origin-left inline-block">
-            TOOLS THAT POWER MY WORK
+            MY SEO TOOLKIT
           </h2>
         </div>
       </div>
