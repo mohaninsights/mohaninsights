@@ -12,14 +12,11 @@ export default function Contact() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Heading */}
-        <div className="text-center mb-12">
-          <span className="font-mono text-xs text-brand-cyan tracking-widest uppercase px-3 py-1 rounded-full bg-brand-cyan/10 border border-brand-cyan/20 inline-block mb-3">
-            Inquire Now
-          </span>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl text-[var(--text-main)] tracking-tight">
-            Let's Grow Your Business
+        <div className="text-center mb-14 overflow-hidden py-4">
+          <h2 className="font-druk font-black text-[9.5vw] sm:text-[11vw] md:text-[10vw] lg:text-[8.5vw] xl:text-[8vw] tracking-[-0.04em] leading-[0.8] text-white uppercase select-none whitespace-nowrap drop-shadow-[0_15px_35px_rgba(0,0,0,0.6)] scale-y-[1.4] origin-center inline-block">
+            GET IN TOUCH
           </h2>
-          <p className="font-sans text-sm text-[var(--text-muted)] max-w-xl mx-auto mt-4 leading-relaxed">
+          <p className="font-sans text-sm text-[var(--text-muted)] max-w-xl mx-auto mt-6 leading-relaxed">
             Ready to resolve crawling errors, boost organic Google traffic, and capture rankings? Let's connect directly.
           </p>
         </div>

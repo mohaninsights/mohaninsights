@@ -47,8 +47,8 @@ export default function About({ onBtnClick }: AboutProps) {
         
         {/* Section Heading */}
         <div className="text-center mb-14 overflow-hidden py-4">
-          <h2 className="font-sans font-black text-[12vw] sm:text-[10vw] md:text-[9vw] lg:text-[7.5vw] xl:text-[7vw] tracking-[-0.05em] leading-[0.8] text-[#ebebeb] uppercase select-none whitespace-nowrap drop-shadow-[0_15px_35px_rgba(0,0,0,0.6)] scale-y-[1.35] origin-center inline-block">
-            ABOUT US
+          <h2 className="font-druk font-black text-[13vw] sm:text-[11vw] md:text-[10vw] lg:text-[8.5vw] xl:text-[8vw] tracking-[-0.04em] leading-[0.8] text-white uppercase select-none whitespace-nowrap drop-shadow-[0_15px_35px_rgba(0,0,0,0.6)] scale-y-[1.4] origin-center inline-block">
+            ABOUT ME
           </h2>
         </div>
 
