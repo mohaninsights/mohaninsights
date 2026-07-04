@@ -64,7 +64,7 @@ export default function CaseStudy() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           
           {/* ==================== LEFT SIDE ==================== */}
-          <div className="lg:col-span-5 space-y-8 lg:sticky lg:top-24">
+          <div className="lg:col-span-6 space-y-8 lg:sticky lg:top-24">
             
             {/* 1) Website Preview */}
             <motion.div
@@ -72,17 +72,21 @@ export default function CaseStudy() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="relative group rounded-3xl overflow-hidden glass-panel border border-[var(--glass-border)] bg-[var(--bg-card)] p-4 shadow-[0_20px_50px_rgba(0,0,0,0.4)] transition-all duration-500 hover:shadow-[0_0_40px_rgba(0,242,254,0.15)] hover:border-brand-cyan/30"
+              className="relative group rounded-3xl overflow-hidden glass-panel border border-[var(--glass-border)] bg-[var(--bg-card)] p-5 sm:p-6 shadow-[0_20px_50px_rgba(0,0,0,0.4)] transition-all duration-500 hover:shadow-[0_0_40px_rgba(0,242,254,0.15)] hover:border-brand-cyan/30"
             >
               {/* Card top gradient header */}
-              <div className="flex items-center justify-between mb-3 px-1">
-                <div className="flex items-center gap-1.5">
-                  <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
-                  <span className="font-mono text-[10px] text-[var(--text-muted)] ml-1.5 uppercase tracking-wider">Live Website Preview</span>
+              <div className="flex items-center justify-between mb-4 px-1 pb-2 border-b border-white/[0.04]">
+                <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-3 h-3 rounded-full bg-red-500/80" />
+                    <span className="w-3 h-3 rounded-full bg-yellow-500/80" />
+                    <span className="w-3 h-3 rounded-full bg-green-500/80" />
+                  </div>
+                  <h3 className="font-display font-bold text-base sm:text-lg text-[var(--text-main)] ml-1.5 tracking-wide">
+                    Live Website Preview
+                  </h3>
                 </div>
-                <ArrowUpRight className="w-3.5 h-3.5 text-brand-cyan opacity-50 group-hover:opacity-100 transition-opacity" />
+                <ArrowUpRight className="w-4 h-4 text-brand-cyan opacity-50 group-hover:opacity-100 transition-opacity" />
               </div>
 
               {/* Inner preview frame */}
@@ -90,7 +94,7 @@ export default function CaseStudy() {
                 <img
                   src={websitePreviewImg}
                   alt="Client Web App Mockup"
-                  className="w-full h-full object-contain transition-transform duration-700"
+                  className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-[1.02]"
                   referrerPolicy="no-referrer"
                 />
               </div>
@@ -102,13 +106,13 @@ export default function CaseStudy() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.15 }}
-              className="rounded-3xl overflow-hidden glass-panel border border-[var(--glass-border)] bg-[var(--bg-card)] p-4 sm:p-5 shadow-[0_20px_50px_rgba(0,0,0,0.4)] transition-all duration-500 hover:shadow-[0_0_40px_rgba(189,115,255,0.1)] hover:border-brand-purple/30"
+              className="rounded-3xl overflow-hidden glass-panel border border-[var(--glass-border)] bg-[var(--bg-card)] p-5 sm:p-6 shadow-[0_20px_50px_rgba(0,0,0,0.4)] transition-all duration-500 hover:shadow-[0_0_40px_rgba(189,115,255,0.1)] hover:border-brand-purple/30"
             >
-              <div className="flex items-center gap-2 mb-3.5 px-1">
-                <div className="w-5 h-5 rounded-lg bg-brand-purple/10 border border-brand-purple/20 flex items-center justify-center text-brand-purple">
-                  <LineChart className="w-3.5 h-3.5" />
+              <div className="flex items-center gap-2.5 mb-4 px-1 pb-2 border-b border-white/[0.04]">
+                <div className="w-6 h-6 rounded-lg bg-brand-purple/10 border border-brand-purple/20 flex items-center justify-center text-brand-purple">
+                  <LineChart className="w-4 h-4" />
                 </div>
-                <h3 className="font-display font-bold text-sm text-[var(--text-main)] tracking-wide">
+                <h3 className="font-display font-bold text-base sm:text-lg text-[var(--text-main)] tracking-wide">
                   Google Search Console
                 </h3>
               </div>
@@ -129,7 +133,7 @@ export default function CaseStudy() {
           </div>
 
           {/* ==================== RIGHT SIDE ==================== */}
-          <div className="lg:col-span-7 space-y-8">
+          <div className="lg:col-span-6 space-y-8">
             
             {/* 1) Key Challenge Card */}
             <motion.div
@@ -198,13 +202,13 @@ export default function CaseStudy() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.15 }}
-              className="rounded-3xl overflow-hidden glass-panel border border-[var(--glass-border)] bg-[var(--bg-card)] p-4 sm:p-5 shadow-lg transition-all duration-500 hover:shadow-[0_0_40px_rgba(0,242,254,0.1)] hover:border-brand-cyan/30"
+              className="rounded-3xl overflow-hidden glass-panel border border-[var(--glass-border)] bg-[var(--bg-card)] p-5 sm:p-6 shadow-lg transition-all duration-500 hover:shadow-[0_0_40px_rgba(0,242,254,0.1)] hover:border-brand-cyan/30"
             >
-              <div className="flex items-center gap-2 mb-3.5 px-1">
-                <div className="w-5 h-5 rounded-lg bg-brand-cyan/10 border border-brand-cyan/20 flex items-center justify-center text-brand-cyan">
-                  <TrendingUp className="w-3.5 h-3.5" />
+              <div className="flex items-center gap-2.5 mb-4 px-1 pb-2 border-b border-white/[0.04]">
+                <div className="w-6 h-6 rounded-lg bg-brand-cyan/10 border border-brand-cyan/20 flex items-center justify-center text-brand-cyan">
+                  <TrendingUp className="w-4 h-4" />
                 </div>
-                <h3 className="font-display font-bold text-sm text-[var(--text-main)] tracking-wide">
+                <h3 className="font-display font-bold text-base sm:text-lg text-[var(--text-main)] tracking-wide">
                   Keyword Ranking Growth
                 </h3>
               </div>
