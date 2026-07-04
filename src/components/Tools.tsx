@@ -47,8 +47,8 @@ export default function Tools() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Heading */}
-        <div className="text-center mb-14 overflow-hidden py-4">
-          <h2 className="font-druk font-black text-[7.5vw] sm:text-[9vw] md:text-[8vw] lg:text-[7vw] xl:text-[6.5vw] tracking-[-0.04em] leading-[0.8] text-white uppercase select-none whitespace-nowrap drop-shadow-[0_15px_35px_rgba(0,0,0,0.6)] scale-y-[1.4] origin-center inline-block">
+        <div className="text-left mb-16 overflow-visible py-4 border-b border-white/[0.04] pb-6">
+          <h2 className="font-druk font-black text-[15vw] sm:text-[13vw] md:text-[12vw] lg:text-[10vw] xl:text-[9.5vw] tracking-normal leading-[0.7] text-white uppercase select-none whitespace-nowrap drop-shadow-[0_15px_35px_rgba(0,0,0,0.6)] scale-y-[1.5] origin-left inline-block">
             TOOLS THAT POWER MY WORK
           </h2>
         </div>
