@@ -11,9 +11,8 @@ export default function Footer({ onLinkClick }: FooterProps) {
     { name: "Home Base", id: "home" },
     { name: "About Mohan", id: "about" },
     { name: "Expertise Skills", id: "skills" },
-    { name: "Digital Tools", id: "tools" },
+    { name: "SEO Case Study", id: "case-study" },
     { name: "Career Experience", id: "experience" },
-    { name: "Academic History", id: "education" },
   ];
 
   const servicesLinks = [

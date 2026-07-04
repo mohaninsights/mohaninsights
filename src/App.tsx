@@ -2,9 +2,11 @@ import { useRef, useState, useEffect } from "react";
 import ThreeBackground from "./components/ThreeBackground";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
+import HeroPoster from "./components/HeroPoster";
 import About from "./components/About";
 import Skills from "./components/Skills";
 import Tools from "./components/Tools";
+import CaseStudy from "./components/CaseStudy";
 import Experience from "./components/Experience";
 import FreeAudit from "./components/FreeAudit";
 import Contact, { ContactRef } from "./components/Contact";
@@ -55,6 +57,9 @@ export default function App() {
               {/* Home Section */}
               <Hero onBtnClick={scrollToSection} />
 
+              {/* Poster Section */}
+              <HeroPoster onBtnClick={scrollToSection} />
+
               {/* About Section */}
               <About onBtnClick={scrollToSection} />
 
@@ -63,6 +68,9 @@ export default function App() {
 
               {/* Marketing Tools Slider Section */}
               <Tools />
+
+              {/* SEO Case Study Section */}
+              <CaseStudy />
 
               {/* Professional Experience Section */}
               <Experience />
