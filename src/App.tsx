@@ -8,7 +8,7 @@ import Tools from "./components/Tools";
 import CaseStudy from "./components/CaseStudy";
 import Experience from "./components/Experience";
 import Contact from "./components/Contact";
-import Footer from "./components/Footer";
+import ThankYou from "./components/ThankYou";
 import Preloader from "./components/Preloader";
 import { AnimatePresence, motion } from "motion/react";
 
@@ -65,8 +65,8 @@ export default function App() {
               <Contact />
             </main>
 
-            {/* Footer Section */}
-            <Footer onLinkClick={scrollToSection} />
+            {/* Thank You Section */}
+            <ThankYou onLinkClick={scrollToSection} />
           </motion.div>
         )}
       </AnimatePresence>
