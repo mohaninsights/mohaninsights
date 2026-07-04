@@ -47,16 +47,10 @@ export default function Tools() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Heading */}
-        <div className="text-center mb-10">
-          <span className="font-mono text-xs text-brand-cyan tracking-widest uppercase px-3 py-1 rounded-full bg-brand-cyan/10 border border-brand-cyan/20 inline-block mb-3">
-            Digital Stack
-          </span>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl text-[var(--text-main)] tracking-tight">
-            My Digital Marketing Stack
+        <div className="text-center mb-14 overflow-hidden py-4">
+          <h2 className="font-sans font-black text-[6vw] sm:text-[8vw] md:text-[7vw] lg:text-[6vw] xl:text-[5.5vw] tracking-[-0.05em] leading-[0.8] text-[#ebebeb] uppercase select-none whitespace-nowrap drop-shadow-[0_15px_35px_rgba(0,0,0,0.6)] scale-y-[1.35] origin-center inline-block">
+            TOOLS THAT POWER MY WORK
           </h2>
-          <p className="font-sans text-sm text-[var(--text-muted)] max-w-2xl mx-auto mt-3 leading-relaxed">
-            Professional tools I use daily to research keywords, analyze competition, optimize page markup, monitor rankings, and scale organic acquisition channels.
-          </p>
         </div>
       </div>
 

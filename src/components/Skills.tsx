@@ -53,16 +53,10 @@ export default function Skills() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Heading */}
-        <div className="text-center mb-12">
-          <span className="font-mono text-xs text-brand-purple tracking-widest uppercase px-3 py-1 rounded-full bg-brand-purple/10 border border-brand-purple/20 inline-block mb-3">
-            Core Expertise
-          </span>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl text-[var(--text-main)] tracking-tight">
-            Advanced SEO &amp; SMO Capabilities
+        <div className="text-center mb-14 overflow-hidden py-4">
+          <h2 className="font-sans font-black text-[8.5vw] sm:text-[10vw] md:text-[9vw] lg:text-[7.5vw] xl:text-[7vw] tracking-[-0.05em] leading-[0.8] text-[#ebebeb] uppercase select-none whitespace-nowrap drop-shadow-[0_15px_35px_rgba(0,0,0,0.6)] scale-y-[1.35] origin-center inline-block">
+            CORE EXPERTISE
           </h2>
-          <p className="font-sans text-sm text-[var(--text-muted)] max-w-xl mx-auto mt-4 leading-relaxed">
-            Data-backed search optimization, semantic structure audits, social engine syndication, and deep traffic diagnostics to establish high search authority.
-          </p>
         </div>
 
         {/* Categories Tab Selector */}
