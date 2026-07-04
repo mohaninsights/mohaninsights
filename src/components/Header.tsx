@@ -17,7 +17,6 @@ export default function Header({ onNavClick }: HeaderProps) {
     { name: "Skills & Tools", id: "skills" },
     { name: "Case Study", id: "case-study" },
     { name: "Experience", id: "experience" },
-    { name: "Audit", id: "audit" },
     { name: "Contact", id: "contact" },
   ];
 

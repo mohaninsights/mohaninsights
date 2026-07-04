@@ -47,7 +47,6 @@ const Contact = forwardRef<ContactRef, {}>((props, ref) => {
     "On-Page SEO",
     "Off-Page SEO & Link Building",
     "Local SEO",
-    "Free SEO Audit",
     "E-Commerce SEO",
     "SMO Services",
     "Analytics & Reporting"

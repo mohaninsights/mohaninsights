@@ -20,7 +20,7 @@ export default function Footer({ onLinkClick }: FooterProps) {
     { name: "On Page Content Plan", id: "skills" },
     { name: "Authority Link Building", id: "skills" },
     { name: "Social Syndication (SMO)", id: "skills" },
-    { name: "Free Performance Scan", id: "audit" },
+    { name: "Get SEO Consultation", id: "contact" },
   ];
 
   const scrollToTop = () => {

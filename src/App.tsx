@@ -1,21 +1,18 @@
 import { useRef, useState, useEffect } from "react";
 import ThreeBackground from "./components/ThreeBackground";
 import Header from "./components/Header";
-import Hero from "./components/Hero";
 import HeroPoster from "./components/HeroPoster";
 import About from "./components/About";
 import Skills from "./components/Skills";
 import Tools from "./components/Tools";
 import CaseStudy from "./components/CaseStudy";
 import Experience from "./components/Experience";
-import FreeAudit from "./components/FreeAudit";
-import Contact, { ContactRef } from "./components/Contact";
+import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Preloader from "./components/Preloader";
 import { AnimatePresence, motion } from "motion/react";
 
 export default function App() {
-  const contactRef = useRef<ContactRef>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   // Smooth scroll helper
@@ -23,14 +20,6 @@ export default function App() {
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
-
-  // Dedicated audit scroll event which also pre-selects the service in the contact form
-  const handleAuditAction = () => {
-    scrollToSection("contact");
-    if (contactRef.current) {
-      contactRef.current.preselectService("Free SEO Audit");
     }
   };
 
@@ -54,10 +43,7 @@ export default function App() {
 
             {/* Structured Sections */}
             <main>
-              {/* Home Section */}
-              <Hero onBtnClick={scrollToSection} />
-
-              {/* Poster Section */}
+              {/* Poster Section as Home */}
               <HeroPoster onBtnClick={scrollToSection} />
 
               {/* About Section */}
@@ -75,11 +61,8 @@ export default function App() {
               {/* Professional Experience Section */}
               <Experience />
 
-              {/* Free Audit Conversion Callout Section */}
-              <FreeAudit onAuditClick={handleAuditAction} />
-
               {/* Contact form & direct lines with spider grid */}
-              <Contact ref={contactRef} />
+              <Contact />
             </main>
 
             {/* Footer Section */}

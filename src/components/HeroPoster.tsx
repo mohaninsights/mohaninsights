@@ -39,8 +39,8 @@ const letterVariants = {
 export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
   return (
     <section
-      id="poster"
-      className="relative min-h-screen w-full bg-[#030712] flex flex-col justify-between items-center pt-20 pb-10 px-4 sm:px-6 lg:px-8 overflow-hidden select-none border-t border-white/[0.04]"
+      id="home"
+      className="relative min-h-screen w-full bg-[#030712] flex flex-col justify-between items-center pt-24 pb-10 px-4 sm:px-6 lg:px-8 overflow-hidden select-none"
     >
       {/* Premium subtle background glow matching existing style */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-cyan/5 rounded-full blur-[140px] pointer-events-none" />
