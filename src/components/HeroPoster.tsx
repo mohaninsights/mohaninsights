@@ -37,7 +37,7 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
         </div>
         
         <h2 className="font-sans font-black tracking-[0.12em] sm:tracking-[0.22em] text-white text-lg sm:text-2xl md:text-3xl lg:text-4.5xl uppercase leading-tight select-none">
-          SEO &amp; SMO SPECIALIST (FRESHER)
+          SEO &amp; SMO EXECUTIVE
         </h2>
       </motion.div>
 
@@ -50,9 +50,9 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1.0, ease: "easeOut" }}
-          className="absolute inset-x-0 bottom-2 sm:bottom-4 md:bottom-6 flex items-end justify-center select-none z-20 pointer-events-none"
+          className="absolute inset-x-0 bottom-2 sm:bottom-4 md:bottom-6 flex items-end justify-center select-none z-20 pointer-events-none px-2"
         >
-          <h1 className="font-sans font-black text-[22vw] sm:text-[20vw] md:text-[18vw] lg:text-[16vw] tracking-[-0.06em] leading-[0.75] text-[#ebebeb] uppercase text-center select-none whitespace-nowrap drop-shadow-[0_20px_50px_rgba(0,0,0,0.95)] scale-y-[1.45] origin-bottom">
+          <h1 className="font-sans font-black text-[10vw] sm:text-[11.5vw] md:text-[13vw] lg:text-[14vw] xl:text-[15vw] tracking-[-0.05em] sm:tracking-[-0.06em] leading-[0.75] text-[#ebebeb] uppercase text-center select-none whitespace-nowrap drop-shadow-[0_20px_50px_rgba(0,0,0,0.95)] scale-y-[1.35] origin-bottom">
             PORTFOLIO
           </h1>
         </motion.div>
