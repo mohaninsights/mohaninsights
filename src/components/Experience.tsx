@@ -1,11 +1,14 @@
 import { motion } from "motion/react";
 import { Calendar } from "lucide-react";
 
+// @ts-ignore
+import acharyaGaneshLogo from "../assets/images/acharya_ganesh_logo_1783166489996.jpg";
+
 interface ExperienceItem {
   company: string;
   role: string;
   period: string;
-  logoType: "acharya" | "hanish" | "thinkbizz";
+  logoType: "divine" | "thinkbizz";
   glowClass: string;
   logoGlow: string;
 }
@@ -13,18 +16,10 @@ interface ExperienceItem {
 export default function Experience() {
   const experiences: ExperienceItem[] = [
     {
-      company: "Acharya Ganesh",
+      company: "Divine Astro Vastu Science LLP",
       role: "SEO Executive",
-      period: "August 2025 to Present",
-      logoType: "acharya",
-      glowClass: "hover:shadow-[0_0_50px_rgba(52,211,153,0.12)] hover:border-emerald-500/20",
-      logoGlow: "shadow-[0_0_15px_rgba(16,185,129,0.3)]"
-    },
-    {
-      company: "Hanish Bagga",
-      role: "SEO Executive",
-      period: "August 2025 to Present",
-      logoType: "hanish",
+      period: "August 2025 to August 2026",
+      logoType: "divine",
       glowClass: "hover:shadow-[0_0_50px_rgba(245,158,11,0.12)] hover:border-amber-500/20",
       logoGlow: "shadow-[0_0_15px_rgba(245,158,11,0.3)]"
     },
@@ -75,26 +70,13 @@ export default function Experience() {
                 
                 {/* Styled Logo Box */}
                 <div className={`w-20 h-20 rounded-2xl bg-white p-1 flex items-center justify-center transition-transform duration-500 group-hover:scale-105 ${exp.logoGlow} flex-shrink-0`}>
-                  {exp.logoType === "acharya" && (
-                    <svg className="w-full h-full" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="50" cy="50" r="46" stroke="#78350F" strokeWidth="1.2" strokeDasharray="3 2"/>
-                      <circle cx="50" cy="50" r="41" fill="#FFFBEB" stroke="#D97706" strokeWidth="1.5"/>
-                      <circle cx="50" cy="50" r="32" stroke="#F59E0B" strokeWidth="0.8" strokeDasharray="2 1"/>
-                      <path d="M50 30C52.2 30 53.5 31.8 53.5 34C53.5 36.2 51.8 38 50 38C48.2 38 46.5 36.2 46.5 34C46.5 31.8 47.8 30 50 30Z" fill="#B45309"/>
-                      <path d="M39 64C39 56.5 43.5 51 50 51C56.5 51 61 56.5 61 64H39Z" fill="#D97706"/>
-                      <path d="M43 54.5C45 51.5 47.5 49 50 49C52.5 49 55 51.5 57 54.5" stroke="#B45309" strokeWidth="1.2" strokeLinecap="round"/>
-                      <path d="M25 68C35 71 65 71 75 68" stroke="#78350F" strokeWidth="1.8" strokeLinecap="round"/>
-                      <text x="50" y="78" textAnchor="middle" fill="#78350F" fontSize="6.5" fontWeight="900" fontFamily="sans-serif">Acharya Ganesh</text>
-                      <text x="50" y="85" textAnchor="middle" fill="#B45309" fontSize="4.5" fontWeight="700" fontFamily="sans-serif">जो सही राह दिखाए</text>
-                    </svg>
-                  )}
-
-                  {exp.logoType === "hanish" && (
-                    <div className="flex flex-col items-center justify-center w-full h-full text-center">
-                      <span className="text-2xl font-black tracking-tight bg-gradient-to-r from-amber-500 to-orange-600 bg-clip-text text-transparent leading-none">HB</span>
-                      <span className="text-[7.5px] font-black text-gray-800 tracking-widest uppercase mt-1">Hanish</span>
-                      <span className="text-[7.5px] font-black text-gray-500 tracking-widest uppercase leading-none">Bagga</span>
-                    </div>
+                  {exp.logoType === "divine" && (
+                    <img 
+                      src={acharyaGaneshLogo} 
+                      alt="Acharya Ganesh Logo" 
+                      className="w-full h-full object-cover rounded-xl"
+                      referrerPolicy="no-referrer"
+                    />
                   )}
 
                   {exp.logoType === "thinkbizz" && (

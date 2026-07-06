@@ -92,7 +92,7 @@ export default function About({ onBtnClick }: AboutProps) {
                   exit={{ opacity: 0, y: -15 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <h3 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-center mb-6 bg-gradient-to-r from-white via-white to-brand-cyan bg-clip-text text-transparent">
+                  <h3 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-center mb-4 bg-gradient-to-r from-white via-white to-brand-cyan bg-clip-text text-transparent">
                     Hi, I'm Mohan.
                   </h3>
                   <p className="font-sans text-base sm:text-lg text-[var(--text-sub)] leading-relaxed text-center max-w-xl mx-auto">
@@ -100,8 +100,8 @@ export default function About({ onBtnClick }: AboutProps) {
                   </p>
 
                   {/* Connect With Me Section */}
-                  <div className="mt-12 max-w-2xl mx-auto text-center border-t border-[var(--glass-border)] pt-8">
-                    <h4 className="font-display font-bold text-sm text-[var(--text-muted)] mb-6 uppercase tracking-widest">
+                  <div className="mt-6 max-w-2xl mx-auto text-center border-t border-[var(--glass-border)] pt-5">
+                    <h4 className="font-display font-bold text-sm text-[var(--text-muted)] mb-4 uppercase tracking-widest">
                       Connect With Me
                     </h4>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -115,9 +115,9 @@ export default function About({ onBtnClick }: AboutProps) {
                             rel="noopener noreferrer"
                             whileHover={{ y: -4, scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
-                            className={`group relative flex flex-col items-center justify-center p-5 rounded-2xl bg-white/[0.02] border border-[var(--glass-border)] transition-all duration-300 cursor-pointer ${profile.accentClass}`}
+                            className={`group relative flex flex-col items-center justify-center py-4 px-4 rounded-2xl bg-white/[0.02] border border-[var(--glass-border)] transition-all duration-300 cursor-pointer ${profile.accentClass}`}
                           >
-                            <div className={`w-11 h-11 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110 mb-3 ${profile.iconContainerClass}`}>
+                            <div className={`w-11 h-11 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110 mb-2 ${profile.iconContainerClass}`}>
                               <IconComponent className="w-5 h-5" />
                             </div>
                             <span className="font-display text-xs sm:text-sm font-bold text-white tracking-wide">
