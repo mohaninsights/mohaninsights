@@ -9,13 +9,15 @@ import {
 // @ts-ignore
 import websitePreviewImg from "../assets/images/seo_case_study_website_preview_1783138866610.jpg";
 // @ts-ignore
-import gscImg from "../assets/images/regenerated_image_1783322894982.png";
+import acharyaGscImg from "../assets/images/regenerated_image_1783338179964.png";
+// @ts-ignore
+import hanishGscImg from "../assets/images/regenerated_image_1783322894982.png";
 // @ts-ignore
 import rankingsImg from "../assets/images/seo_case_study_rankings_1783138894670.jpg";
 // @ts-ignore
-import acharyaGaneshLogo from "../assets/images/regenerated_image_1783337155887.jpg";
+import acharyaGaneshLogo from "../assets/images/acharya_ganesh_logo_1783166489996.jpg";
 // @ts-ignore
-import hanishBaggaLogo from "../assets/images/hanish_bagga_logo_1783166911073.jpg";
+import hanishBaggaLogo from "../assets/images/regenerated_image_1783337685641.png";
 // @ts-ignore
 import hanishBaggaWebPreviewImg from "../assets/images/hanish_web_preview_real_1783315371253.jpg";
 
@@ -45,7 +47,7 @@ const PROJECTS: ProjectData[] = [
     logo: acharyaGaneshLogo,
     description: "Custom organic keyword scaling, technical engine restructuring, and precise search engine ranking tracking.",
     websitePreview: websitePreviewImg,
-    gsc: gscImg,
+    gsc: acharyaGscImg,
     rankings: rankingsImg,
     bottleneck: "Low organic visibility and poor keyword rankings were limiting website growth.",
     colorTheme: "cyan",
@@ -81,7 +83,7 @@ const PROJECTS: ProjectData[] = [
     logo: hanishBaggaLogo,
     description: "Organic search visibility enhancement, high-impact content strategy, and authoritative link mapping.",
     websitePreview: hanishBaggaWebPreviewImg,
-    gsc: gscImg, // Shared GSC style chart for uniform performance branding
+    gsc: hanishGscImg, // Separate GSC style chart for Hanish Bagga
     rankings: rankingsImg,
     bottleneck: "Stagnant search traffic and high competitive keyword difficulty in the professional niche.",
     colorTheme: "purple",
