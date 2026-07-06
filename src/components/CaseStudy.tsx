@@ -2,21 +2,22 @@ import { useState, ComponentType } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { 
   Check, AlertTriangle, Search, Settings, FileText, Code, Link2, 
-  Sparkles, Gauge, Database, ArrowUpRight, LineChart, TrendingUp
+  Sparkles, Gauge, Database, ArrowUpRight, LineChart, TrendingUp,
+  X, Maximize2
 } from "lucide-react";
 
 // @ts-ignore
 import websitePreviewImg from "../assets/images/seo_case_study_website_preview_1783138866610.jpg";
 // @ts-ignore
-import gscImg from "../assets/images/regenerated_image_1783164641025.png";
+import gscImg from "../assets/images/regenerated_image_1783322894982.png";
 // @ts-ignore
 import rankingsImg from "../assets/images/seo_case_study_rankings_1783138894670.jpg";
 // @ts-ignore
-import acharyaGaneshLogo from "../assets/images/regenerated_image_1783167941305.png";
+import acharyaGaneshLogo from "../assets/images/regenerated_image_1783321561362.png";
 // @ts-ignore
-import hanishBaggaLogo from "../assets/images/regenerated_image_1783168472152.png";
+import hanishBaggaLogo from "../assets/images/hanish_bagga_logo_1783166911073.jpg";
 // @ts-ignore
-import hanishBaggaWebPreviewImg from "../assets/images/hanish_bagga_web_preview_1783166939184.jpg";
+import hanishBaggaWebPreviewImg from "../assets/images/hanish_web_preview_real_1783315371253.jpg";
 
 interface Strategy {
   name: string;
@@ -110,6 +111,7 @@ const PROJECTS: ProjectData[] = [
 
 export default function CaseStudy() {
   const [activeTab, setActiveTab] = useState("acharya");
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const currentProject = PROJECTS.find((p) => p.id === activeTab) || PROJECTS[0];
 
   return (
@@ -226,13 +228,26 @@ export default function CaseStudy() {
                 </div>
 
                 {/* Inner preview frame */}
-                <div className="relative rounded-xl overflow-hidden border border-white/5 bg-[var(--bg-card-heavy)]">
+                <div 
+                  className="relative rounded-xl overflow-hidden border border-white/5 bg-[var(--bg-card-heavy)] cursor-pointer group/preview shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:shadow-[0_15px_40px_rgba(0,242,254,0.15)] transition-all duration-500"
+                  onClick={() => setIsLightboxOpen(true)}
+                  title="Click to view full image"
+                >
                   <img
                     src={currentProject.websitePreview}
                     alt={`${currentProject.title} Preview`}
-                    className="w-full h-auto block transition-transform duration-500 group-hover:scale-[1.02]"
+                    className="w-full h-auto block transition-transform duration-500 group-hover/preview:scale-[1.04]"
                     referrerPolicy="no-referrer"
                   />
+                  {/* Premium overlay on hover */}
+                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover/preview:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-2 pointer-events-none">
+                    <div className="w-10 h-10 rounded-full bg-brand-cyan/20 border border-brand-cyan/40 flex items-center justify-center text-brand-cyan shadow-[0_0_15px_rgba(0,242,254,0.3)] transform scale-90 group-hover/preview:scale-100 transition-all duration-300">
+                      <Maximize2 className="w-4 h-4" />
+                    </div>
+                    <span className="font-display font-bold text-[10px] tracking-wider text-white uppercase bg-black/40 px-2.5 py-1 rounded-md border border-white/5 shadow-md">
+                      Click to expand
+                    </span>
+                  </div>
                 </div>
               </div>
 
@@ -379,6 +394,62 @@ export default function CaseStudy() {
         </AnimatePresence>
 
       </div>
+
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {isLightboxOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-md p-4 sm:p-6 md:p-10 cursor-zoom-out"
+            onClick={() => setIsLightboxOpen(false)}
+          >
+            {/* Close button */}
+            <button
+              onClick={() => setIsLightboxOpen(false)}
+              className="absolute top-6 right-6 z-50 w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-white/10 hover:border-white/20 hover:scale-105 transition-all duration-300 active:scale-95 shadow-[0_4px_20px_rgba(0,0,0,0.5)]"
+              aria-label="Close lightbox"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            {/* Lightbox content */}
+            <motion.div
+              initial={{ scale: 0.95, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.95, y: 20 }}
+              transition={{ type: "spring", damping: 25, stiffness: 350 }}
+              className="relative max-w-5xl max-h-[85vh] overflow-auto rounded-2xl border border-white/10 bg-black/80 shadow-[0_25px_60px_rgba(0,0,0,0.8)] scrollbar-none"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img
+                src={currentProject.websitePreview}
+                alt={`${currentProject.title} Full Preview`}
+                className="w-full h-auto max-h-[80vh] object-contain block mx-auto"
+                referrerPolicy="no-referrer"
+              />
+              {/* Info Banner inside Lightbox */}
+              <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black via-black/80 to-transparent p-4 flex items-center justify-between gap-4 border-t border-white/5">
+                <div>
+                  <h4 className="font-display font-black text-sm text-white tracking-wide uppercase">
+                    {currentProject.title}
+                  </h4>
+                  <p className="font-sans text-[11px] text-[var(--text-muted)] mt-0.5">
+                    {activeTab === "acharya" ? "www.acharyaganesh.com" : "www.hanishbagga.com"}
+                  </p>
+                </div>
+                <button
+                  onClick={() => setIsLightboxOpen(false)}
+                  className="px-4 py-2 bg-brand-cyan/10 hover:bg-brand-cyan/20 border border-brand-cyan/20 rounded-xl font-display font-bold text-[10px] tracking-wider text-brand-cyan uppercase transition-colors"
+                >
+                  Close View
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
