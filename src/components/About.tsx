@@ -55,7 +55,7 @@ export default function About({ onBtnClick }: AboutProps) {
         <div className="max-w-4xl mx-auto">
           
           {/* Bio Description & Details */}
-          <div className="flex flex-col justify-center">
+          <div className="flex flex-col justify-center min-h-[460px] sm:min-h-[420px] md:min-h-[380px] lg:min-h-[340px]">
             
             {/* Interactive Section Tabs */}
             <div className="flex items-center gap-2 mb-8 p-1 bg-white/[0.02] border border-[var(--glass-border)] rounded-full w-full max-w-md self-center">
@@ -96,7 +96,7 @@ export default function About({ onBtnClick }: AboutProps) {
                     Hi, I'm Mohan.
                   </h3>
                   <p className="font-sans text-base sm:text-lg text-[var(--text-sub)] leading-relaxed text-center max-w-xl mx-auto">
-                    I'm an SEO &amp; SMO Executive with a passion for improving website rankings and helping businesses grow through effective SEO and social media strategies.
+                    Known professionally as <strong className="font-semibold text-brand-cyan">Mohan SEO</strong>, I am an SEO &amp; SMO Executive with a passion for improving organic search rankings, boosting Google indexation rates, and scaling social media engagement. I specialize in technical audits, on-page content alignment, and authority building to grow traffic exponentially.
                   </p>
 
                   {/* Connect With Me Section */}

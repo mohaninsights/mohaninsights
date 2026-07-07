@@ -178,8 +178,10 @@ export default function CaseStudy() {
           }`}>
             <img
               src={currentProject.logo}
-              alt={`${currentProject.title} Logo`}
+              alt={`${currentProject.title} Brand Logo - Optimized by Mohan SEO`}
               className="w-full h-full object-contain p-1 transition-transform duration-500 group-hover/logo:scale-105"
+              loading="lazy"
+              decoding="async"
               referrerPolicy="no-referrer"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
@@ -237,8 +239,10 @@ export default function CaseStudy() {
                 >
                   <img
                     src={currentProject.websitePreview}
-                    alt={`${currentProject.title} Preview`}
+                    alt={`${currentProject.title} SEO and Conversion Rate Optimization Live Website Preview by Mohan SEO`}
                     className="w-full h-auto block transition-transform duration-500 group-hover/preview:scale-[1.04]"
+                    loading="lazy"
+                    decoding="async"
                     referrerPolicy="no-referrer"
                   />
                   {/* Premium overlay on hover */}
@@ -270,8 +274,10 @@ export default function CaseStudy() {
                 <div className="relative rounded-xl overflow-hidden border border-white/5 bg-[var(--bg-card-heavy)]">
                   <img
                     src={currentProject.gsc}
-                    alt="GSC Performance Chart"
+                    alt={`Google Search Console (GSC) organic impression and click growth chart for ${currentProject.title} - Case Study by Mohan SEO`}
                     className="w-full h-auto block"
+                    loading="lazy"
+                    decoding="async"
                     referrerPolicy="no-referrer"
                   />
                   {/* Premium hover scanner line */}
@@ -354,8 +360,10 @@ export default function CaseStudy() {
                 <div className="relative rounded-xl overflow-hidden border border-white/5 bg-[var(--bg-card-heavy)]">
                   <img
                     src={currentProject.rankings}
-                    alt="Keyword Rankings Tracking Spreadsheet"
+                    alt={`Google search engine keyword ranking and position improvement dashboard tracking sheet by Mohan SEO`}
                     className="w-full h-auto block"
+                    loading="lazy"
+                    decoding="async"
                     referrerPolicy="no-referrer"
                   />
                   {/* Horizontal high-contrast glowing divider */}
@@ -427,8 +435,10 @@ export default function CaseStudy() {
             >
               <img
                 src={currentProject.websitePreview}
-                alt={`${currentProject.title} Full Preview`}
+                alt={`${currentProject.title} Full Website Optimization Case Study Preview by Mohan SEO`}
                 className="w-full h-auto max-h-[80vh] object-contain block mx-auto"
+                loading="lazy"
+                decoding="async"
                 referrerPolicy="no-referrer"
               />
               {/* Info Banner inside Lightbox */}

@@ -65,6 +65,9 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
           </span>
         </div>
         
+        {/* Visually hidden h1 for search crawler indexing & SXO best practice */}
+        <h1 className="sr-only">Mohan SEO — Leading SEO &amp; SMO Expert Portfolio | Mohan Kumar</h1>
+
         <h2 className="font-druk font-black tracking-[0.06em] sm:tracking-[0.1em] text-white text-xl sm:text-2xl md:text-3xl lg:text-4.5xl uppercase leading-tight select-none">
           SEO &amp; SMO EXECUTIVE
         </h2>
@@ -107,8 +110,11 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
             {/* Opaque high-contrast studio portrait with custom contrast to black out dark background */}
             <img
               src={mohanPortrait}
-              alt="Mohan Kumar Portrait"
+              alt="Mohan SEO — Mohan Kumar, Leading Professional SEO &amp; SMO Expert Portrait"
               className="w-full h-full object-cover object-top grayscale contrast-[1.45] brightness-[1.02] transition-all duration-700 group-hover:scale-[1.02]"
+              loading="eager"
+              // @ts-ignore
+              fetchpriority="high"
               referrerPolicy="no-referrer"
             />
 

@@ -73,8 +73,10 @@ export default function Experience() {
                   {exp.logoType === "divine" && (
                     <img 
                       src={acharyaGaneshLogo} 
-                      alt="Acharya Ganesh Logo" 
+                      alt="Divine Astro Vastu Science LLP - Acharya Ganesh logo optimized by Mohan SEO" 
                       className="w-full h-full object-cover rounded-xl"
+                      loading="lazy"
+                      decoding="async"
                       referrerPolicy="no-referrer"
                     />
                   )}

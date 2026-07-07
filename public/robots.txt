@@ -1,0 +1,12 @@
+# Robots.txt for Mohan SEO Portfolio
+# Designed for maximum crawl efficiency, indexability, and Google Search Console validation.
+
+User-agent: *
+Allow: /
+
+# Prevent crawl-blocking issues on crucial static assets
+Allow: /assets/
+Allow: /src/
+
+# Define XML Sitemap URL
+Sitemap: https://mohan-seo.com/sitemap.xml
