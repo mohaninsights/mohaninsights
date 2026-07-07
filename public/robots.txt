@@ -9,4 +9,4 @@ Allow: /assets/
 Allow: /src/
 
 # Define XML Sitemap URL
-Sitemap: https://mohan-seo.com/sitemap.xml
+Sitemap: https://mohaninsights.vercel.app/sitemap.xml
