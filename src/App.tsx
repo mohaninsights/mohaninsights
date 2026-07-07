@@ -5,6 +5,7 @@ import HeroPoster from "./components/HeroPoster";
 import About from "./components/About";
 import Skills from "./components/Skills";
 import Tools from "./components/Tools";
+import SeoForecaster from "./components/SeoForecaster";
 import CaseStudy from "./components/CaseStudy";
 import Experience from "./components/Experience";
 import Contact from "./components/Contact";
@@ -47,6 +48,9 @@ export default function App() {
 
           {/* Marketing Tools Slider Section */}
           <Tools />
+
+          {/* Interactive SEO Growth Forecaster & Audit Simulator */}
+          <SeoForecaster />
 
           {/* SEO Case Study Section */}
           <CaseStudy />

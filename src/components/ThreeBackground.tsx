@@ -30,7 +30,7 @@ export default function ThreeBackground() {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
     // Particle Stars Configuration
-    const particleCount = 200;
+    const particleCount = 450;
     const geometry = new THREE.BufferGeometry();
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
@@ -41,16 +41,16 @@ export default function ThreeBackground() {
 
     for (let i = 0; i < particleCount; i++) {
       // Position particles randomly in a large volume
-      positions[i * 3] = (Math.random() - 0.5) * 60;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 60;
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 40; // Depth
+      positions[i * 3] = (Math.random() - 0.5) * 75;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 75;
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 50; // Depth
 
       // Stagger colors: some cyan, some purple, some white
       let mixedColor = colorWhite;
       const rand = Math.random();
-      if (rand < 0.4) {
+      if (rand < 0.35) {
         mixedColor = colorCyan;
-      } else if (rand < 0.8) {
+      } else if (rand < 0.7) {
         mixedColor = colorPurple;
       }
 
@@ -62,13 +62,14 @@ export default function ThreeBackground() {
     geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
     geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
 
-    // Simple round dot material
+    // Simple round dot material with depth size attenuation
     const material = new THREE.PointsMaterial({
-      size: 0.12,
+      size: 0.16,
       vertexColors: true,
       transparent: true,
-      opacity: 0.4,
+      opacity: 0.55,
       blending: THREE.AdditiveBlending,
+      sizeAttenuation: true,
     });
 
     const particles = new THREE.Points(geometry, material);
