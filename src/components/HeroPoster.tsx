@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles, FileText, ArrowUpRight } from "lucide-react";
 // @ts-ignore
 import mohanPortrait from "../assets/images/mohan_portrait_1782472920337_1782473530886.jpg";
 
@@ -170,18 +170,35 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
           </div>
         </motion.div>
 
-        {/* Bottom Right: Pill Outline Button (Mohan Kumar) */}
+        {/* Bottom Right: Highlighted Resume & Contact CTAs */}
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4 }}
+          className="flex flex-col sm:flex-row items-center gap-3.5 w-full sm:w-auto"
         >
+          {/* Extremely highlighted, eye-catchy glowing Resume button */}
+          <button
+            onClick={() => window.print()}
+            className="group relative w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-gradient-to-r from-brand-cyan to-brand-purple text-black font-sans font-extrabold uppercase tracking-[0.12em] text-xs sm:text-sm hover:scale-105 transition-all duration-300 shadow-[0_0_25px_rgba(0,242,254,0.45)] hover:shadow-[0_0_35px_rgba(0,242,254,0.75)] cursor-pointer overflow-visible"
+            title="View or Print Resume PDF"
+          >
+            {/* Pulsing focal glow ring */}
+            <span className="absolute -inset-[2.5px] rounded-full bg-gradient-to-r from-brand-cyan to-brand-purple opacity-50 blur-[4px] animate-ping [animation-duration:2.5s] pointer-events-none" />
+            
+            <div className="relative flex items-center gap-2">
+              <FileText className="w-4 h-4 text-black" />
+              <span>Get Resume</span>
+              <ArrowUpRight className="w-4 h-4 text-black group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </div>
+          </button>
+
           <button
             onClick={() => onBtnClick("contact")}
-            className="group relative flex items-center gap-2 px-10 py-4 rounded-full border-2 border-white/80 text-white font-sans font-bold uppercase tracking-[0.12em] text-xs sm:text-sm hover:bg-white hover:text-black hover:scale-105 transition-all duration-300 shadow-[0_0_30px_rgba(255,255,255,0.05)] cursor-pointer"
+            className="group w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-3.5 rounded-full border-2 border-white/40 text-white font-sans font-bold uppercase tracking-[0.12em] text-xs sm:text-sm hover:border-white hover:bg-white hover:text-black hover:scale-105 transition-all duration-300 shadow-[0_0_30px_rgba(255,255,255,0.03)] cursor-pointer"
           >
-            MOHAN KUMAR
+            <span>Contact Me</span>
             <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all duration-300" />
           </button>
         </motion.div>
