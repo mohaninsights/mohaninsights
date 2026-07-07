@@ -68,7 +68,7 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
         {/* Visually hidden h1 for search crawler indexing & SXO best practice */}
         <h1 className="sr-only">Mohan SEO — Leading SEO &amp; SMO Expert Portfolio | Mohan Kumar</h1>
 
-        <h2 className="font-druk font-black tracking-[0.06em] sm:tracking-[0.1em] text-white text-xl sm:text-2xl md:text-3xl lg:text-4.5xl uppercase leading-tight select-none">
+        <h2 className="font-bebas tracking-[0.08em] sm:tracking-[0.12em] text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan via-white to-brand-purple text-4xl sm:text-5xl md:text-6.5xl lg:text-7.5xl uppercase leading-none select-none drop-shadow-[0_4px_20px_rgba(0,242,254,0.15)] font-normal">
           SEO &amp; SMO EXECUTIVE
         </h2>
       </motion.div>
@@ -97,7 +97,7 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
           </h1>
         </motion.div>
 
-        {/* Overlapping Grayscale Portrait Image - Perfectly Styled as PNG Cutout */}
+        {/* Overlapping Grayscale Portrait Image - Perfectly Framed with White Border */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -105,13 +105,13 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
           transition={{ duration: 1.1, ease: "easeOut" }}
           className="relative flex items-end justify-center z-10 pointer-events-none mt-4 w-full h-full"
         >
-          <div className="relative h-[60vh] sm:h-[70vh] md:h-[78vh] max-h-[680px] aspect-[4/5] pointer-events-auto group">
+          <div className="relative h-[60vh] sm:h-[70vh] md:h-[78vh] max-h-[680px] aspect-[4/5] pointer-events-auto group border-[5px] border-white rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(255,255,255,0.12)] bg-black/40">
             
             {/* Opaque high-contrast studio portrait with custom contrast to black out dark background */}
             <img
               src={mohanPortrait}
               alt="Mohan SEO — Mohan Kumar, Leading Professional SEO &amp; SMO Expert Portrait"
-              className="w-full h-full object-cover object-top grayscale contrast-[1.45] brightness-[1.02] transition-all duration-700 group-hover:scale-[1.02]"
+              className="w-full h-full object-cover object-top grayscale contrast-[1.45] brightness-[1.02] transition-all duration-700 group-hover:scale-[1.03]"
               loading="eager"
               // @ts-ignore
               fetchpriority="high"
@@ -119,14 +119,14 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
             />
 
             {/* Seamless linear gradient bottom fade to blend smoothly into background */}
-            <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#030712] via-[#030712]/80 to-transparent pointer-events-none z-20" />
+            <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#030712]/90 via-[#030712]/40 to-transparent pointer-events-none z-20" />
 
             {/* Side-border linear gradients to dissolve raw image box edges completely */}
-            <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-[#030712] via-[#030712]/50 to-transparent pointer-events-none z-20" />
-            <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-[#030712] via-[#030712]/50 to-transparent pointer-events-none z-20" />
+            <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-[#030712]/30 to-transparent pointer-events-none z-20" />
+            <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-[#030712]/30 to-transparent pointer-events-none z-20" />
             
             {/* Top delicate edge feathering */}
-            <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#030712]/30 to-transparent pointer-events-none z-20" />
+            <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-[#030712]/20 to-transparent pointer-events-none z-20" />
 
           </div>
         </motion.div>
