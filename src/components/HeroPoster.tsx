@@ -130,7 +130,8 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
         {/* Left Flank of Text: "PORT" */}
         <motion.div
           animate={{
-            x: phase === "shatter" ? "-22vw" : "0vw",
+            x: phase === "shatter" ? "-30vw" : "0vw",
+            opacity: phase === "shatter" ? 0 : 1,
           }}
           transition={{
             type: "spring",
@@ -206,6 +207,20 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
 
             </div>
 
+            {/* Unified Portfolio word appearing beautifully at the bottom of the image on mobile */}
+            {phase === "shatter" && (
+              <motion.div
+                initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ delay: 0.25, duration: 0.6, ease: "easeOut" }}
+                className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-full text-center z-50 pointer-events-none"
+              >
+                <h1 className="font-druk font-black text-[12vw] sm:text-[10vw] tracking-wider leading-none text-white uppercase select-none drop-shadow-[0_15px_30px_rgba(0,242,254,0.35)] scale-y-[1.4] origin-bottom inline-block">
+                  PORTFOLIO
+                </h1>
+              </motion.div>
+            )}
+
             {/* Shockwave Rings expanding outward on breakthrough */}
             {phase === "shatter" && (
               <>
@@ -259,7 +274,8 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
         {/* Right Flank of Text: "FOLIO" */}
         <motion.div
           animate={{
-            x: phase === "shatter" ? "22vw" : "0vw",
+            x: phase === "shatter" ? "30vw" : "0vw",
+            opacity: phase === "shatter" ? 0 : 1,
           }}
           transition={{
             type: "spring",
