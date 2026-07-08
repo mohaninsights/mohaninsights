@@ -134,131 +134,59 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
         </div>
       )}
 
-      {/* MOBILE CENTER OVERLAPPING PORTFOLIO CONTAINER: PREMIUM MASK REVEAL */}
-      <div className="flex md:hidden relative w-full flex-1 items-center justify-center py-4 z-10 min-h-[60vh] sm:min-h-[70vh] overflow-visible">
+      {/* MOBILE CENTER PORTFOLIO CONTAINER: PREMIUM MASK REVEAL */}
+      <div className="flex md:hidden relative w-full flex-1 flex-col items-center justify-center py-4 z-10 min-h-[60vh] sm:min-h-[70vh] overflow-visible">
         
-        {/* Left Flank of Text: "PORT" */}
+        {/* Center Anchor point: Renders Image */}
         <motion.div
+          initial={{ scale: 0.95, opacity: 0 }}
           animate={{
-            x: heroPhase === "complete" ? "-30vw" : "0vw",
-            opacity: heroPhase === "intro" ? 0 : (heroPhase === "complete" ? 0 : 1),
+            scale: heroPhase === "intro" ? 0.95 : 1,
+            opacity: heroPhase === "intro" ? 0 : 1,
           }}
           transition={{
-            type: "spring",
-            stiffness: 85,
-            damping: 15,
+            duration: 1.2,
+            ease: [0.16, 1, 0.3, 1],
           }}
-          className="z-20 pointer-events-none"
+          className="relative pointer-events-auto shrink-0 flex flex-col items-center justify-center"
         >
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            <motion.h1
-              className="font-druk font-black text-[13vw] sm:text-[11vw] tracking-normal leading-[0.7] text-white uppercase select-none whitespace-nowrap drop-shadow-[0_20px_50px_rgba(0,0,0,0.95)] scale-y-[1.5] origin-right flex items-center"
-            >
-              {"PORT".split("").map((char, idx) => (
-                <motion.span
-                  key={idx}
-                  variants={letterVariants}
-                  className="inline-block"
-                >
-                  {char}
-                </motion.span>
-              ))}
-            </motion.h1>
-          </motion.div>
-        </motion.div>
+          <div className="relative h-[48vh] sm:h-[52vh] aspect-[4/5] border-[5px] border-white rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(255,255,255,0.18)] bg-black/40 group">
+            
+            <img
+              src={mohanPortrait}
+              alt="Mohan SEO — Mohan Kumar, Leading Professional SEO &amp; SMO Expert Portrait"
+              className="w-full h-full object-cover object-top grayscale contrast-[1.45] brightness-[1.02] transition-all duration-700 group-hover:scale-[1.03]"
+              loading="eager"
+              // @ts-ignore
+              fetchPriority="high"
+              referrerPolicy="no-referrer"
+            />
 
-        {/* Center Breakthrough Anchor point: Renders Image */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-visible z-30">
+            {/* Seamless linear gradient bottom fade */}
+            <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#030712]/90 via-[#030712]/40 to-transparent pointer-events-none z-20" />
+
+            {/* Side-border linear gradients */}
+            <div className="absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-[#030712]/30 to-transparent pointer-events-none z-20" />
+            <div className="absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-[#030712]/30 to-transparent pointer-events-none z-20" />
+            
+            {/* Top delicate edge feathering */}
+            <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-[#030712]/20 to-transparent pointer-events-none z-20" />
+
+          </div>
+
+          {/* Unified Portfolio word appearing beautifully at the bottom of the image on mobile */}
           <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{
-              scale: heroPhase === "intro" ? 0.9 : 1,
-              opacity: heroPhase === "intro" ? 0 : 1,
+              opacity: heroPhase === "complete" ? 1 : 0,
+              y: heroPhase === "complete" ? 0 : 15,
             }}
-            transition={{
-              duration: 1.2,
-              ease: [0.16, 1, 0.3, 1],
-            }}
-            className="relative pointer-events-auto shrink-0"
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+            className="w-full text-center z-50 pointer-events-none mt-6"
           >
-            <div className="relative h-[48vh] sm:h-[55vh] aspect-[4/5] border-[5px] border-white rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(255,255,255,0.18)] bg-black/40 group">
-              
-              <img
-                src={mohanPortrait}
-                alt="Mohan SEO — Mohan Kumar, Leading Professional SEO &amp; SMO Expert Portrait"
-                className="w-full h-full object-cover object-top grayscale contrast-[1.45] brightness-[1.02] transition-all duration-700 group-hover:scale-[1.03]"
-                loading="eager"
-                // @ts-ignore
-                fetchPriority="high"
-                referrerPolicy="no-referrer"
-              />
-
-              {/* Seamless linear gradient bottom fade */}
-              <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#030712]/90 via-[#030712]/40 to-transparent pointer-events-none z-20" />
-
-              {/* Side-border linear gradients */}
-              <div className="absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-[#030712]/30 to-transparent pointer-events-none z-20" />
-              <div className="absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-[#030712]/30 to-transparent pointer-events-none z-20" />
-              
-              {/* Top delicate edge feathering */}
-              <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-[#030712]/20 to-transparent pointer-events-none z-20" />
-
-            </div>
-
-            {/* Unified Portfolio word appearing beautifully at the bottom of the image on mobile */}
-            {heroPhase === "complete" && (
-              <motion.div
-                initial={{ opacity: 0, y: 20, scale: 0.9 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ delay: 0.25, duration: 0.6, ease: "easeOut" }}
-                className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-full text-center z-50 pointer-events-none"
-              >
-                <h1 className="font-druk font-black text-[12vw] sm:text-[10vw] tracking-wider leading-none text-white uppercase select-none drop-shadow-[0_15px_30px_rgba(0,242,254,0.35)] scale-y-[1.4] origin-bottom inline-block">
-                  PORTFOLIO
-                </h1>
-              </motion.div>
-            )}
-
-          </motion.div>
-        </div>
-
-        {/* Right Flank of Text: "FOLIO" */}
-        <motion.div
-          animate={{
-            x: heroPhase === "complete" ? "30vw" : "0vw",
-            opacity: heroPhase === "intro" ? 0 : (heroPhase === "complete" ? 0 : 1),
-          }}
-          transition={{
-            type: "spring",
-            stiffness: 85,
-            damping: 15,
-          }}
-          className="z-20 pointer-events-none"
-        >
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            <motion.h1
-              className="font-druk font-black text-[13vw] sm:text-[11vw] tracking-normal leading-[0.7] text-white uppercase select-none whitespace-nowrap drop-shadow-[0_20px_50px_rgba(0,0,0,0.95)] scale-y-[1.5] origin-left flex items-center"
-            >
-              {"FOLIO".split("").map((char, idx) => (
-                <motion.span
-                  key={idx}
-                  variants={letterVariants}
-                  className="inline-block"
-                >
-                  {char}
-                </motion.span>
-              ))}
-            </motion.h1>
+            <h1 className="font-druk font-black text-[12vw] sm:text-[10vw] tracking-wider leading-none text-white uppercase select-none drop-shadow-[0_15px_30px_rgba(0,242,254,0.35)] scale-y-[1.4] origin-bottom inline-block">
+              PORTFOLIO
+            </h1>
           </motion.div>
         </motion.div>
 
