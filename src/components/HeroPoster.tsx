@@ -37,50 +37,20 @@ const letterVariants = {
   },
 };
 
-// Generates randomized polygon shards for the stone-shattering breakthrough effect
-const SHARDS = Array.from({ length: 28 }).map((_, i) => {
-  const angle = (i / 28) * Math.PI * 2 + (Math.random() - 0.5) * 0.25;
-  const distance = 180 + Math.random() * 260;
-  const x = Math.cos(angle) * distance;
-  const y = Math.sin(angle) * distance;
-  return {
-    id: i,
-    x,
-    y,
-    rotate: (Math.random() - 0.5) * 360,
-    scale: 0.5 + Math.random() * 1.3,
-    size: 10 + Math.random() * 22,
-    clipPath: [
-      "polygon(50% 0%, 0% 100%, 100% 100%)",
-      "polygon(0% 0%, 100% 0%, 50% 100%)",
-      "polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)",
-      "polygon(0% 15%, 100% 0%, 85% 85%, 15% 100%)",
-    ][Math.floor(Math.random() * 4)],
-    color: [
-      "bg-white",
-      "bg-brand-cyan",
-      "bg-brand-purple",
-      "bg-gray-300",
-      "bg-brand-cyan/85",
-      "bg-brand-purple/85",
-      "bg-gray-400/80",
-    ][Math.floor(Math.random() * 7)],
-  };
-});
-
 export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
-  const [phase, setPhase] = useState<"text" | "rumble" | "shatter">("text");
+  const [heroPhase, setHeroPhase] = useState<"intro" | "reveal" | "complete">("intro");
 
   useEffect(() => {
-    // Stage 1: Display pure "PORTFOLIO" text first on load.
+    // Stage 1: Display "HELLO, I'M MOHAN" mask text in center
+    // Stage 2: Smooth mask reveal effect where text zooms out/in and fades to reveal the image
     const timer1 = setTimeout(() => {
-      setPhase("rumble");
-    }, 1300);
+      setHeroPhase("reveal");
+    }, 1500);
 
-    // Stage 2: Create a tension-filled shake & crack rumble for 700ms, then shatter!
+    // Stage 3: Smooth transition completed to normal interactive Hero section
     const timer2 = setTimeout(() => {
-      setPhase("shatter");
-    }, 2000);
+      setHeroPhase("complete");
+    }, 2700);
 
     return () => {
       clearTimeout(timer1);
@@ -104,8 +74,10 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
       {/* TOP HEADER STATUS */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        animate={{
+          opacity: heroPhase === "intro" ? 0 : 1,
+          y: heroPhase === "intro" ? -20 : 0,
+        }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="w-full text-center z-10 flex flex-col items-center gap-1.5"
       >
@@ -124,19 +96,57 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
         </h2>
       </motion.div>
 
-      {/* MOBILE CENTER OVERLAPPING PORTFOLIO CONTAINER: PREMIUM SHATTERING BREAKTHROUGH */}
+      {/* Premium Centered Mask Reveal Overlay */}
+      {(heroPhase === "intro" || heroPhase === "reveal") && (
+        <div className="absolute inset-0 z-40 flex items-center justify-center bg-[#030712] pointer-events-none">
+          <motion.h1
+            initial={{ opacity: 0, scale: 0.85, letterSpacing: "0.08em", filter: "blur(12px)" }}
+            animate={
+              heroPhase === "reveal"
+                ? {
+                    scale: 24,
+                    opacity: 0,
+                    filter: "blur(6px)",
+                  }
+                : {
+                    opacity: 1,
+                    scale: 1,
+                    letterSpacing: "-0.02em",
+                    filter: "blur(0px)",
+                  }
+            }
+            transition={{
+              opacity: { duration: heroPhase === "reveal" ? 0.6 : 1.2, ease: "easeInOut" },
+              scale: { duration: 1.2, ease: [0.76, 0, 0.24, 1] },
+              letterSpacing: { duration: 1.2, ease: [0.16, 1, 0.3, 1] },
+              filter: { duration: 1.0 },
+            }}
+            className="font-druk font-black text-[8vw] sm:text-[7vw] md:text-[6vw] tracking-tighter text-transparent bg-clip-text bg-cover bg-center select-none uppercase text-center max-w-4xl px-6 scale-y-[1.3] leading-none"
+            style={{
+              backgroundImage: `url(${mohanPortrait})`,
+              WebkitBackgroundClip: "text",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          >
+            HELLO, I'M MOHAN
+          </motion.h1>
+        </div>
+      )}
+
+      {/* MOBILE CENTER OVERLAPPING PORTFOLIO CONTAINER: PREMIUM MASK REVEAL */}
       <div className="flex md:hidden relative w-full flex-1 items-center justify-center py-4 z-10 min-h-[60vh] sm:min-h-[70vh] overflow-visible">
         
         {/* Left Flank of Text: "PORT" */}
         <motion.div
           animate={{
-            x: phase === "shatter" ? "-30vw" : "0vw",
-            opacity: phase === "shatter" ? 0 : 1,
+            x: heroPhase === "complete" ? "-30vw" : "0vw",
+            opacity: heroPhase === "intro" ? 0 : (heroPhase === "complete" ? 0 : 1),
           }}
           transition={{
             type: "spring",
-            stiffness: phase === "shatter" ? 85 : 55,
-            damping: phase === "shatter" ? 14 : 16,
+            stiffness: 85,
+            damping: 15,
           }}
           className="z-20 pointer-events-none"
         >
@@ -147,11 +157,6 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
             viewport={{ once: true }}
           >
             <motion.h1
-              animate={phase === "rumble" ? {
-                x: [0, -1.5, 1.5, -1, 1, -1.5, 1.5, 0],
-                y: [0, 1, -1, 0.8, -0.8, 1, -1, 0],
-              } : {}}
-              transition={phase === "rumble" ? { duration: 0.5, repeat: Infinity } : {}}
               className="font-druk font-black text-[13vw] sm:text-[11vw] tracking-normal leading-[0.7] text-white uppercase select-none whitespace-nowrap drop-shadow-[0_20px_50px_rgba(0,0,0,0.95)] scale-y-[1.5] origin-right flex items-center"
             >
               {"PORT".split("").map((char, idx) => (
@@ -167,19 +172,17 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
           </motion.div>
         </motion.div>
 
-        {/* Center Breakthrough Anchor point: Renders Image & Particles */}
+        {/* Center Breakthrough Anchor point: Renders Image */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-visible z-30">
           <motion.div
-            initial={{ scale: 0, opacity: 0 }}
+            initial={{ scale: 0.9, opacity: 0 }}
             animate={{
-              scale: phase === "shatter" ? 1 : 0,
-              opacity: phase === "shatter" ? 1 : 0,
+              scale: heroPhase === "intro" ? 0.9 : 1,
+              opacity: heroPhase === "intro" ? 0 : 1,
             }}
             transition={{
-              type: "spring",
-              stiffness: 110,
-              damping: 14,
-              mass: 1.1,
+              duration: 1.2,
+              ease: [0.16, 1, 0.3, 1],
             }}
             className="relative pointer-events-auto shrink-0"
           >
@@ -208,7 +211,7 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
             </div>
 
             {/* Unified Portfolio word appearing beautifully at the bottom of the image on mobile */}
-            {phase === "shatter" && (
+            {heroPhase === "complete" && (
               <motion.div
                 initial={{ opacity: 0, y: 20, scale: 0.9 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -221,66 +224,19 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
               </motion.div>
             )}
 
-            {/* Shockwave Rings expanding outward on breakthrough */}
-            {phase === "shatter" && (
-              <>
-                <motion.div
-                  initial={{ scale: 0.2, opacity: 1 }}
-                  animate={{ scale: 2.1, opacity: 0 }}
-                  transition={{ duration: 0.8, ease: "easeOut" }}
-                  className="absolute inset-0 rounded-3xl border-4 border-brand-cyan pointer-events-none z-40"
-                />
-                <motion.div
-                  initial={{ scale: 0.1, opacity: 0.8 }}
-                  animate={{ scale: 1.6, opacity: 0 }}
-                  transition={{ duration: 0.6, ease: "easeOut", delay: 0.05 }}
-                  className="absolute inset-0 rounded-3xl border-2 border-brand-purple pointer-events-none z-40"
-                />
-              </>
-            )}
-
-            {/* High-quality flying shatter shards */}
-            {phase === "shatter" && (
-              <div className="absolute inset-0 pointer-events-none z-40">
-                {SHARDS.map((shard) => (
-                  <motion.div
-                    key={shard.id}
-                    initial={{ x: 0, y: 0, scale: 1, opacity: 1, rotate: 0 }}
-                    animate={{
-                      x: shard.x * 0.7, // scaled slightly smaller for mobile
-                      y: shard.y * 0.7,
-                      scale: 0,
-                      opacity: 0,
-                      rotate: shard.rotate,
-                    }}
-                    transition={{
-                      duration: 1.1 + Math.random() * 0.4,
-                      ease: [0.1, 0.8, 0.15, 1],
-                      delay: Math.random() * 0.03,
-                    }}
-                    className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 ${shard.color} rounded-sm shadow-[0_0_10px_rgba(255,255,255,0.15)]`}
-                    style={{
-                      width: shard.size * 0.8, // slightly smaller shards
-                      height: shard.size * 0.8,
-                      clipPath: shard.clipPath,
-                    }}
-                  />
-                ))}
-              </div>
-            )}
           </motion.div>
         </div>
 
         {/* Right Flank of Text: "FOLIO" */}
         <motion.div
           animate={{
-            x: phase === "shatter" ? "30vw" : "0vw",
-            opacity: phase === "shatter" ? 0 : 1,
+            x: heroPhase === "complete" ? "30vw" : "0vw",
+            opacity: heroPhase === "intro" ? 0 : (heroPhase === "complete" ? 0 : 1),
           }}
           transition={{
             type: "spring",
-            stiffness: phase === "shatter" ? 85 : 55,
-            damping: phase === "shatter" ? 14 : 16,
+            stiffness: 85,
+            damping: 15,
           }}
           className="z-20 pointer-events-none"
         >
@@ -291,11 +247,6 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
             viewport={{ once: true }}
           >
             <motion.h1
-              animate={phase === "rumble" ? {
-                x: [0, 1.5, -1.5, 1, -1, 1.5, -1.5, 0],
-                y: [0, -1, 1, -0.8, 0.8, -1, 1, 0],
-              } : {}}
-              transition={phase === "rumble" ? { duration: 0.5, repeat: Infinity } : {}}
               className="font-druk font-black text-[13vw] sm:text-[11vw] tracking-normal leading-[0.7] text-white uppercase select-none whitespace-nowrap drop-shadow-[0_20px_50px_rgba(0,0,0,0.95)] scale-y-[1.5] origin-left flex items-center"
             >
               {"FOLIO".split("").map((char, idx) => (
@@ -311,55 +262,21 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
           </motion.div>
         </motion.div>
 
-        {/* Cyberpunk Neon cracks appearing across the text during the rumble phase */}
-        {phase === "rumble" && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: [0.2, 0.9, 0.4, 1, 0.5, 1] }}
-            transition={{ duration: 0.6 }}
-            className="absolute inset-0 z-30 pointer-events-none flex items-center justify-center mix-blend-screen"
-          >
-            <svg className="w-full h-full max-w-[280px]" viewBox="0 0 400 400">
-              <path
-                d="M 200 50 L 190 130 L 220 190 L 180 250 L 215 300 L 195 360"
-                stroke="#00F2FF"
-                strokeWidth="4.5"
-                strokeLinecap="round"
-                fill="none"
-                className="animate-pulse"
-              />
-              <path
-                d="M 190 130 L 130 110 L 90 140"
-                stroke="#00F2FF"
-                strokeWidth="3"
-                strokeLinecap="round"
-                fill="none"
-              />
-              <path
-                d="M 180 250 L 250 280 L 290 260"
-                stroke="#8B5CF6"
-                strokeWidth="3"
-                strokeLinecap="round"
-                fill="none"
-              />
-            </svg>
-          </motion.div>
-        )}
-
       </div>
 
-      {/* DESKTOP CENTER OVERLAPPING CONTAINER: PREMIUM SHATTERING BREAKTHROUGH (NO OVERLAP) */}
+      {/* DESKTOP CENTER OVERLAPPING CONTAINER: PREMIUM MASK REVEAL */}
       <div className="hidden md:flex relative w-full flex-1 items-center justify-center py-4 z-10 min-h-[75vh] md:min-h-[82vh] overflow-visible">
         
         {/* Left Flank of Text: "PORT" */}
         <motion.div
           animate={{
-            x: phase === "shatter" ? -215 : 0,
+            x: heroPhase === "complete" ? -215 : 0,
+            opacity: heroPhase === "intro" ? 0 : 1,
           }}
           transition={{
             type: "spring",
-            stiffness: phase === "shatter" ? 85 : 55,
-            damping: phase === "shatter" ? 14 : 16,
+            stiffness: 85,
+            damping: 15,
           }}
           className="z-20 pointer-events-none"
         >
@@ -370,11 +287,6 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
             viewport={{ once: true }}
           >
             <motion.h1
-              animate={phase === "rumble" ? {
-                x: [0, -2, 2, -1, 1, -2, 2, 0],
-                y: [0, 1.5, -1.5, 1, -1, 1.5, -1.5, 0],
-              } : {}}
-              transition={phase === "rumble" ? { duration: 0.5, repeat: Infinity } : {}}
               className="font-druk font-black text-[11vw] xl:text-[10vw] tracking-normal leading-[0.7] text-white uppercase select-none whitespace-nowrap drop-shadow-[0_25px_60px_rgba(0,0,0,0.95)] scale-y-[1.5] origin-right flex items-center"
             >
               {"PORT".split("").map((char, idx) => (
@@ -390,19 +302,17 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
           </motion.div>
         </motion.div>
 
-        {/* Center Breakthrough Anchor point: Renders Image & Particles */}
+        {/* Center Breakthrough Anchor point: Renders Image */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-visible z-30">
           <motion.div
-            initial={{ scale: 0, opacity: 0 }}
+            initial={{ scale: 0.9, opacity: 0 }}
             animate={{
-              scale: phase === "shatter" ? 1 : 0,
-              opacity: phase === "shatter" ? 1 : 0,
+              scale: heroPhase === "intro" ? 0.9 : 1,
+              opacity: heroPhase === "intro" ? 0 : 1,
             }}
             transition={{
-              type: "spring",
-              stiffness: 110,
-              damping: 14,
-              mass: 1.1,
+              duration: 1.2,
+              ease: [0.16, 1, 0.3, 1],
             }}
             className="relative pointer-events-auto shrink-0"
           >
@@ -429,66 +339,19 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
               <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-[#030712]/20 to-transparent pointer-events-none z-20" />
 
             </div>
-
-            {/* Shockwave Rings expanding outward on breakthrough */}
-            {phase === "shatter" && (
-              <>
-                <motion.div
-                  initial={{ scale: 0.2, opacity: 1 }}
-                  animate={{ scale: 2.3, opacity: 0 }}
-                  transition={{ duration: 0.8, ease: "easeOut" }}
-                  className="absolute inset-0 rounded-3xl border-4 border-brand-cyan pointer-events-none z-40"
-                />
-                <motion.div
-                  initial={{ scale: 0.1, opacity: 0.8 }}
-                  animate={{ scale: 1.8, opacity: 0 }}
-                  transition={{ duration: 0.6, ease: "easeOut", delay: 0.05 }}
-                  className="absolute inset-0 rounded-3xl border-2 border-brand-purple pointer-events-none z-40"
-                />
-              </>
-            )}
-
-            {/* High-quality flying shatter shards */}
-            {phase === "shatter" && (
-              <div className="absolute inset-0 pointer-events-none z-40">
-                {SHARDS.map((shard) => (
-                  <motion.div
-                    key={shard.id}
-                    initial={{ x: 0, y: 0, scale: 1, opacity: 1, rotate: 0 }}
-                    animate={{
-                      x: shard.x,
-                      y: shard.y,
-                      scale: 0,
-                      opacity: 0,
-                      rotate: shard.rotate,
-                    }}
-                    transition={{
-                      duration: 1.1 + Math.random() * 0.4,
-                      ease: [0.1, 0.8, 0.15, 1],
-                      delay: Math.random() * 0.03,
-                    }}
-                    className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 ${shard.color} rounded-sm shadow-[0_0_10px_rgba(255,255,255,0.15)]`}
-                    style={{
-                      width: shard.size,
-                      height: shard.size,
-                      clipPath: shard.clipPath,
-                    }}
-                  />
-                ))}
-              </div>
-            )}
           </motion.div>
         </div>
 
         {/* Right Flank of Text: "FOLIO" */}
         <motion.div
           animate={{
-            x: phase === "shatter" ? 215 : 0,
+            x: heroPhase === "complete" ? 215 : 0,
+            opacity: heroPhase === "intro" ? 0 : 1,
           }}
           transition={{
             type: "spring",
-            stiffness: phase === "shatter" ? 85 : 55,
-            damping: phase === "shatter" ? 14 : 16,
+            stiffness: 85,
+            damping: 15,
           }}
           className="z-20 pointer-events-none"
         >
@@ -499,11 +362,6 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
             viewport={{ once: true }}
           >
             <motion.h1
-              animate={phase === "rumble" ? {
-                x: [0, 2, -2, 1, -1, 2, -2, 0],
-                y: [0, -1.5, 1.5, -1, 1, -1.5, 1.5, 0],
-              } : {}}
-              transition={phase === "rumble" ? { duration: 0.5, repeat: Infinity } : {}}
               className="font-druk font-black text-[11vw] xl:text-[10vw] tracking-normal leading-[0.7] text-white uppercase select-none whitespace-nowrap drop-shadow-[0_25px_60px_rgba(0,0,0,0.95)] scale-y-[1.5] origin-left flex items-center"
             >
               {"FOLIO".split("").map((char, idx) => (
@@ -519,41 +377,6 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
           </motion.div>
         </motion.div>
 
-        {/* Cyberpunk Neon cracks appearing across the text during the rumble phase */}
-        {phase === "rumble" && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: [0.2, 0.9, 0.4, 1, 0.5, 1] }}
-            transition={{ duration: 0.6 }}
-            className="absolute inset-0 z-30 pointer-events-none flex items-center justify-center mix-blend-screen"
-          >
-            <svg className="w-full h-full max-w-4xl" viewBox="0 0 800 400">
-              <path
-                d="M 400 50 L 390 130 L 420 190 L 380 250 L 415 300 L 395 360"
-                stroke="#00F2FF"
-                strokeWidth="5.5"
-                strokeLinecap="round"
-                fill="none"
-                className="animate-pulse"
-              />
-              <path
-                d="M 390 130 L 310 110 L 250 140"
-                stroke="#00F2FF"
-                strokeWidth="4"
-                strokeLinecap="round"
-                fill="none"
-              />
-              <path
-                d="M 380 250 L 470 280 L 530 260"
-                stroke="#8B5CF6"
-                strokeWidth="4"
-                strokeLinecap="round"
-                fill="none"
-              />
-            </svg>
-          </motion.div>
-        )}
-
       </div>
 
       {/* BOTTOM ACTION & INFORMATION BAR */}
@@ -562,9 +385,11 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
         {/* Bottom Left: Availability Indicator & Services quicklink */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          animate={{
+            opacity: heroPhase === "intro" ? 0 : 1,
+            x: heroPhase === "intro" ? -20 : 0,
+          }}
+          transition={{ duration: 0.8, delay: 0.2 }}
           className="flex flex-col items-center sm:items-start gap-1"
         >
           <div className="flex items-center gap-2">
@@ -580,10 +405,18 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
 
         {/* Center: Explore Down Arrow Badge */}
         <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          animate={
+            heroPhase === "intro"
+              ? { opacity: 0 }
+              : { y: [0, 8, 0], opacity: 0.4 }
+          }
+          transition={
+            heroPhase === "intro"
+              ? { duration: 0.2 }
+              : { y: { duration: 2, repeat: Infinity, ease: "easeInOut" }, opacity: { duration: 0.5 } }
+          }
           onClick={() => onBtnClick("about")}
-          className="hidden md:flex flex-col items-center gap-1.5 cursor-pointer opacity-40 hover:opacity-100 transition-opacity"
+          className="hidden md:flex flex-col items-center gap-1.5 cursor-pointer hover:opacity-100 transition-opacity"
         >
           <span className="font-mono text-[9px] uppercase tracking-widest text-gray-400 font-bold">
             Explore Portfolio
@@ -596,9 +429,11 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
         {/* Bottom Right: Highlighted Resume & Contact CTAs */}
         <motion.div
           initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          animate={{
+            opacity: heroPhase === "intro" ? 0 : 1,
+            x: heroPhase === "intro" ? 20 : 0,
+          }}
+          transition={{ duration: 0.8, delay: 0.2 }}
           className="flex flex-col sm:flex-row items-center gap-3.5 w-full sm:w-auto"
         >
           {/* Extremely highlighted, eye-catchy glowing Resume button */}
