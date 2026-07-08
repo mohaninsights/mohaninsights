@@ -124,62 +124,212 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
         </h2>
       </motion.div>
 
-      {/* MOBILE CENTER OVERLAPPING PORTFOLIO CONTAINER (KEPT EXACTLY AS IT WAS) */}
-      <div className="flex md:hidden relative w-full flex-1 items-end justify-center py-4 z-10 min-h-[60vh] sm:min-h-[70vh]">
+      {/* MOBILE CENTER OVERLAPPING PORTFOLIO CONTAINER: PREMIUM SHATTERING BREAKTHROUGH */}
+      <div className="flex md:hidden relative w-full flex-1 items-center justify-center py-4 z-10 min-h-[60vh] sm:min-h-[70vh] overflow-visible">
         
-        {/* Giant "PORTFOLIO" Background Typography */}
+        {/* Left Flank of Text: "PORT" */}
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="absolute -inset-x-4 sm:-inset-x-6 bottom-2 sm:bottom-4 flex items-end justify-center select-none z-20 pointer-events-none"
+          animate={{
+            x: phase === "shatter" ? "-22vw" : "0vw",
+          }}
+          transition={{
+            type: "spring",
+            stiffness: phase === "shatter" ? 85 : 55,
+            damping: phase === "shatter" ? 14 : 16,
+          }}
+          className="z-20 pointer-events-none"
         >
-          <h1 className="font-druk font-black text-[24vw] sm:text-[22vw] tracking-normal leading-[0.7] text-white uppercase select-none whitespace-nowrap drop-shadow-[0_25px_60px_rgba(0,0,0,0.95)] scale-y-[1.5] origin-bottom flex items-center justify-between w-full overflow-visible py-2 px-4 sm:px-6">
-            {"PORTFOLIO".split("").map((char, idx) => (
-              <motion.span
-                key={idx}
-                variants={letterVariants}
-                className="inline-block"
-              >
-                {char}
-              </motion.span>
-            ))}
-          </h1>
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <motion.h1
+              animate={phase === "rumble" ? {
+                x: [0, -1.5, 1.5, -1, 1, -1.5, 1.5, 0],
+                y: [0, 1, -1, 0.8, -0.8, 1, -1, 0],
+              } : {}}
+              transition={phase === "rumble" ? { duration: 0.5, repeat: Infinity } : {}}
+              className="font-druk font-black text-[13vw] sm:text-[11vw] tracking-normal leading-[0.7] text-white uppercase select-none whitespace-nowrap drop-shadow-[0_20px_50px_rgba(0,0,0,0.95)] scale-y-[1.5] origin-right flex items-center"
+            >
+              {"PORT".split("").map((char, idx) => (
+                <motion.span
+                  key={idx}
+                  variants={letterVariants}
+                  className="inline-block"
+                >
+                  {char}
+                </motion.span>
+              ))}
+            </motion.h1>
+          </motion.div>
         </motion.div>
 
-        {/* Overlapping Grayscale Portrait Image */}
+        {/* Center Breakthrough Anchor point: Renders Image & Particles */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-visible z-30">
+          <motion.div
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{
+              scale: phase === "shatter" ? 1 : 0,
+              opacity: phase === "shatter" ? 1 : 0,
+            }}
+            transition={{
+              type: "spring",
+              stiffness: 110,
+              damping: 14,
+              mass: 1.1,
+            }}
+            className="relative pointer-events-auto shrink-0"
+          >
+            <div className="relative h-[48vh] sm:h-[55vh] aspect-[4/5] border-[5px] border-white rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(255,255,255,0.18)] bg-black/40 group">
+              
+              <img
+                src={mohanPortrait}
+                alt="Mohan SEO — Mohan Kumar, Leading Professional SEO &amp; SMO Expert Portrait"
+                className="w-full h-full object-cover object-top grayscale contrast-[1.45] brightness-[1.02] transition-all duration-700 group-hover:scale-[1.03]"
+                loading="eager"
+                // @ts-ignore
+                fetchPriority="high"
+                referrerPolicy="no-referrer"
+              />
+
+              {/* Seamless linear gradient bottom fade */}
+              <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#030712]/90 via-[#030712]/40 to-transparent pointer-events-none z-20" />
+
+              {/* Side-border linear gradients */}
+              <div className="absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-[#030712]/30 to-transparent pointer-events-none z-20" />
+              <div className="absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-[#030712]/30 to-transparent pointer-events-none z-20" />
+              
+              {/* Top delicate edge feathering */}
+              <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-[#030712]/20 to-transparent pointer-events-none z-20" />
+
+            </div>
+
+            {/* Shockwave Rings expanding outward on breakthrough */}
+            {phase === "shatter" && (
+              <>
+                <motion.div
+                  initial={{ scale: 0.2, opacity: 1 }}
+                  animate={{ scale: 2.1, opacity: 0 }}
+                  transition={{ duration: 0.8, ease: "easeOut" }}
+                  className="absolute inset-0 rounded-3xl border-4 border-brand-cyan pointer-events-none z-40"
+                />
+                <motion.div
+                  initial={{ scale: 0.1, opacity: 0.8 }}
+                  animate={{ scale: 1.6, opacity: 0 }}
+                  transition={{ duration: 0.6, ease: "easeOut", delay: 0.05 }}
+                  className="absolute inset-0 rounded-3xl border-2 border-brand-purple pointer-events-none z-40"
+                />
+              </>
+            )}
+
+            {/* High-quality flying shatter shards */}
+            {phase === "shatter" && (
+              <div className="absolute inset-0 pointer-events-none z-40">
+                {SHARDS.map((shard) => (
+                  <motion.div
+                    key={shard.id}
+                    initial={{ x: 0, y: 0, scale: 1, opacity: 1, rotate: 0 }}
+                    animate={{
+                      x: shard.x * 0.7, // scaled slightly smaller for mobile
+                      y: shard.y * 0.7,
+                      scale: 0,
+                      opacity: 0,
+                      rotate: shard.rotate,
+                    }}
+                    transition={{
+                      duration: 1.1 + Math.random() * 0.4,
+                      ease: [0.1, 0.8, 0.15, 1],
+                      delay: Math.random() * 0.03,
+                    }}
+                    className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 ${shard.color} rounded-sm shadow-[0_0_10px_rgba(255,255,255,0.15)]`}
+                    style={{
+                      width: shard.size * 0.8, // slightly smaller shards
+                      height: shard.size * 0.8,
+                      clipPath: shard.clipPath,
+                    }}
+                  />
+                ))}
+              </div>
+            )}
+          </motion.div>
+        </div>
+
+        {/* Right Flank of Text: "FOLIO" */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1.1, ease: "easeOut" }}
-          className="relative flex items-end justify-center z-10 pointer-events-none mt-4 w-full h-full"
+          animate={{
+            x: phase === "shatter" ? "22vw" : "0vw",
+          }}
+          transition={{
+            type: "spring",
+            stiffness: phase === "shatter" ? 85 : 55,
+            damping: phase === "shatter" ? 14 : 16,
+          }}
+          className="z-20 pointer-events-none"
         >
-          <div className="relative h-[60vh] sm:h-[70vh] aspect-[4/5] pointer-events-auto group border-[5px] border-white rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(255,255,255,0.12)] bg-black/40">
-            
-            <img
-              src={mohanPortrait}
-              alt="Mohan SEO — Mohan Kumar, Leading Professional SEO &amp; SMO Expert Portrait"
-              className="w-full h-full object-cover object-top grayscale contrast-[1.45] brightness-[1.02] transition-all duration-700 group-hover:scale-[1.03]"
-              loading="eager"
-              // @ts-ignore
-              fetchPriority="high"
-              referrerPolicy="no-referrer"
-            />
-
-            {/* Seamless linear gradient bottom fade */}
-            <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#030712]/90 via-[#030712]/40 to-transparent pointer-events-none z-20" />
-
-            {/* Side-border linear gradients */}
-            <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-[#030712]/30 to-transparent pointer-events-none z-20" />
-            <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-[#030712]/30 to-transparent pointer-events-none z-20" />
-            
-            {/* Top delicate edge feathering */}
-            <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-[#030712]/20 to-transparent pointer-events-none z-20" />
-
-          </div>
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <motion.h1
+              animate={phase === "rumble" ? {
+                x: [0, 1.5, -1.5, 1, -1, 1.5, -1.5, 0],
+                y: [0, -1, 1, -0.8, 0.8, -1, 1, 0],
+              } : {}}
+              transition={phase === "rumble" ? { duration: 0.5, repeat: Infinity } : {}}
+              className="font-druk font-black text-[13vw] sm:text-[11vw] tracking-normal leading-[0.7] text-white uppercase select-none whitespace-nowrap drop-shadow-[0_20px_50px_rgba(0,0,0,0.95)] scale-y-[1.5] origin-left flex items-center"
+            >
+              {"FOLIO".split("").map((char, idx) => (
+                <motion.span
+                  key={idx}
+                  variants={letterVariants}
+                  className="inline-block"
+                >
+                  {char}
+                </motion.span>
+              ))}
+            </motion.h1>
+          </motion.div>
         </motion.div>
+
+        {/* Cyberpunk Neon cracks appearing across the text during the rumble phase */}
+        {phase === "rumble" && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: [0.2, 0.9, 0.4, 1, 0.5, 1] }}
+            transition={{ duration: 0.6 }}
+            className="absolute inset-0 z-30 pointer-events-none flex items-center justify-center mix-blend-screen"
+          >
+            <svg className="w-full h-full max-w-[280px]" viewBox="0 0 400 400">
+              <path
+                d="M 200 50 L 190 130 L 220 190 L 180 250 L 215 300 L 195 360"
+                stroke="#00F2FF"
+                strokeWidth="4.5"
+                strokeLinecap="round"
+                fill="none"
+                className="animate-pulse"
+              />
+              <path
+                d="M 190 130 L 130 110 L 90 140"
+                stroke="#00F2FF"
+                strokeWidth="3"
+                strokeLinecap="round"
+                fill="none"
+              />
+              <path
+                d="M 180 250 L 250 280 L 290 260"
+                stroke="#8B5CF6"
+                strokeWidth="3"
+                strokeLinecap="round"
+                fill="none"
+              />
+            </svg>
+          </motion.div>
+        )}
+
       </div>
 
       {/* DESKTOP CENTER OVERLAPPING CONTAINER: PREMIUM SHATTERING BREAKTHROUGH (NO OVERLAP) */}
