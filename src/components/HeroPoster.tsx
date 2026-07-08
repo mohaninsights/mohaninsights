@@ -94,6 +94,22 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
         <h2 className="font-bebas tracking-[0.08em] sm:tracking-[0.12em] text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan via-white to-brand-purple text-4xl sm:text-5xl md:text-6.5xl lg:text-7.5xl uppercase leading-none select-none drop-shadow-[0_4px_20px_rgba(0,242,254,0.15)] font-normal">
           SEO &amp; SMO EXECUTIVE
         </h2>
+
+        {/* Hello I'm Mohan placed elegantly below SEO & SMO EXECUTIVE after mask reveal */}
+        <motion.div
+          initial={{ opacity: 0, y: 10, scale: 0.95 }}
+          animate={{
+            opacity: heroPhase === "complete" ? 1 : 0,
+            y: heroPhase === "complete" ? 0 : 10,
+            scale: heroPhase === "complete" ? 1 : 0.95,
+          }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
+          className="mt-2"
+        >
+          <span className="font-druk font-black text-xl sm:text-2xl md:text-3.5xl lg:text-4xl tracking-normal text-transparent bg-clip-text bg-gradient-to-r from-white via-brand-cyan to-white select-none uppercase text-center scale-y-[1.25] inline-block drop-shadow-[0_4px_12px_rgba(0,242,254,0.25)]">
+            HELLO, I'M MOHAN
+          </span>
+        </motion.div>
       </motion.div>
 
       {/* Premium Centered Mask Reveal Overlay */}
@@ -121,13 +137,7 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
               letterSpacing: { duration: 1.2, ease: [0.16, 1, 0.3, 1] },
               filter: { duration: 1.0 },
             }}
-            className="font-druk font-black text-[8vw] sm:text-[7vw] md:text-[6vw] tracking-tighter text-transparent bg-clip-text bg-cover bg-center select-none uppercase text-center max-w-4xl px-6 scale-y-[1.3] leading-none"
-            style={{
-              backgroundImage: `url(${mohanPortrait})`,
-              WebkitBackgroundClip: "text",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
+            className="font-druk font-black text-[8vw] sm:text-[7vw] md:text-[6vw] tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-white via-brand-cyan to-white select-none uppercase text-center max-w-4xl px-6 scale-y-[1.3] leading-none drop-shadow-[0_10px_40px_rgba(0,242,254,0.35)]"
           >
             HELLO, I'M MOHAN
           </motion.h1>
