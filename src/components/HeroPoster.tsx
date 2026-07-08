@@ -114,7 +114,7 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
               className="w-full h-full object-cover object-top grayscale contrast-[1.45] brightness-[1.02] transition-all duration-700 group-hover:scale-[1.03]"
               loading="eager"
               // @ts-ignore
-              fetchpriority="high"
+              fetchPriority="high"
               referrerPolicy="no-referrer"
             />
 
