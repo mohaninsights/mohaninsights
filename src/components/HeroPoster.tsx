@@ -65,9 +65,9 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
           </div>
         </div>
 
-        {/* Unified "PORTFOLIO" word positioned directly below the image, stretching beautifully */}
-        <div className="w-screen max-w-full text-center z-20 pointer-events-none mt-4 sm:mt-6">
-          <h1 className="font-druk font-black text-[22vw] sm:text-[20vw] md:text-[18vw] lg:text-[17vw] xl:text-[16vw] tracking-tighter leading-none text-white uppercase select-none drop-shadow-[0_15px_30px_rgba(0,242,254,0.4)] scale-y-[1.3] origin-bottom inline-block w-full text-center">
+        {/* Unified "PORTFOLIO" word positioned directly below the image, stretching perfectly to the edges */}
+        <div className="w-screen relative left-1/2 -translate-x-1/2 text-center z-20 pointer-events-none mt-4 sm:mt-6 overflow-hidden">
+          <h1 className="font-druk font-black text-[27vw] sm:text-[24vw] md:text-[19vw] lg:text-[17vw] xl:text-[16vw] tracking-tighter leading-none text-white uppercase select-none drop-shadow-[0_15px_30px_rgba(0,242,254,0.4)] scale-y-[1.3] origin-bottom inline-block w-full text-center whitespace-nowrap">
             PORTFOLIO
           </h1>
         </div>
