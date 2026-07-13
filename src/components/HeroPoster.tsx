@@ -40,7 +40,7 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
       {/* MOBILE CENTER OVERLAPPING PORTFOLIO CONTAINER: CLEAN & STATIC */}
       <div className="flex md:hidden relative w-full flex-1 items-center justify-center py-4 z-10 min-h-[60vh] sm:min-h-[70vh] overflow-visible">
         <div className="relative pointer-events-auto shrink-0">
-          <div className="relative h-[48vh] sm:h-[55vh] aspect-[4/5] border-[5px] border-white rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(255,255,255,0.18)] bg-black/40 group">
+          <div className="relative h-[48vh] sm:h-[55vh] aspect-[4/5] border border-white/10 rounded-3xl overflow-hidden shadow-[0_25px_70px_rgba(0,242,254,0.12)] bg-black/40 group">
             <img
               src={mohanPortrait}
               alt="Mohan SEO — Mohan Kumar, Leading Professional SEO &amp; SMO Expert Portrait"
@@ -63,8 +63,8 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
           </div>
 
           {/* Unified Portfolio word appearing beautifully at the bottom of the image on mobile */}
-          <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-screen text-center z-50 pointer-events-none">
-            <h1 className="font-druk font-black text-[17vw] sm:text-[15vw] tracking-tighter leading-none text-white uppercase select-none drop-shadow-[0_15px_30px_rgba(0,242,254,0.35)] scale-y-[1.4] origin-bottom inline-block w-full text-center">
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-screen text-center z-50 pointer-events-none">
+            <h1 className="font-druk font-black text-[22vw] sm:text-[19vw] tracking-tighter leading-none text-white uppercase select-none drop-shadow-[0_15px_30px_rgba(0,242,254,0.4)] scale-y-[1.3] origin-bottom inline-block w-full text-center">
               PORTFOLIO
             </h1>
           </div>
@@ -84,7 +84,7 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
         {/* Center Breakthrough Anchor point: Renders Image */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-visible z-30">
           <div className="relative pointer-events-auto shrink-0">
-            <div className="relative h-[55vh] md:h-[65vh] lg:h-[72vh] max-h-[620px] aspect-[4/5] border-[5px] border-white rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(255,255,255,0.18)] bg-black/40 group">
+            <div className="relative h-[55vh] md:h-[65vh] lg:h-[72vh] max-h-[620px] aspect-[4/5] border border-white/10 rounded-3xl overflow-hidden shadow-[0_25px_70px_rgba(0,242,254,0.12)] bg-black/40 group">
               <img
                 src={mohanPortrait}
                 alt="Mohan SEO — Mohan Kumar, Leading Professional SEO &amp; SMO Expert Portrait"
