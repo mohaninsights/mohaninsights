@@ -40,9 +40,9 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
       {/* CENTERED PORTFOLIO CONTENT (UNIFIED FOR ALL SCREEN SIZES) */}
       <div className="flex flex-col items-center justify-center flex-1 w-full z-10 py-6 overflow-visible">
         
-        {/* Centered Image Container (Increased size, border border-white/10, glow shadow) */}
+        {/* Centered Image Container (Adjusted height to give room for text below) */}
         <div className="relative pointer-events-auto shrink-0 transition-transform duration-500">
-          <div className="relative h-[52vh] sm:h-[60vh] md:h-[68vh] lg:h-[76vh] max-h-[680px] aspect-[4/5] border border-white/10 rounded-3xl overflow-hidden shadow-[0_30px_90px_rgba(0,242,254,0.15)] bg-black/40 group">
+          <div className="relative h-[42vh] sm:h-[48vh] md:h-[54vh] lg:h-[58vh] max-h-[520px] aspect-[4/5] border border-white/10 rounded-3xl overflow-hidden shadow-[0_30px_90px_rgba(0,242,254,0.15)] bg-black/40 group">
             <img
               src={mohanPortrait}
               alt="Mohan SEO — Mohan Kumar, Leading Professional SEO &amp; SMO Expert Portrait"
@@ -65,9 +65,9 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
           </div>
         </div>
 
-        {/* Unified "PORTFOLIO" word positioned directly below the image, stretching perfectly to the edges */}
-        <div className="w-screen relative left-1/2 -translate-x-1/2 text-center z-20 pointer-events-none mt-4 sm:mt-6 overflow-hidden">
-          <h1 className="font-druk font-black text-[27vw] sm:text-[24vw] md:text-[19vw] lg:text-[17vw] xl:text-[16vw] tracking-tighter leading-none text-white uppercase select-none drop-shadow-[0_15px_30px_rgba(0,242,254,0.4)] scale-y-[1.3] origin-bottom inline-block w-full text-center whitespace-nowrap">
+        {/* Unified "PORTFOLIO" word positioned directly below the image with nice top margin and no vertical stretching or overlay */}
+        <div className="w-screen relative left-1/2 -translate-x-1/2 text-center z-20 pointer-events-none mt-8 sm:mt-10 overflow-hidden">
+          <h1 className="font-druk font-black text-[18vw] sm:text-[16vw] md:text-[13vw] lg:text-[11vw] xl:text-[10vw] tracking-tighter leading-none text-white uppercase select-none drop-shadow-[0_10px_20px_rgba(0,242,254,0.35)] inline-block w-full text-center whitespace-nowrap">
             PORTFOLIO
           </h1>
         </div>
