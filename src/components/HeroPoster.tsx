@@ -66,10 +66,22 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
         </div>
 
         {/* Unified "PORTFOLIO" word positioned directly below the image with nice top margin and no vertical stretching or overlay */}
-        <div className="w-screen relative left-1/2 -translate-x-1/2 text-center z-20 pointer-events-none mt-8 sm:mt-10 overflow-hidden">
-          <h1 className="font-druk font-black text-[18vw] sm:text-[16vw] md:text-[13vw] lg:text-[11vw] xl:text-[10vw] tracking-tighter leading-none text-white uppercase select-none drop-shadow-[0_10px_20px_rgba(0,242,254,0.35)] inline-block w-full text-center whitespace-nowrap">
-            PORTFOLIO
-          </h1>
+        <div className="w-screen relative left-1/2 -translate-x-1/2 text-center z-20 pointer-events-none mt-6 sm:mt-8 overflow-visible">
+          <div className="w-full max-w-full overflow-hidden px-1">
+            <svg viewBox="0 0 1000 120" className="w-full h-auto select-none overflow-visible leading-none">
+              <text
+                x="500"
+                y="110"
+                textAnchor="middle"
+                textLength="1000"
+                lengthAdjust="spacingAndGlyphs"
+                className="font-druk font-black fill-white uppercase drop-shadow-[0_10px_20px_rgba(0,242,254,0.35)]"
+                style={{ fontSize: '135px' }}
+              >
+                PORTFOLIO
+              </text>
+            </svg>
+          </div>
         </div>
       </div>
 
