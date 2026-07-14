@@ -10,7 +10,7 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
   return (
     <section
       id="home"
-      className="relative min-h-screen w-full bg-[#030712] flex flex-col justify-between items-center pt-24 pb-10 px-4 sm:px-6 lg:px-8 overflow-hidden select-none"
+      className="relative min-h-screen w-full bg-[#030712] flex flex-col justify-between items-center pt-24 pb-10 overflow-hidden select-none"
     >
       {/* Premium subtle background glow matching existing style */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-cyan/5 rounded-full blur-[140px] pointer-events-none" />
@@ -21,7 +21,7 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
       <div className="absolute inset-y-0 right-10 w-[1px] bg-white/[0.01] pointer-events-none" />
 
       {/* TOP HEADER STATUS */}
-      <div className="w-full text-center z-10 flex flex-col items-center gap-1.5">
+      <div className="w-full text-center z-10 flex flex-col items-center gap-1.5 px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-2 mb-2 px-3 py-1 rounded-full bg-white/[0.02] border border-white/5">
           <Sparkles className="w-3.5 h-3.5 text-brand-cyan" />
           <span className="font-mono text-[10px] text-brand-cyan tracking-widest uppercase font-bold">
@@ -40,9 +40,9 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
       {/* CENTERED PORTFOLIO CONTENT (UNIFIED FOR ALL SCREEN SIZES) */}
       <div className="flex flex-col items-center justify-center flex-1 w-full z-10 py-6 overflow-visible">
         
-        {/* Centered Image Container (Adjusted height to give room for text below) */}
+        {/* Centered Image Container (Increased size for a more prominent visual, beautifully balanced with the text below) */}
         <div className="relative pointer-events-auto shrink-0 transition-transform duration-500">
-          <div className="relative h-[42vh] sm:h-[48vh] md:h-[54vh] lg:h-[58vh] max-h-[520px] aspect-[4/5] border border-white/10 rounded-3xl overflow-hidden shadow-[0_30px_90px_rgba(0,242,254,0.15)] bg-black/40 group">
+          <div className="relative h-[50vh] sm:h-[56vh] md:h-[62vh] lg:h-[68vh] max-h-[640px] aspect-[4/5] border border-white/10 rounded-3xl overflow-hidden shadow-[0_30px_90px_rgba(0,242,254,0.15)] bg-black/40 group">
             <img
               src={mohanPortrait}
               alt="Mohan SEO — Mohan Kumar, Leading Professional SEO &amp; SMO Expert Portrait"
@@ -66,8 +66,8 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
         </div>
 
         {/* Unified "PORTFOLIO" word positioned directly below the image with nice top margin and no vertical stretching or overlay */}
-        <div className="w-screen relative left-1/2 -translate-x-1/2 text-center z-20 pointer-events-none mt-6 sm:mt-8 overflow-visible">
-          <div className="w-full max-w-full overflow-hidden px-1">
+        <div className="w-full text-center z-20 pointer-events-none mt-6 sm:mt-8 overflow-visible">
+          <div className="w-full max-w-full overflow-hidden px-0">
             <svg viewBox="0 0 1000 120" className="w-full h-auto select-none overflow-visible leading-none">
               <text
                 x="500"
@@ -86,7 +86,7 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
       </div>
 
       {/* BOTTOM ACTION & INFORMATION BAR */}
-      <div className="w-full max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 z-20 pt-4 border-t border-white/[0.04] mt-4">
+      <div className="w-full max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 z-20 pt-4 border-t border-white/[0.04] mt-4 px-4 sm:px-6 lg:px-8">
         
         {/* Bottom Left: Availability Indicator & Services quicklink */}
         <div className="flex flex-col items-center sm:items-start gap-1">
