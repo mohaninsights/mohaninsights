@@ -327,11 +327,11 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                         {/* Job 1 */}
                         <div className="border-l-2 border-slate-200 pl-4 space-y-1.5">
                           <h3 className="font-bold text-sm text-slate-900">
-                            Divine Astro Vastu Science LLP – Acharya Ganesh
+                            Divine Astro Vastu Science LLP - Acharya Ganesh
                           </h3>
                           <div className="flex items-center justify-between text-xs">
                             <span className="font-bold text-sky-700">SEO Executive</span>
-                            <span className="text-slate-500 font-mono text-[11px]">August 2025 – August 2026</span>
+                            <span className="text-slate-600 font-mono text-[11px] font-semibold">August 2025 to August 2026</span>
                           </div>
                           <ul className="text-xs text-slate-600 space-y-1.5 mt-2 list-disc list-inside">
                             <li>Handled the complete website and SEO activities.</li>
@@ -350,7 +350,7 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                           </h3>
                           <div className="flex items-center justify-between text-xs">
                             <span className="font-bold text-sky-700">SEO Intern</span>
-                            <span className="text-slate-500 font-mono text-[11px]">December 2024 – June 2025</span>
+                            <span className="text-slate-600 font-mono text-[11px] font-semibold">December 2024 to June 2025</span>
                           </div>
                           <ul className="text-xs text-slate-600 space-y-1 mt-2 list-disc list-inside">
                             <li>Performed off-page SEO activities and citation building.</li>
