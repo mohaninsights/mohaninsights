@@ -12,83 +12,118 @@ const doc = new jsPDF({
 const pageWidth = 595.28;
 const pageHeight = 841.89;
 
-// Colors
-const primaryNavy = [11, 25, 44];       // #0B192C Deep Midnight
-const secondaryNavy = [30, 42, 56];     // #1E2A38
-const accentCyan = [0, 180, 216];       // #00B4D8 Bright Cyan
-const accentBlue = [2, 132, 199];       // #0284C7 Sky Blue
-const textDark = [15, 23, 42];          // #0F172A Main Text
-const textMuted = [71, 85, 105];        // #475569 Secondary Text
-const bgContact = [241, 245, 249];      // #F1F5F9 Soft Light Gray
-const bgBadge = [238, 242, 255];        // #EEEFF
+// Colors matching reference
+const navyDark = [19, 32, 67];        // #132043 Dark Navy
+const titleBlue = [3, 105, 161];      // #0369A1 Sky/Navy accent
+const textDark = [15, 23, 42];        // #0F172A Primary Dark Text
+const textMuted = [71, 85, 105];      // #475569 Secondary Text
+const lineBorder = [203, 213, 225];   // #CBD5E1 Divider Line
+const badgeBg = [241, 245, 249];      // #F1F5F9 Badge Background
 
-// ==================== 1. TOP HEADER BANNER ====================
-// Deep Navy Background
-doc.setFillColor(primaryNavy[0], primaryNavy[1], primaryNavy[2]);
-doc.rect(0, 0, pageWidth, 90, 'F');
-
-// Top Accent Stripe (Cyan)
-doc.setFillColor(accentCyan[0], accentCyan[1], accentCyan[2]);
-doc.rect(0, 0, pageWidth, 4, 'F');
+// 1. TOP NAVY HEADER BANNER (Increased height to 100pt for full vertical balance)
+doc.setFillColor(navyDark[0], navyDark[1], navyDark[2]);
+doc.rect(0, 0, pageWidth, 100, 'F');
 
 // Candidate Name
 doc.setTextColor(255, 255, 255);
 doc.setFont('helvetica', 'bold');
-doc.setFontSize(24);
-doc.text('MOHAN KUMAR', 36, 42);
+doc.setFontSize(28);
+doc.text('MOHAN KUMAR', 40, 48);
 
-// Professional Title & Tagline
-doc.setTextColor(accentCyan[0], accentCyan[1], accentCyan[2]);
+// Professional Title
+doc.setTextColor(186, 230, 253); // Light Sky Cyan
 doc.setFont('helvetica', 'bold');
-doc.setFontSize(10.5);
-doc.text('SEO EXECUTIVE | DIGITAL MARKETING SPECIALIST', 36, 62);
+doc.setFontSize(12);
+doc.text('SEO EXECUTIVE', 40, 72);
 
-// ==================== 2. CONTACT BAR BELOW HEADER ====================
-doc.setFillColor(bgContact[0], bgContact[1], bgContact[2]);
-doc.rect(0, 90, pageWidth, 28, 'F');
+// 2. CONTACT BAR BELOW HEADER
+const contactY = 112;
 
-doc.setDrawColor(226, 232, 240);
-doc.setLineWidth(0.5);
-doc.line(0, 118, pageWidth, 118);
+// Phone Icon Circle + Text
+doc.setFillColor(navyDark[0], navyDark[1], navyDark[2]);
+doc.circle(48, contactY + 5, 9, 'F');
+doc.setTextColor(255, 255, 255);
+doc.setFont('helvetica', 'bold');
+doc.setFontSize(7.5);
+doc.text('P', 45.2, contactY + 8);
 
 doc.setTextColor(textDark[0], textDark[1], textDark[2]);
 doc.setFont('helvetica', 'bold');
-doc.setFontSize(8.5);
+doc.setFontSize(9);
+doc.text('8585974338', 63, contactY + 8.5);
 
-doc.text('Phone: +91 8585974338', 36, 107);
-doc.text('Email: mohankaka172004@gmail.com', 215, 107);
-doc.text('Location: New Delhi, India', 445, 107);
+// Mail Icon Circle + Text
+doc.setFillColor(navyDark[0], navyDark[1], navyDark[2]);
+doc.circle(188, contactY + 5, 9, 'F');
+doc.setTextColor(255, 255, 255);
+doc.setFont('helvetica', 'bold');
+doc.setFontSize(7.5);
+doc.text('M', 185.2, contactY + 8);
 
-// Two Column Setup
-const leftX = 36;
-const leftWidth = 220;
-const rightX = 275;
-const rightWidth = 284;
-let topY = 135;
+doc.setTextColor(textDark[0], textDark[1], textDark[2]);
+doc.setFont('helvetica', 'bold');
+doc.setFontSize(9);
+doc.text('mohankaka172004@gmail.com', 203, contactY + 8.5);
 
-// Helper: Elegant Section Heading
+// Location Icon Circle + Text
+doc.setFillColor(navyDark[0], navyDark[1], navyDark[2]);
+doc.circle(398, contactY + 5, 9, 'F');
+doc.setTextColor(255, 255, 255);
+doc.setFont('helvetica', 'bold');
+doc.setFontSize(7.5);
+doc.text('L', 395.2, contactY + 8);
+
+doc.setTextColor(textDark[0], textDark[1], textDark[2]);
+doc.setFont('helvetica', 'bold');
+doc.setFontSize(9);
+doc.text('New Delhi, India', 413, contactY + 8.5);
+
+// Divider Line under contact bar
+doc.setDrawColor(lineBorder[0], lineBorder[1], lineBorder[2]);
+doc.setLineWidth(1);
+doc.line(35, 136, pageWidth - 35, 136);
+
+// Two Column Layout Dimensions
+const leftX = 35;
+const leftWidth = 225;
+const rightX = 280;
+const rightWidth = 280;
+let topY = 154;
+
+// Helper: Section Heading Pill Badge
 function drawSectionHeading(titleText, x, y, width) {
-  // Accent Vertical Bar
-  doc.setFillColor(accentCyan[0], accentCyan[1], accentCyan[2]);
-  doc.rect(x, y, 3.5, 16, 'F');
-  
-  // Subtle Background Pill
-  doc.setFillColor(bgBadge[0], bgBadge[1], bgBadge[2]);
-  doc.rect(x + 5, y, width - 5, 16, 'F');
+  // Pill Badge Background
+  doc.setFillColor(navyDark[0], navyDark[1], navyDark[2]);
+  doc.roundedRect(x, y, width, 22, 11, 11, 'F');
 
-  // Section Heading Text
-  doc.setTextColor(primaryNavy[0], primaryNavy[1], primaryNavy[2]);
+  // White Icon Badge Circle inside pill
+  doc.setFillColor(255, 255, 255);
+  doc.circle(x + 11, y + 11, 6.5, 'F');
+
+  // Icon Symbol
+  doc.setTextColor(navyDark[0], navyDark[1], navyDark[2]);
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(9);
-  doc.text(titleText, x + 12, y + 11);
+  doc.setFontSize(8);
+  doc.text('•', x + 9.5, y + 13.8);
 
-  return y + 24;
+  // Heading Title Text
+  doc.setTextColor(255, 255, 255);
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(9.5);
+  doc.text(titleText, x + 24, y + 14.5);
+
+  // Bottom Underline
+  doc.setDrawColor(lineBorder[0], lineBorder[1], lineBorder[2]);
+  doc.setLineWidth(0.75);
+  doc.line(x, y + 28, x + width, y + 28);
+
+  return y + 38;
 }
 
-// Helper: Bullet Circle
+// Helper: Bullet Dot
 function drawBullet(x, y) {
-  doc.setFillColor(accentBlue[0], accentBlue[1], accentBlue[2]);
-  doc.circle(x, y - 2.5, 2.2, 'F');
+  doc.setFillColor(textDark[0], textDark[1], textDark[2]);
+  doc.circle(x, y - 3, 2.2, 'F');
 }
 
 // ==================== LEFT COLUMN ====================
@@ -97,15 +132,15 @@ let curLeftY = topY;
 // 1. PROFESSIONAL SUMMARY
 curLeftY = drawSectionHeading('PROFESSIONAL SUMMARY', leftX, curLeftY, leftWidth);
 
-doc.setTextColor(textMuted[0], textMuted[1], textMuted[2]);
+doc.setTextColor(textDark[0], textDark[1], textDark[2]);
 doc.setFont('helvetica', 'normal');
-doc.setFontSize(8);
+doc.setFontSize(8.5);
 
-const summaryText = 'Results-driven SEO Executive with 1.5+ years of hands-on experience managing website organic growth, improving search engine rankings, and driving targeted traffic. Skilled in technical SEO audits, keyword research, competitor analysis, on-page & off-page optimization, link building, and analytics with Google Search Console & GA4.';
+const summaryText = 'Results-driven SEO Executive with 1.5+ years of hands-on experience in managing website organic search, improving keyword rankings, and driving targeted traffic. Highly proficient in keyword research, competitor analysis, technical SEO site audits, on-page & off-page optimization, link building, and performance analytics using Google Search Console and Google Analytics 4.';
 
-const summaryLines = doc.splitTextToSize(summaryText, leftWidth - 6);
-doc.text(summaryLines, leftX + 4, curLeftY);
-curLeftY += summaryLines.length * 11 + 14;
+const summaryLines = doc.splitTextToSize(summaryText, leftWidth - 4);
+doc.text(summaryLines, leftX, curLeftY);
+curLeftY += summaryLines.length * 12 + 20;
 
 // 2. EDUCATION
 curLeftY = drawSectionHeading('EDUCATION', leftX, curLeftY, leftWidth);
@@ -113,7 +148,7 @@ curLeftY = drawSectionHeading('EDUCATION', leftX, curLeftY, leftWidth);
 const educationList = [
   {
     title: 'Diploma in Digital Marketing',
-    inst: 'Indian Inst. of Computer Science',
+    inst: 'Indian Institution of Computer Science',
     date: 'Completed 2024'
   },
   {
@@ -123,7 +158,7 @@ const educationList = [
   },
   {
     title: 'Senior Secondary High School',
-    inst: 'CBSE Board',
+    inst: 'Central Board of Secondary Education (CBSE)',
     date: 'Completed 2022'
   }
 ];
@@ -131,25 +166,25 @@ const educationList = [
 educationList.forEach(edu => {
   doc.setTextColor(textDark[0], textDark[1], textDark[2]);
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(8.5);
-  doc.text(edu.title, leftX + 4, curLeftY);
+  doc.setFontSize(9);
+  doc.text(edu.title, leftX, curLeftY);
   
   doc.setTextColor(textMuted[0], textMuted[1], textMuted[2]);
   doc.setFont('helvetica', 'normal');
-  doc.setFontSize(7.5);
-  doc.text(edu.inst, leftX + 4, curLeftY + 11);
+  doc.setFontSize(8);
+  doc.text(edu.inst, leftX, curLeftY + 12);
   
-  doc.setTextColor(accentBlue[0], accentBlue[1], accentBlue[2]);
+  doc.setTextColor(titleBlue[0], titleBlue[1], titleBlue[2]);
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(7.5);
-  doc.text(edu.date, leftX + 4, curLeftY + 21);
+  doc.setFontSize(8);
+  doc.text(edu.date, leftX, curLeftY + 23);
 
-  curLeftY += 33;
+  curLeftY += 40;
 });
 
-curLeftY += 6;
+curLeftY += 8;
 
-// 3. SKILLS & EXPERTISE
+// 3. SKILLS
 curLeftY = drawSectionHeading('SKILLS & EXPERTISE', leftX, curLeftY, leftWidth);
 
 const skills = [
@@ -162,38 +197,38 @@ const skills = [
   'Google Analytics 4 (GA4)',
   'SEMrush / Ahrefs / Screaming Frog',
   'WordPress CMS & Optimization',
-  'Rank Math & Yoast SEO'
+  'Rank Math / Yoast SEO'
 ];
 
 skills.forEach(skill => {
-  drawBullet(leftX + 8, curLeftY);
+  drawBullet(leftX + 4, curLeftY);
   doc.setTextColor(textDark[0], textDark[1], textDark[2]);
   doc.setFont('helvetica', 'normal');
-  doc.setFontSize(8);
-  doc.text(skill, leftX + 16, curLeftY);
-  curLeftY += 13.5;
+  doc.setFontSize(8.5);
+  doc.text(skill, leftX + 14, curLeftY);
+  curLeftY += 15.5;
 });
 
-curLeftY += 8;
+curLeftY += 12;
 
 // 4. LANGUAGES
 curLeftY = drawSectionHeading('LANGUAGES', leftX, curLeftY, leftWidth);
 
 [
-  { lang: 'Hindi', proficiency: 'Native / Primary' },
-  { lang: 'English', proficiency: 'Professional Working' }
+  { lang: 'Hindi', level: 'Native / Primary' },
+  { lang: 'English', level: 'Professional Working' }
 ].forEach(item => {
-  drawBullet(leftX + 8, curLeftY);
+  drawBullet(leftX + 4, curLeftY);
   doc.setTextColor(textDark[0], textDark[1], textDark[2]);
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(8);
-  doc.text(item.lang, leftX + 16, curLeftY);
+  doc.setFontSize(8.5);
+  doc.text(item.lang, leftX + 14, curLeftY);
   
   doc.setTextColor(textMuted[0], textMuted[1], textMuted[2]);
   doc.setFont('helvetica', 'normal');
-  doc.setFontSize(7.5);
-  doc.text(` - ${item.proficiency}`, leftX + 44, curLeftY);
-  curLeftY += 14;
+  doc.setFontSize(8);
+  doc.text(`- ${item.level}`, leftX + 48, curLeftY);
+  curLeftY += 16;
 });
 
 
@@ -206,81 +241,79 @@ curRightY = drawSectionHeading('WORK EXPERIENCE', rightX, curRightY, rightWidth)
 // Experience 1
 doc.setTextColor(textDark[0], textDark[1], textDark[2]);
 doc.setFont('helvetica', 'bold');
-doc.setFontSize(9.5);
-doc.text('Divine Astro Vastu Science LLP - Acharya Ganesh', rightX + 4, curRightY);
+doc.setFontSize(10);
+doc.text('Divine Astro Vastu Science LLP - Acharya Ganesh', rightX, curRightY);
 
-doc.setTextColor(accentBlue[0], accentBlue[1], accentBlue[2]);
+doc.setTextColor(titleBlue[0], titleBlue[1], titleBlue[2]);
+doc.setFont('helvetica', 'bold');
+doc.setFontSize(9);
+doc.text('SEO Executive', rightX, curRightY + 14);
+
+doc.setTextColor(textMuted[0], textMuted[1], textMuted[2]);
 doc.setFont('helvetica', 'bold');
 doc.setFontSize(8.5);
-doc.text('SEO Executive', rightX + 4, curRightY + 12);
+doc.text('August 2025 – August 2026  |  Full-time', rightX, curRightY + 27);
 
-// Clean formatted date with explicit "to" keyword
-doc.setTextColor(100, 116, 139);
-doc.setFont('helvetica', 'bold');
-doc.setFontSize(7.5);
-doc.text('August 2025 to August 2026 | Full-time', rightX + 4, curRightY + 23);
-
-curRightY += 36;
+curRightY += 42;
 
 const exp1Bullets = [
-  'Handled complete website SEO operations and organic ranking growth.',
-  'Conducted in-depth keyword research and competitor benchmarking.',
-  'Executed regular technical SEO audits and crawl error resolution.',
-  'Created and optimized high-converting service landing pages.',
-  'Managed authority building and link-building campaigns.',
-  'Monitored keyword rankings, organic traffic, and CTR growth using Google Search Console & GA4.'
+  'Managed end-to-end website SEO operations to significantly increase organic traffic and search engine rankings.',
+  'Conducted detailed target keyword research and competitor benchmarking to identify high-value search opportunities.',
+  'Performed regular technical SEO audits, resolving site crawl errors, broken links, and page speed bottlenecks.',
+  'Created and optimized high-intent service landing pages with structured meta tags, headers, and internal linking.',
+  'Executed off-page authority building and strategic link-building campaigns to boost domain rating.',
+  'Monitored keyword positions, organic impressions, and click-through rates (CTR) using Google Search Console and GA4.'
 ];
 
 exp1Bullets.forEach(bullet => {
-  drawBullet(rightX + 8, curRightY);
+  drawBullet(rightX + 4, curRightY);
   doc.setTextColor(textDark[0], textDark[1], textDark[2]);
   doc.setFont('helvetica', 'normal');
-  doc.setFontSize(8);
+  doc.setFontSize(8.5);
   
-  const lines = doc.splitTextToSize(bullet, rightWidth - 20);
-  doc.text(lines, rightX + 16, curRightY);
-  curRightY += lines.length * 10.5 + 3.5;
+  const lines = doc.splitTextToSize(bullet, rightWidth - 16);
+  doc.text(lines, rightX + 14, curRightY);
+  curRightY += lines.length * 11.5 + 5;
 });
 
-curRightY += 12;
+curRightY += 16;
 
 // Experience 2
 doc.setTextColor(textDark[0], textDark[1], textDark[2]);
 doc.setFont('helvetica', 'bold');
-doc.setFontSize(9.5);
-doc.text('ThinkBizz Hightech', rightX + 4, curRightY);
+doc.setFontSize(10);
+doc.text('ThinkBizz Hightech', rightX, curRightY);
 
-doc.setTextColor(accentBlue[0], accentBlue[1], accentBlue[2]);
+doc.setTextColor(titleBlue[0], titleBlue[1], titleBlue[2]);
+doc.setFont('helvetica', 'bold');
+doc.setFontSize(9);
+doc.text('SEO Intern', rightX, curRightY + 14);
+
+doc.setTextColor(textMuted[0], textMuted[1], textMuted[2]);
 doc.setFont('helvetica', 'bold');
 doc.setFontSize(8.5);
-doc.text('SEO Intern', rightX + 4, curRightY + 12);
+doc.text('December 2024 – June 2025  |  Internship', rightX, curRightY + 27);
 
-// Clean formatted date with explicit "to" keyword
-doc.setTextColor(100, 116, 139);
-doc.setFont('helvetica', 'bold');
-doc.setFontSize(7.5);
-doc.text('December 2024 to June 2025 | Internship', rightX + 4, curRightY + 23);
-
-curRightY += 36;
+curRightY += 42;
 
 const exp2Bullets = [
-  'Executed off-page SEO strategies and citation directory submissions.',
-  'Built high-quality backlinks to enhance domain authority and keyword position.',
-  'Assisted senior team in target keyword research and content mapping.'
+  'Executed off-page SEO strategies, web directory listings, and business citation submissions.',
+  'Built high-quality contextual backlinks to improve website authority and search engine indexation.',
+  'Assisted senior marketing team in keyword discovery and content optimization for landing pages.'
 ];
 
 exp2Bullets.forEach(bullet => {
-  drawBullet(rightX + 8, curRightY);
+  drawBullet(rightX + 4, curRightY);
   doc.setTextColor(textDark[0], textDark[1], textDark[2]);
   doc.setFont('helvetica', 'normal');
-  doc.setFontSize(8);
+  doc.setFontSize(8.5);
   
-  const lines = doc.splitTextToSize(bullet, rightWidth - 20);
-  doc.text(lines, rightX + 16, curRightY);
-  curRightY += lines.length * 10.5 + 3.5;
+  const lines = doc.splitTextToSize(bullet, rightWidth - 16);
+  doc.text(lines, rightX + 14, curRightY);
+  curRightY += lines.length * 11.5 + 5;
 });
 
-curRightY += 18;
+curRightY += 20;
 
 // 2. PERSONAL DETAILS
 curRightY = drawSectionHeading('PERSONAL DETAILS', rightX, curRightY, rightWidth);
@@ -288,32 +321,31 @@ curRightY = drawSectionHeading('PERSONAL DETAILS', rightX, curRightY, rightWidth
 const personalDetails = [
   { label: 'Date of Birth', val: '17 August 2004' },
   { label: 'Nationality', val: 'Indian' },
-  { label: 'Marital Status', val: 'Single' }
+  { label: 'Marital Status', val: 'Single' },
+  { label: 'Location', val: 'New Delhi, India' }
 ];
 
 personalDetails.forEach(detail => {
   doc.setTextColor(textDark[0], textDark[1], textDark[2]);
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(8);
-  doc.text(`${detail.label}:`, rightX + 6, curRightY);
+  doc.setFontSize(8.5);
+  doc.text(detail.label, rightX, curRightY);
   
-  doc.setTextColor(textMuted[0], textMuted[1], textMuted[2]);
+  doc.text(':', rightX + 75, curRightY);
+  
   doc.setFont('helvetica', 'normal');
-  doc.setFontSize(8);
-  doc.text(detail.val, rightX + 90, curRightY);
-  curRightY += 15;
+  doc.setTextColor(textMuted[0], textMuted[1], textMuted[2]);
+  doc.text(detail.val, rightX + 85, curRightY);
+  curRightY += 16;
 });
 
-// ==================== BOTTOM FOOTER STRIPE ====================
-doc.setFillColor(primaryNavy[0], primaryNavy[1], primaryNavy[2]);
-doc.rect(0, pageHeight - 16, pageWidth, 16, 'F');
-
-doc.setFillColor(accentCyan[0], accentCyan[1], accentCyan[2]);
-doc.rect(0, pageHeight - 16, pageWidth, 2, 'F');
+// 3. BOTTOM NAVY FOOTER BANNER
+doc.setFillColor(navyDark[0], navyDark[1], navyDark[2]);
+doc.rect(0, pageHeight - 18, pageWidth, 18, 'F');
 
 // Output PDF
 const pdfOutput = doc.output('arraybuffer');
 const outputPath = path.join(process.cwd(), 'public', 'Mohan_Kumar_Resume.pdf');
 fs.writeFileSync(outputPath, Buffer.from(pdfOutput));
 
-console.log('jsPDF resume successfully generated at:', outputPath, 'Size:', pdfOutput.byteLength);
+console.log('Full-page resume PDF successfully generated at:', outputPath, 'Size:', pdfOutput.byteLength);

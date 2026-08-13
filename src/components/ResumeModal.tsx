@@ -186,33 +186,40 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
             {/* Scrollable Document Area (Printable Resume) */}
             <div className="flex-1 overflow-y-auto p-4 sm:p-8 bg-[#0F172A] space-y-6">
               {/* Document Paper Container */}
-              <div ref={resumeRef} className="w-full max-w-3xl mx-auto bg-white text-slate-900 rounded-xl shadow-2xl p-6 sm:p-10 font-sans text-sm relative">
+              <div ref={resumeRef} className="w-full max-w-3xl mx-auto bg-white text-slate-900 rounded-xl shadow-2xl p-6 sm:p-10 font-sans text-sm relative overflow-hidden">
                 
-                {/* Header Section */}
-                <div className="border-b-2 border-slate-800 pb-5 mb-6">
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                    <div>
-                      <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 uppercase">
-                        MOHAN KUMAR
-                      </h1>
-                      <p className="text-brand-cyan font-bold text-base tracking-wider mt-1 text-slate-700">
-                        SEO EXECUTIVE
-                      </p>
+                {/* Header Section (Navy Banner) */}
+                <div className="bg-[#132043] text-white p-6 sm:p-8 -mx-6 -mt-6 sm:-mx-10 sm:-mt-10 mb-6 rounded-t-xl">
+                  <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white uppercase">
+                    MOHAN KUMAR
+                  </h1>
+                  <p className="text-sky-300 font-bold text-sm tracking-widest uppercase mt-1">
+                    SEO EXECUTIVE
+                  </p>
+                </div>
+
+                {/* Contact Pill Bar */}
+                <div className="border-b border-slate-200 pb-4 mb-6">
+                  <div className="flex flex-wrap items-center justify-between gap-3 text-xs text-slate-800 font-medium">
+                    <div className="flex items-center gap-2">
+                      <div className="w-6 h-6 rounded-full bg-[#132043] flex items-center justify-center text-white shrink-0">
+                        <Phone className="w-3 h-3" />
+                      </div>
+                      <span className="font-bold">8585974338</span>
                     </div>
 
-                    <div className="flex flex-col gap-1 text-xs text-slate-600">
-                      <div className="flex items-center gap-2">
-                        <Phone className="w-3.5 h-3.5 text-slate-800" />
-                        <span className="font-semibold">+91 8585974338</span>
+                    <div className="flex items-center gap-2">
+                      <div className="w-6 h-6 rounded-full bg-[#132043] flex items-center justify-center text-white shrink-0">
+                        <Mail className="w-3 h-3" />
                       </div>
-                      <div className="flex items-center gap-2">
-                        <Mail className="w-3.5 h-3.5 text-slate-800" />
-                        <span className="font-semibold">mohankaka172004@gmail.com</span>
+                      <span className="font-bold">mohankaka172004@gmail.com</span>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <div className="w-6 h-6 rounded-full bg-[#132043] flex items-center justify-center text-white shrink-0">
+                        <MapPin className="w-3 h-3" />
                       </div>
-                      <div className="flex items-center gap-2">
-                        <MapPin className="w-3.5 h-3.5 text-slate-800" />
-                        <span className="font-semibold">New Delhi, India</span>
-                      </div>
+                      <span className="font-bold">New Delhi</span>
                     </div>
                   </div>
                 </div>
@@ -225,90 +232,102 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                     
                     {/* Summary */}
                     <div>
-                      <h2 className="text-xs font-bold uppercase tracking-widest text-slate-900 bg-slate-100 px-3 py-1.5 rounded-md mb-2 flex items-center gap-2">
-                        <FileText className="w-3.5 h-3.5 text-slate-700" />
-                        Summary
-                      </h2>
-                      <p className="text-xs text-slate-600 leading-relaxed">
-                        Results-driven SEO Executive with 1.5+ years of experience handling websites, improving search engine rankings, and driving organic traffic. Skilled in keyword research, competitor analysis, site audits, technical SEO, link building, and performance tracking using Google Search Console & Google Analytics.
+                      <div className="flex items-center gap-2 mb-2 border-b border-slate-200 pb-1.5">
+                        <span className="px-3.5 py-1 bg-[#132043] text-white rounded-full text-[11px] font-bold tracking-wider uppercase flex items-center gap-1.5 shadow-sm">
+                          <FileText className="w-3.5 h-3.5" />
+                          PROFESSIONAL SUMMARY
+                        </span>
+                      </div>
+                      <p className="text-xs text-slate-700 leading-relaxed font-normal">
+                        Results-driven SEO Executive with 1.5+ years of hands-on experience in managing website organic search, improving keyword rankings, and driving targeted traffic. Highly proficient in keyword research, competitor analysis, technical SEO site audits, on-page & off-page optimization, link building, and performance analytics using Google Search Console and Google Analytics 4.
                       </p>
                     </div>
 
                     {/* Education */}
                     <div>
-                      <h2 className="text-xs font-bold uppercase tracking-widest text-slate-900 bg-slate-100 px-3 py-1.5 rounded-md mb-3 flex items-center gap-2">
-                        <GraduationCap className="w-3.5 h-3.5 text-slate-700" />
-                        Education
-                      </h2>
-                      <div className="space-y-3">
+                      <div className="flex items-center gap-2 mb-3 border-b border-slate-200 pb-1.5">
+                        <span className="px-3.5 py-1 bg-[#132043] text-white rounded-full text-[11px] font-bold tracking-wider uppercase flex items-center gap-1.5 shadow-sm">
+                          <GraduationCap className="w-3.5 h-3.5" />
+                          EDUCATION
+                        </span>
+                      </div>
+                      <div className="space-y-3.5">
                         <div>
                           <p className="font-bold text-xs text-slate-900">Diploma in Digital Marketing</p>
-                          <p className="text-[11px] text-slate-600">Indian Inst. of Computer Science</p>
-                          <p className="text-[10px] font-semibold text-sky-700">Completed 2024</p>
+                          <p className="text-[11px] text-slate-600">Indian Institution of Computer Science</p>
+                          <p className="text-[10px] font-bold text-sky-800">Completed 2024</p>
                         </div>
                         <div>
                           <p className="font-bold text-xs text-slate-900">Bachelor of Arts (BA)</p>
                           <p className="text-[11px] text-slate-600">Delhi University</p>
-                          <p className="text-[10px] font-semibold text-sky-700">Graduated 2025</p>
+                          <p className="text-[10px] font-bold text-sky-800">Graduated 2025</p>
                         </div>
                         <div>
                           <p className="font-bold text-xs text-slate-900">Senior Secondary High School</p>
-                          <p className="text-[11px] text-slate-600">CBSE Board</p>
-                          <p className="text-[10px] font-semibold text-sky-700">Completed 2022</p>
+                          <p className="text-[11px] text-slate-600">Central Board of Secondary Education (CBSE)</p>
+                          <p className="text-[10px] font-bold text-sky-800">Completed 2022</p>
                         </div>
                       </div>
                     </div>
 
                     {/* Skills */}
                     <div>
-                      <h2 className="text-xs font-bold uppercase tracking-widest text-slate-900 bg-slate-100 px-3 py-1.5 rounded-md mb-2.5 flex items-center gap-2">
-                        <Award className="w-3.5 h-3.5 text-slate-700" />
-                        Skills
-                      </h2>
-                      <ul className="space-y-1.5 text-xs text-slate-700">
+                      <div className="flex items-center gap-2 mb-2.5 border-b border-slate-200 pb-1.5">
+                        <span className="px-3.5 py-1 bg-[#132043] text-white rounded-full text-[11px] font-bold tracking-wider uppercase flex items-center gap-1.5 shadow-sm">
+                          <Award className="w-3.5 h-3.5" />
+                          SKILLS & EXPERTISE
+                        </span>
+                      </div>
+                      <ul className="space-y-2 text-xs text-slate-800">
                         <li className="flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-sky-600" /> SEO (On-Page & Off-Page)
+                          <span className="w-1.5 h-1.5 rounded-full bg-slate-900" /> SEO (On-Page & Off-Page)
                         </li>
                         <li className="flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-sky-600" /> Keyword Research
+                          <span className="w-1.5 h-1.5 rounded-full bg-slate-900" /> Keyword Research & Strategy
                         </li>
                         <li className="flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-sky-600" /> Technical SEO Audits
+                          <span className="w-1.5 h-1.5 rounded-full bg-slate-900" /> Competitor Benchmarking
                         </li>
                         <li className="flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-sky-600" /> Competitor Analysis
+                          <span className="w-1.5 h-1.5 rounded-full bg-slate-900" /> Technical SEO Audits
                         </li>
                         <li className="flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-sky-600" /> Link Building
+                          <span className="w-1.5 h-1.5 rounded-full bg-slate-900" /> High-Quality Link Building
                         </li>
                         <li className="flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-sky-600" /> Google Search Console
+                          <span className="w-1.5 h-1.5 rounded-full bg-slate-900" /> Google Search Console
                         </li>
                         <li className="flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-sky-600" /> Google Analytics 4
+                          <span className="w-1.5 h-1.5 rounded-full bg-slate-900" /> Google Analytics 4 (GA4)
                         </li>
                         <li className="flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-sky-600" /> SEMrush, Ahrefs, Frog
+                          <span className="w-1.5 h-1.5 rounded-full bg-slate-900" /> SEMrush / Ahrefs / Screaming Frog
                         </li>
                         <li className="flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-sky-600" /> WordPress / CMS
+                          <span className="w-1.5 h-1.5 rounded-full bg-slate-900" /> WordPress CMS & Optimization
                         </li>
                         <li className="flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-sky-600" /> Rank Math / Yoast SEO
+                          <span className="w-1.5 h-1.5 rounded-full bg-slate-900" /> Rank Math / Yoast SEO
                         </li>
                       </ul>
                     </div>
 
                     {/* Languages */}
                     <div>
-                      <h2 className="text-xs font-bold uppercase tracking-widest text-slate-900 bg-slate-100 px-3 py-1.5 rounded-md mb-2 flex items-center gap-2">
-                        <Globe className="w-3.5 h-3.5 text-slate-700" />
-                        Languages
-                      </h2>
-                      <p className="text-xs text-slate-700">
-                        • Hindi (Native) <br />
-                        • English (Professional)
-                      </p>
+                      <div className="flex items-center gap-2 mb-2 border-b border-slate-200 pb-1.5">
+                        <span className="px-3.5 py-1 bg-[#132043] text-white rounded-full text-[11px] font-bold tracking-wider uppercase flex items-center gap-1.5 shadow-sm">
+                          <Globe className="w-3.5 h-3.5" />
+                          LANGUAGES
+                        </span>
+                      </div>
+                      <ul className="space-y-1.5 text-xs text-slate-800">
+                        <li className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-slate-900" /> Hindi <span className="text-slate-500 text-[11px]">(Native / Primary)</span>
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-slate-900" /> English <span className="text-slate-500 text-[11px]">(Professional Working)</span>
+                        </li>
+                      </ul>
                     </div>
 
                   </div>
@@ -318,44 +337,46 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                     
                     {/* Work Experience */}
                     <div>
-                      <h2 className="text-xs font-bold uppercase tracking-widest text-slate-900 bg-slate-100 px-3 py-1.5 rounded-md mb-4 flex items-center gap-2">
-                        <Briefcase className="w-3.5 h-3.5 text-slate-700" />
-                        Work Experience
-                      </h2>
+                      <div className="flex items-center gap-2 mb-4 border-b border-slate-200 pb-1.5">
+                        <span className="px-3.5 py-1 bg-[#132043] text-white rounded-full text-[11px] font-bold tracking-wider uppercase flex items-center gap-1.5 shadow-sm">
+                          <Briefcase className="w-3.5 h-3.5" />
+                          WORK EXPERIENCE
+                        </span>
+                      </div>
 
-                      <div className="space-y-5">
+                      <div className="space-y-6">
                         {/* Job 1 */}
-                        <div className="border-l-2 border-slate-200 pl-4 space-y-1.5">
+                        <div className="space-y-1.5">
                           <h3 className="font-bold text-sm text-slate-900">
-                            Divine Astro Vastu Science LLP - Acharya Ganesh
+                            Divine Astro Vastu Science LLP – Acharya Ganesh
                           </h3>
                           <div className="flex items-center justify-between text-xs">
-                            <span className="font-bold text-sky-700">SEO Executive</span>
-                            <span className="text-slate-600 font-mono text-[11px] font-semibold">August 2025 to August 2026</span>
+                            <span className="font-bold text-sky-800">SEO Executive</span>
+                            <span className="text-slate-600 font-semibold text-[11px]">August 2025 – August 2026</span>
                           </div>
-                          <ul className="text-xs text-slate-600 space-y-1.5 mt-2 list-disc list-inside">
-                            <li>Handled the complete website and SEO activities.</li>
-                            <li>Conducted keyword research and competitor analysis.</li>
-                            <li>Performed regular website technical SEO audits.</li>
-                            <li>Created and optimized high-intent service pages.</li>
-                            <li>Worked on link-building activities and off-page authority.</li>
-                            <li>Monitored keyword rankings and organic performance using Google Search Console and Google Analytics 4.</li>
+                          <ul className="text-xs text-slate-700 space-y-1.5 mt-2 list-disc list-inside">
+                            <li>Managed end-to-end website SEO operations to significantly increase organic traffic and search engine rankings.</li>
+                            <li>Conducted detailed target keyword research and competitor benchmarking to identify high-value search opportunities.</li>
+                            <li>Performed regular technical SEO audits, resolving site crawl errors, broken links, and page speed bottlenecks.</li>
+                            <li>Created and optimized high-intent service landing pages with structured meta tags, headers, and internal linking.</li>
+                            <li>Executed off-page authority building and strategic link-building campaigns to boost domain rating.</li>
+                            <li>Monitored keyword positions, organic impressions, and click-through rates (CTR) using Google Search Console and GA4.</li>
                           </ul>
                         </div>
 
                         {/* Job 2 */}
-                        <div className="border-l-2 border-slate-200 pl-4 space-y-1.5">
+                        <div className="space-y-1.5">
                           <h3 className="font-bold text-sm text-slate-900">
                             ThinkBizz Hightech
                           </h3>
                           <div className="flex items-center justify-between text-xs">
-                            <span className="font-bold text-sky-700">SEO Intern</span>
-                            <span className="text-slate-600 font-mono text-[11px] font-semibold">December 2024 to June 2025</span>
+                            <span className="font-bold text-sky-800">SEO Intern</span>
+                            <span className="text-slate-600 font-semibold text-[11px]">December 2024 – June 2025</span>
                           </div>
-                          <ul className="text-xs text-slate-600 space-y-1 mt-2 list-disc list-inside">
-                            <li>Performed off-page SEO activities and citation building.</li>
-                            <li>Built high-quality backlinks to improve domain authority.</li>
-                            <li>Conducted keyword research for target landing pages.</li>
+                          <ul className="text-xs text-slate-700 space-y-1.5 mt-2 list-disc list-inside">
+                            <li>Executed off-page SEO strategies, web directory listings, and business citation submissions.</li>
+                            <li>Built high-quality contextual backlinks to improve website authority and search engine indexation.</li>
+                            <li>Assisted senior marketing team in keyword discovery and content optimization for landing pages.</li>
                           </ul>
                         </div>
                       </div>
@@ -363,18 +384,26 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
 
                     {/* Personal Details */}
                     <div>
-                      <h2 className="text-xs font-bold uppercase tracking-widest text-slate-900 bg-slate-100 px-3 py-1.5 rounded-md mb-3 flex items-center gap-2">
-                        Personal Details
-                      </h2>
-                      <div className="grid grid-cols-2 gap-2 text-xs text-slate-700 bg-slate-50 p-3 rounded-lg border border-slate-100">
-                        <div>
-                          <span className="font-bold text-slate-900">Date of Birth:</span> 17 August 2004
+                      <div className="flex items-center gap-2 mb-3 border-b border-slate-200 pb-1.5">
+                        <span className="px-3 py-1 bg-[#132043] text-white rounded-full text-[11px] font-bold tracking-wider uppercase flex items-center gap-1.5 shadow-sm">
+                          PERSONAL DETAILS
+                        </span>
+                      </div>
+                      <div className="space-y-1.5 text-xs text-slate-800">
+                        <div className="flex items-center">
+                          <span className="font-bold w-28 text-slate-900">Date of Birth</span>
+                          <span className="mr-2">:</span>
+                          <span>17 August 2004</span>
                         </div>
-                        <div>
-                          <span className="font-bold text-slate-900">Nationality:</span> Indian
+                        <div className="flex items-center">
+                          <span className="font-bold w-28 text-slate-900">Nationality</span>
+                          <span className="mr-2">:</span>
+                          <span>Indian</span>
                         </div>
-                        <div>
-                          <span className="font-bold text-slate-900">Marital Status:</span> Single
+                        <div className="flex items-center">
+                          <span className="font-bold w-28 text-slate-900">Marital Status</span>
+                          <span className="mr-2">:</span>
+                          <span>Single</span>
                         </div>
                       </div>
                     </div>
@@ -382,6 +411,9 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                   </div>
 
                 </div>
+
+                {/* Bottom Navy Footer Bar */}
+                <div className="h-3.5 bg-[#132043] -mx-6 -mb-6 sm:-mx-10 sm:-mb-10 mt-8 rounded-b-xl" />
 
               </div>
             </div>
