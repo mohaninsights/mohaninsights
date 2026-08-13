@@ -285,34 +285,6 @@ export default function CaseStudy() {
                 </div>
               </div>
 
-              {/* 3) Keyword Ranking Growth */}
-              <div
-                className="rounded-3xl overflow-hidden glass-panel border border-[var(--glass-border)] bg-[var(--bg-card)] p-5 sm:p-6 shadow-lg transition-all duration-500 hover:shadow-[0_0_40px_rgba(0,242,254,0.1)] hover:border-brand-cyan/30"
-              >
-                <div className="flex items-center gap-2.5 mb-4 px-1 pb-2 border-b border-white/[0.04]">
-                  <div className="w-6 h-6 rounded-lg bg-brand-cyan/10 border border-brand-cyan/20 flex items-center justify-center text-brand-cyan">
-                    <TrendingUp className="w-4 h-4" />
-                  </div>
-                  <h3 className="font-display font-bold text-base sm:text-lg text-[var(--text-main)] tracking-wide">
-                    Keyword Ranking Growth
-                  </h3>
-                </div>
-
-                {/* Inner Sheet rankings screenshot frame */}
-                <div className="relative rounded-xl overflow-hidden border border-white/5 bg-[var(--bg-card-heavy)]">
-                  <img
-                    src={currentProject.rankings}
-                    alt={`Google search engine keyword ranking and position improvement dashboard tracking sheet by Mohan SEO`}
-                    className="w-full h-auto block"
-                    loading="lazy"
-                    decoding="async"
-                    referrerPolicy="no-referrer"
-                  />
-                  {/* Horizontal high-contrast glowing divider */}
-                  <div className="absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-brand-cyan/60 to-transparent bottom-4 opacity-50" />
-                </div>
-              </div>
-
             </div>
 
             {/* ==================== RIGHT SIDE ==================== */}
@@ -368,6 +340,34 @@ export default function CaseStudy() {
                       </div>
                     );
                   })}
+                </div>
+              </div>
+
+              {/* 3) Keyword Ranking Growth */}
+              <div
+                className="rounded-3xl overflow-hidden glass-panel border border-[var(--glass-border)] bg-[var(--bg-card)] p-5 sm:p-6 shadow-lg transition-all duration-500 hover:shadow-[0_0_40px_rgba(0,242,254,0.1)] hover:border-brand-cyan/30"
+              >
+                <div className="flex items-center gap-2.5 mb-4 px-1 pb-2 border-b border-white/[0.04]">
+                  <div className="w-6 h-6 rounded-lg bg-brand-cyan/10 border border-brand-cyan/20 flex items-center justify-center text-brand-cyan">
+                    <TrendingUp className="w-4 h-4" />
+                  </div>
+                  <h3 className="font-display font-bold text-base sm:text-lg text-[var(--text-main)] tracking-wide">
+                    Keyword Ranking Growth
+                  </h3>
+                </div>
+
+                {/* Inner Sheet rankings screenshot frame */}
+                <div className="relative rounded-xl overflow-hidden border border-white/5 bg-[var(--bg-card-heavy)]">
+                  <img
+                    src={currentProject.rankings}
+                    alt={`Google search engine keyword ranking and position improvement dashboard tracking sheet by Mohan SEO`}
+                    className="w-full h-auto block"
+                    loading="lazy"
+                    decoding="async"
+                    referrerPolicy="no-referrer"
+                  />
+                  {/* Horizontal high-contrast glowing divider */}
+                  <div className="absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-brand-cyan/60 to-transparent bottom-4 opacity-50" />
                 </div>
               </div>
 
