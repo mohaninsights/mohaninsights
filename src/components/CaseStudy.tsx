@@ -170,31 +170,50 @@ export default function CaseStudy() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="flex flex-col sm:flex-row sm:items-center gap-6 mb-16 max-w-2xl bg-white/[0.01] border border-white/[0.03] p-4 sm:p-5 rounded-2xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.02)]"
+          className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-12 sm:mb-16 max-w-full lg:max-w-4xl bg-white/[0.01] border border-white/[0.05] lg:border-white/10 p-5 sm:p-6 rounded-2xl sm:rounded-3xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.03)] lg:hover:border-brand-cyan/30 transition-all duration-500"
         >
-          {/* Logo container */}
-          <div className={`relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden border border-white/10 shadow-[0_4px_24px_rgba(0,0,0,0.5)] shrink-0 transition-colors duration-300 group/logo ${
-            currentProject.id === "hanish" ? "bg-white" : "bg-black/60"
-          }`}>
-            <img
-              src={currentProject.logo}
-              alt={`${currentProject.title} Brand Logo - Optimized by Mohan SEO`}
-              className="w-full h-full object-contain p-1 transition-transform duration-500 group-hover/logo:scale-105"
-              loading="lazy"
-              decoding="async"
-              referrerPolicy="no-referrer"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+          {/* Logo & Main Info */}
+          <div className="flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-6">
+            <div className={`relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden border border-white/10 shadow-[0_4px_24px_rgba(0,0,0,0.5)] shrink-0 transition-colors duration-300 group/logo ${
+              currentProject.id === "hanish" ? "bg-white" : "bg-black/60"
+            }`}>
+              <img
+                src={currentProject.logo}
+                alt={`${currentProject.title} Brand Logo - Optimized by Mohan SEO`}
+                className="w-full h-full object-contain p-1 transition-transform duration-500 group-hover/logo:scale-105"
+                loading="lazy"
+                decoding="async"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+            </div>
+
+            <div className="space-y-1.5">
+              <div className="flex items-center gap-2">
+                <span className="font-mono text-[9px] text-brand-cyan uppercase tracking-widest font-semibold block">Case Study Breakdown</span>
+                <span className="hidden lg:inline-block w-1.5 h-1.5 rounded-full bg-brand-cyan animate-pulse" />
+                <span className="hidden lg:inline-block font-mono text-[9px] text-emerald-400 uppercase tracking-widest font-bold">Verified Organic Metrics</span>
+              </div>
+              <p className="font-display font-black text-lg sm:text-2xl text-white tracking-tight">
+                {currentProject.title}
+              </p>
+              <p className="font-sans text-xs text-[var(--text-muted)] leading-relaxed max-w-xl">
+                {currentProject.description}
+              </p>
+            </div>
           </div>
-          {/* Text description */}
-          <div className="space-y-1">
-            <span className="font-mono text-[9px] text-brand-cyan uppercase tracking-widest font-semibold block">Case Study Project</span>
-            <p className="font-display font-black text-lg sm:text-xl text-white tracking-tight">
-              {currentProject.title}
-            </p>
-            <p className="font-sans text-xs text-[var(--text-muted)] leading-relaxed max-w-md">
-              {currentProject.description}
-            </p>
+
+          {/* Desktop-only Quick Highlights Pill Container */}
+          <div className="hidden lg:flex flex-col items-end gap-2 shrink-0 border-l border-white/10 pl-8">
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-cyan/10 border border-brand-cyan/20">
+              <Sparkles className="w-3.5 h-3.5 text-brand-cyan" />
+              <span className="font-mono text-[10px] text-brand-cyan uppercase font-bold tracking-wider">
+                {currentProject.id === "acharya" ? "Custom SEO Scaling Engine" : "Niche Dominance Strategy"}
+              </span>
+            </div>
+            <span className="font-sans text-[11px] text-gray-400 font-medium">
+              Targeted Search Engine Optimization
+            </span>
           </div>
         </motion.div>
 
@@ -206,52 +225,57 @@ export default function CaseStudy() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -30 }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start"
+            className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start"
           >
             
             {/* ==================== LEFT SIDE ==================== */}
-            <div className="lg:col-span-6 space-y-6 lg:space-y-5">
+            <div className="lg:col-span-6 space-y-6 lg:space-y-7">
               
               {/* 1) Website Preview */}
               <div
-                className="relative group rounded-3xl overflow-hidden glass-panel border border-[var(--glass-border)] bg-[var(--bg-card)] p-5 sm:p-6 shadow-[0_20px_50px_rgba(0,0,0,0.4)] transition-all duration-500 hover:shadow-[0_0_40px_rgba(0,242,254,0.15)] hover:border-brand-cyan/30"
+                className="relative group rounded-3xl overflow-hidden glass-panel border border-[var(--glass-border)] lg:border-white/10 bg-[var(--bg-card)] p-5 sm:p-6 shadow-[0_20px_50px_rgba(0,0,0,0.4)] transition-all duration-500 hover:shadow-[0_0_40px_rgba(0,242,254,0.2)] hover:border-brand-cyan/40"
               >
                 {/* Card top gradient header */}
-                <div className="flex items-center justify-between mb-4 px-1 pb-2 border-b border-white/[0.04]">
-                  <div className="flex items-center gap-2">
+                <div className="flex items-center justify-between mb-4 px-1 pb-2.5 border-b border-white/[0.06]">
+                  <div className="flex items-center gap-2.5">
                     <div className="flex items-center gap-1.5">
-                      <span className="w-3 h-3 rounded-full bg-red-500/80" />
-                      <span className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                      <span className="w-3 h-3 rounded-full bg-green-500/80" />
+                      <span className="w-3 h-3 rounded-full bg-red-500/80 shadow-[0_0_8px_rgba(239,68,68,0.4)]" />
+                      <span className="w-3 h-3 rounded-full bg-yellow-500/80 shadow-[0_0_8px_rgba(234,179,8,0.4)]" />
+                      <span className="w-3 h-3 rounded-full bg-green-500/80 shadow-[0_0_8px_rgba(34,197,94,0.4)]" />
                     </div>
                     <h3 className="font-display font-bold text-base sm:text-lg text-[var(--text-main)] ml-1.5 tracking-wide">
                       Live Website Preview
                     </h3>
                   </div>
-                  <ArrowUpRight className="w-4 h-4 text-brand-cyan opacity-50 group-hover:opacity-100 transition-opacity" />
+                  <div className="flex items-center gap-2">
+                    <span className="hidden lg:inline-block font-mono text-[10px] text-brand-cyan/80 uppercase tracking-widest font-semibold px-2.5 py-0.5 rounded-full bg-brand-cyan/10 border border-brand-cyan/20">
+                      UX & On-Page
+                    </span>
+                    <ArrowUpRight className="w-4 h-4 text-brand-cyan opacity-70 group-hover:opacity-100 transition-opacity" />
+                  </div>
                 </div>
 
                 {/* Inner preview frame */}
                 <div 
-                  className="relative rounded-xl overflow-hidden border border-white/5 bg-[var(--bg-card-heavy)] cursor-pointer group/preview shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:shadow-[0_15px_40px_rgba(0,242,254,0.15)] transition-all duration-500"
+                  className="relative rounded-xl overflow-hidden border border-white/5 lg:border-white/10 bg-[var(--bg-card-heavy)] cursor-pointer group/preview shadow-[0_10px_30px_rgba(0,0,0,0.5)] lg:hover:shadow-[0_20px_50px_rgba(0,242,254,0.2)] transition-all duration-500"
                   onClick={() => setIsLightboxOpen(true)}
                   title="Click to view full image"
                 >
                   <img
                     src={currentProject.websitePreview}
                     alt={`${currentProject.title} SEO and Conversion Rate Optimization Live Website Preview by Mohan SEO`}
-                    className="w-full h-auto block transition-transform duration-500 group-hover/preview:scale-[1.04]"
+                    className="w-full h-auto block transition-transform duration-700 group-hover/preview:scale-[1.03]"
                     loading="lazy"
                     decoding="async"
                     referrerPolicy="no-referrer"
                   />
                   {/* Premium overlay on hover */}
-                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover/preview:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-2 pointer-events-none">
-                    <div className="w-10 h-10 rounded-full bg-brand-cyan/20 border border-brand-cyan/40 flex items-center justify-center text-brand-cyan shadow-[0_0_15px_rgba(0,242,254,0.3)] transform scale-90 group-hover/preview:scale-100 transition-all duration-300">
-                      <Maximize2 className="w-4 h-4" />
+                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover/preview:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-2 pointer-events-none backdrop-blur-[2px]">
+                    <div className="w-11 h-11 rounded-full bg-brand-cyan/20 border border-brand-cyan/40 flex items-center justify-center text-brand-cyan shadow-[0_0_20px_rgba(0,242,254,0.4)] transform scale-90 group-hover/preview:scale-100 transition-all duration-300">
+                      <Maximize2 className="w-5 h-5" />
                     </div>
-                    <span className="font-display font-bold text-[10px] tracking-wider text-white uppercase bg-black/40 px-2.5 py-1 rounded-md border border-white/5 shadow-md">
-                      Click to expand
+                    <span className="font-display font-bold text-[11px] tracking-wider text-white uppercase bg-black/60 px-3 py-1 rounded-md border border-white/10 shadow-lg">
+                      Click to expand preview
                     </span>
                   </div>
                 </div>
@@ -259,19 +283,24 @@ export default function CaseStudy() {
 
               {/* 2) Google Search Console Screenshot */}
               <div
-                className="rounded-3xl overflow-hidden glass-panel border border-[var(--glass-border)] bg-[var(--bg-card)] p-5 sm:p-6 shadow-[0_20px_50px_rgba(0,0,0,0.4)] transition-all duration-500 hover:shadow-[0_0_40px_rgba(189,115,255,0.1)] hover:border-brand-purple/30"
+                className="rounded-3xl overflow-hidden glass-panel border border-[var(--glass-border)] lg:border-white/10 bg-[var(--bg-card)] p-5 sm:p-6 shadow-[0_20px_50px_rgba(0,0,0,0.4)] transition-all duration-500 hover:shadow-[0_0_40px_rgba(189,115,255,0.18)] hover:border-brand-purple/40"
               >
-                <div className="flex items-center gap-2.5 mb-4 px-1 pb-2 border-b border-white/[0.04]">
-                  <div className="w-6 h-6 rounded-lg bg-brand-purple/10 border border-brand-purple/20 flex items-center justify-center text-brand-purple">
-                    <LineChart className="w-4 h-4" />
+                <div className="flex items-center justify-between mb-4 px-1 pb-2.5 border-b border-white/[0.06]">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-7 h-7 rounded-lg bg-brand-purple/10 border border-brand-purple/20 flex items-center justify-center text-brand-purple shadow-[0_0_12px_rgba(189,115,255,0.2)]">
+                      <LineChart className="w-4 h-4" />
+                    </div>
+                    <h3 className="font-display font-bold text-base sm:text-lg text-[var(--text-main)] tracking-wide">
+                      Google Search Console
+                    </h3>
                   </div>
-                  <h3 className="font-display font-bold text-base sm:text-lg text-[var(--text-main)] tracking-wide">
-                    Google Search Console
-                  </h3>
+                  <span className="hidden lg:inline-block font-mono text-[10px] text-brand-purple uppercase tracking-widest font-semibold px-2.5 py-0.5 rounded-full bg-brand-purple/10 border border-brand-purple/20">
+                    Organic Traffic Scale
+                  </span>
                 </div>
 
                 {/* Inner screenshot frame */}
-                <div className="relative rounded-xl overflow-hidden border border-white/5 bg-[var(--bg-card-heavy)]">
+                <div className="relative rounded-xl overflow-hidden border border-white/5 lg:border-white/10 bg-[var(--bg-card-heavy)] shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
                   <img
                     src={currentProject.gsc}
                     alt={`Google Search Console (GSC) organic impression and click growth chart for ${currentProject.title} - Case Study by Mohan SEO`}
@@ -281,28 +310,28 @@ export default function CaseStudy() {
                     referrerPolicy="no-referrer"
                   />
                   {/* Premium hover scanner line */}
-                  <div className="absolute inset-x-0 h-[1.5px] bg-brand-cyan/40 shadow-[0_0_8px_#00F2FF] top-1/2 animate-pulse pointer-events-none" />
+                  <div className="absolute inset-x-0 h-[1.5px] bg-brand-cyan/50 shadow-[0_0_10px_#00F2FF] top-1/2 animate-pulse pointer-events-none" />
                 </div>
               </div>
 
             </div>
 
             {/* ==================== RIGHT SIDE ==================== */}
-            <div className="lg:col-span-6 space-y-6 lg:space-y-5">
+            <div className="lg:col-span-6 space-y-6 lg:space-y-7">
               
               {/* 1) Key Challenge Card */}
               <div
-                className="relative overflow-hidden rounded-3xl glass-panel-heavy border-l-4 border-l-amber-500 border-y border-r border-[var(--glass-border)] bg-[var(--bg-card)] p-5 sm:p-6 shadow-lg"
+                className="relative overflow-hidden rounded-3xl glass-panel-heavy border-l-4 border-l-amber-500 border-y border-r border-[var(--glass-border)] lg:border-white/10 bg-[var(--bg-card)] p-5 sm:p-6 shadow-lg lg:hover:border-r-amber-500/30 transition-all duration-300"
               >
                 <div className="flex items-start gap-4">
-                  <div className="w-8 h-8 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-500 flex-shrink-0">
+                  <div className="w-9 h-9 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-500 flex-shrink-0 shadow-[0_0_15px_rgba(245,158,11,0.2)]">
                     <AlertTriangle className="w-4 h-4" />
                   </div>
                   <div>
                     <span className="font-mono text-[9px] uppercase tracking-wider text-amber-500 font-bold block mb-1">
                       Primary Bottleneck
                     </span>
-                    <h4 className="font-display font-bold text-sm text-[var(--text-main)] tracking-tight leading-relaxed">
+                    <h4 className="font-display font-bold text-sm sm:text-base text-[var(--text-main)] tracking-tight leading-relaxed">
                       {currentProject.bottleneck}
                     </h4>
                   </div>
@@ -311,30 +340,35 @@ export default function CaseStudy() {
 
               {/* 2) Key Strategies Checklist (Pairs/Grid Layout) */}
               <div
-                className="rounded-3xl glass-panel border border-[var(--glass-border)] bg-[var(--bg-card)] p-6 sm:p-8 shadow-lg"
+                className="rounded-3xl glass-panel border border-[var(--glass-border)] lg:border-white/10 bg-[var(--bg-card)] p-6 sm:p-7 shadow-lg lg:hover:border-brand-cyan/30 transition-all duration-500"
               >
-                <div className="flex items-center gap-2 mb-5 border-b border-white/[0.04] pb-3">
-                  <div className="w-5 h-5 rounded bg-brand-cyan/10 border border-brand-cyan/20 flex items-center justify-center text-brand-cyan">
-                    <Check className="w-3.5 h-3.5 stroke-[2.5]" />
+                <div className="flex items-center justify-between mb-5 border-b border-white/[0.06] pb-3">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-6 h-6 rounded-lg bg-brand-cyan/10 border border-brand-cyan/20 flex items-center justify-center text-brand-cyan shadow-[0_0_12px_rgba(0,242,254,0.2)]">
+                      <Check className="w-3.5 h-3.5 stroke-[2.5]" />
+                    </div>
+                    <span className="font-mono text-[11px] font-black tracking-wider text-[var(--text-muted)] uppercase">
+                      Proven Execution Strategies
+                    </span>
                   </div>
-                  <span className="font-mono text-[11px] font-black tracking-wider text-[var(--text-muted)] uppercase">
-                    Proven Execution Strategies
+                  <span className="hidden lg:inline-block font-mono text-[10px] text-gray-400 font-bold">
+                    {currentProject.strategies.length} Actions Deployed
                   </span>
                 </div>
 
                 {/* Grid layout for strategies */}
-                <div className="grid grid-cols-2 gap-2.5">
+                <div className="grid grid-cols-2 gap-2.5 sm:gap-3">
                   {currentProject.strategies.map((strat, idx) => {
                     const IconComp = strat.icon;
                     return (
                       <div
                         key={idx}
-                        className="flex items-center gap-2.5 bg-white/[0.01] border border-[var(--glass-border)] hover:border-brand-cyan/25 px-3 py-2.5 rounded-xl transition-all duration-300 group/item"
+                        className="flex items-center gap-2.5 bg-white/[0.01] border border-[var(--glass-border)] lg:border-white/5 hover:border-brand-cyan/30 lg:hover:bg-brand-cyan/[0.03] px-3 py-2.5 sm:px-3.5 sm:py-3 rounded-xl transition-all duration-300 group/item"
                       >
-                        <div className="w-6 h-6 rounded-lg bg-brand-cyan/5 border border-brand-cyan/10 flex items-center justify-center text-brand-cyan group-hover/item:bg-brand-cyan/10 group-hover/item:border-brand-cyan/20 transition-colors">
+                        <div className="w-6 h-6 rounded-lg bg-brand-cyan/5 border border-brand-cyan/10 flex items-center justify-center text-brand-cyan group-hover/item:bg-brand-cyan/15 group-hover/item:border-brand-cyan/30 group-hover/item:scale-105 transition-all">
                           <IconComp className="w-3.5 h-3.5" />
                         </div>
-                        <span className="font-sans text-[11px] text-[var(--text-sub)] font-semibold tracking-wide truncate">
+                        <span className="font-sans text-[11px] sm:text-xs text-[var(--text-sub)] font-semibold tracking-wide truncate">
                           {strat.name}
                         </span>
                       </div>
@@ -345,19 +379,24 @@ export default function CaseStudy() {
 
               {/* 3) Keyword Ranking Growth */}
               <div
-                className="rounded-3xl overflow-hidden glass-panel border border-[var(--glass-border)] bg-[var(--bg-card)] p-5 sm:p-6 shadow-lg transition-all duration-500 hover:shadow-[0_0_40px_rgba(0,242,254,0.1)] hover:border-brand-cyan/30"
+                className="rounded-3xl overflow-hidden glass-panel border border-[var(--glass-border)] lg:border-white/10 bg-[var(--bg-card)] p-5 sm:p-6 shadow-lg transition-all duration-500 hover:shadow-[0_0_40px_rgba(0,242,254,0.18)] hover:border-brand-cyan/40"
               >
-                <div className="flex items-center gap-2.5 mb-4 px-1 pb-2 border-b border-white/[0.04]">
-                  <div className="w-6 h-6 rounded-lg bg-brand-cyan/10 border border-brand-cyan/20 flex items-center justify-center text-brand-cyan">
-                    <TrendingUp className="w-4 h-4" />
+                <div className="flex items-center justify-between mb-4 px-1 pb-2.5 border-b border-white/[0.06]">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-7 h-7 rounded-lg bg-brand-cyan/10 border border-brand-cyan/20 flex items-center justify-center text-brand-cyan shadow-[0_0_12px_rgba(0,242,254,0.2)]">
+                      <TrendingUp className="w-4 h-4" />
+                    </div>
+                    <h3 className="font-display font-bold text-base sm:text-lg text-[var(--text-main)] tracking-wide">
+                      Keyword Ranking Growth
+                    </h3>
                   </div>
-                  <h3 className="font-display font-bold text-base sm:text-lg text-[var(--text-main)] tracking-wide">
-                    Keyword Ranking Growth
-                  </h3>
+                  <span className="hidden lg:inline-block font-mono text-[10px] text-brand-cyan uppercase tracking-widest font-semibold px-2.5 py-0.5 rounded-full bg-brand-cyan/10 border border-brand-cyan/20">
+                    Search SERP Rankings
+                  </span>
                 </div>
 
                 {/* Inner Sheet rankings screenshot frame */}
-                <div className="relative rounded-xl overflow-hidden border border-white/5 bg-[var(--bg-card-heavy)]">
+                <div className="relative rounded-xl overflow-hidden border border-white/5 lg:border-white/10 bg-[var(--bg-card-heavy)] shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
                   <img
                     src={currentProject.rankings}
                     alt={`Google search engine keyword ranking and position improvement dashboard tracking sheet by Mohan SEO`}
@@ -371,26 +410,26 @@ export default function CaseStudy() {
                 </div>
               </div>
 
-              {/* 3) Key Improvement Highlights */}
+              {/* 4) Key Improvement Highlights */}
               <div className="space-y-4">
                 <span className="font-mono text-[10px] uppercase tracking-widest text-[var(--text-muted)] font-bold block px-1">
                   ✦ High-Impact Outcomes
                 </span>
                 
-                <div className="grid grid-cols-2 gap-3.5">
+                <div className="grid grid-cols-2 gap-3 sm:gap-3.5">
                   {currentProject.improvements.map((imp, idx) => (
                     <motion.div
                       key={idx}
                       initial={{ opacity: 0, y: 15 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: idx * 0.05 }}
-                      className="flex items-center gap-3 bg-brand-cyan/[0.02] hover:bg-brand-cyan/[0.04] border border-brand-cyan/10 hover:border-brand-cyan/25 p-3.5 rounded-2xl transition-all duration-300 group/outcome"
+                      transition={{ duration: 0.4, delay: idx * 0.04 }}
+                      className="flex items-center gap-3 bg-brand-cyan/[0.02] hover:bg-brand-cyan/[0.06] border border-brand-cyan/10 hover:border-brand-cyan/30 p-3.5 rounded-2xl transition-all duration-300 group/outcome shadow-sm hover:shadow-[0_4px_20px_rgba(0,242,254,0.12)]"
                     >
-                      <div className="w-5 h-5 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 group-hover/outcome:scale-110 transition-transform">
+                      <div className="w-5 h-5 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 group-hover/outcome:scale-110 transition-transform shrink-0">
                         <Check className="w-3 h-3 stroke-[2.5]" />
                       </div>
-                      <span className="font-display text-[12px] font-bold text-[var(--text-main)] tracking-wide">
+                      <span className="font-display text-[12px] sm:text-[13px] font-bold text-[var(--text-main)] tracking-wide">
                         {imp}
                       </span>
                     </motion.div>
