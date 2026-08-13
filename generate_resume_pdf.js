@@ -18,9 +18,8 @@ const titleBlue = [3, 105, 161];      // #0369A1 Sky/Navy accent
 const textDark = [15, 23, 42];        // #0F172A Primary Dark Text
 const textMuted = [71, 85, 105];      // #475569 Secondary Text
 const lineBorder = [203, 213, 225];   // #CBD5E1 Divider Line
-const badgeBg = [241, 245, 249];      // #F1F5F9 Badge Background
 
-// 1. TOP NAVY HEADER BANNER (Increased height to 100pt for full vertical balance)
+// 1. TOP NAVY HEADER BANNER
 doc.setFillColor(navyDark[0], navyDark[1], navyDark[2]);
 doc.rect(0, 0, pageWidth, 100, 'F');
 
@@ -39,39 +38,39 @@ doc.text('SEO EXECUTIVE', 40, 72);
 // 2. CONTACT BAR BELOW HEADER
 const contactY = 112;
 
-// Phone Icon Circle + Text
+// Phone Icon Circle + Vector Handset
 doc.setFillColor(navyDark[0], navyDark[1], navyDark[2]);
 doc.circle(48, contactY + 5, 9, 'F');
-doc.setTextColor(255, 255, 255);
-doc.setFont('helvetica', 'bold');
-doc.setFontSize(7.5);
-doc.text('P', 45.2, contactY + 8);
+doc.setDrawColor(255, 255, 255);
+doc.setFillColor(255, 255, 255);
+doc.circle(48, contactY + 3.2, 1.5, 'F');
+doc.roundedRect(46.2, contactY + 4.5, 3.6, 3.2, 0.5, 0.5, 'F');
 
 doc.setTextColor(textDark[0], textDark[1], textDark[2]);
 doc.setFont('helvetica', 'bold');
 doc.setFontSize(9);
 doc.text('8585974338', 63, contactY + 8.5);
 
-// Mail Icon Circle + Text
+// Mail Icon Circle + Vector Envelope
 doc.setFillColor(navyDark[0], navyDark[1], navyDark[2]);
 doc.circle(188, contactY + 5, 9, 'F');
-doc.setTextColor(255, 255, 255);
-doc.setFont('helvetica', 'bold');
-doc.setFontSize(7.5);
-doc.text('M', 185.2, contactY + 8);
+doc.setDrawColor(255, 255, 255);
+doc.setLineWidth(0.8);
+doc.rect(184.5, contactY + 2.5, 7, 5, 'S');
+doc.line(184.5, contactY + 2.5, 188, contactY + 5.2);
+doc.line(191.5, contactY + 2.5, 188, contactY + 5.2);
 
 doc.setTextColor(textDark[0], textDark[1], textDark[2]);
 doc.setFont('helvetica', 'bold');
 doc.setFontSize(9);
 doc.text('mohankaka172004@gmail.com', 203, contactY + 8.5);
 
-// Location Icon Circle + Text
+// Location Icon Circle + Vector Pin
 doc.setFillColor(navyDark[0], navyDark[1], navyDark[2]);
 doc.circle(398, contactY + 5, 9, 'F');
-doc.setTextColor(255, 255, 255);
-doc.setFont('helvetica', 'bold');
-doc.setFontSize(7.5);
-doc.text('L', 395.2, contactY + 8);
+doc.setFillColor(255, 255, 255);
+doc.circle(398, contactY + 3.8, 2, 'F');
+doc.triangle(396.2, contactY + 4.5, 399.8, contactY + 4.5, 398, contactY + 8.5, 'F');
 
 doc.setTextColor(textDark[0], textDark[1], textDark[2]);
 doc.setFont('helvetica', 'bold');
@@ -90,8 +89,51 @@ const rightX = 280;
 const rightWidth = 280;
 let topY = 154;
 
+// Helper: Vector Icon Renderer for Section Headings
+function drawHeadingIcon(type, cx, cy) {
+  doc.setDrawColor(19, 32, 67);
+  doc.setFillColor(19, 32, 67);
+  
+  if (type === 'summary') {
+    // Person / User Icon
+    doc.circle(cx, cy - 1.8, 1.8, 'F');
+    doc.roundedRect(cx - 3, cy + 0.8, 6, 2.8, 1, 1, 'F');
+  } else if (type === 'education') {
+    // Graduation Cap Icon
+    doc.triangle(cx - 4, cy - 0.5, cx, cy - 3.2, cx + 4, cy - 0.5, 'F');
+    doc.triangle(cx - 4, cy - 0.5, cx, cy + 1.2, cx + 4, cy - 0.5, 'F');
+    doc.rect(cx - 2, cy + 1, 4, 1.8, 'F');
+  } else if (type === 'skills') {
+    // Star / Expertise Icon
+    doc.setLineWidth(0.8);
+    doc.circle(cx, cy, 1.2, 'F');
+    doc.line(cx - 3, cy, cx + 3, cy);
+    doc.line(cx, cy - 3, cx, cy + 3);
+    doc.line(cx - 2, cy - 2, cx + 2, cy + 2);
+    doc.line(cx - 2, cy + 2, cx + 2, cy - 2);
+  } else if (type === 'languages') {
+    // Globe / Language Icon
+    doc.setLineWidth(0.7);
+    doc.circle(cx, cy, 3, 'S');
+    doc.line(cx - 3, cy, cx + 3, cy);
+    doc.line(cx, cy - 3, cx, cy + 3);
+  } else if (type === 'experience') {
+    // Briefcase Icon
+    doc.setLineWidth(0.7);
+    doc.rect(cx - 1.2, cy - 3.5, 2.4, 1.2, 'S');
+    doc.rect(cx - 3.5, cy - 2, 7, 4.8, 'F');
+  } else if (type === 'personal') {
+    // ID Card / User Badge Icon
+    doc.setLineWidth(0.7);
+    doc.roundedRect(cx - 3.5, cy - 3, 7, 6, 0.5, 0.5, 'S');
+    doc.circle(cx - 1, cy - 0.5, 1, 'F');
+    doc.line(cx + 1, cy - 1, cx + 2.8, cy - 1);
+    doc.line(cx + 1, cy + 1, cx + 2.8, cy + 1);
+  }
+}
+
 // Helper: Section Heading Pill Badge
-function drawSectionHeading(titleText, x, y, width) {
+function drawSectionHeading(titleText, x, y, width, iconType) {
   // Pill Badge Background
   doc.setFillColor(navyDark[0], navyDark[1], navyDark[2]);
   doc.roundedRect(x, y, width, 22, 11, 11, 'F');
@@ -100,11 +142,8 @@ function drawSectionHeading(titleText, x, y, width) {
   doc.setFillColor(255, 255, 255);
   doc.circle(x + 11, y + 11, 6.5, 'F');
 
-  // Icon Symbol
-  doc.setTextColor(navyDark[0], navyDark[1], navyDark[2]);
-  doc.setFont('helvetica', 'bold');
-  doc.setFontSize(8);
-  doc.text('•', x + 9.5, y + 13.8);
+  // Draw crisp vector icon inside white circle
+  drawHeadingIcon(iconType, x + 11, y + 11);
 
   // Heading Title Text
   doc.setTextColor(255, 255, 255);
@@ -130,7 +169,7 @@ function drawBullet(x, y) {
 let curLeftY = topY;
 
 // 1. PROFESSIONAL SUMMARY
-curLeftY = drawSectionHeading('PROFESSIONAL SUMMARY', leftX, curLeftY, leftWidth);
+curLeftY = drawSectionHeading('PROFESSIONAL SUMMARY', leftX, curLeftY, leftWidth, 'summary');
 
 doc.setTextColor(textDark[0], textDark[1], textDark[2]);
 doc.setFont('helvetica', 'normal');
@@ -143,7 +182,7 @@ doc.text(summaryLines, leftX, curLeftY);
 curLeftY += summaryLines.length * 12 + 20;
 
 // 2. EDUCATION
-curLeftY = drawSectionHeading('EDUCATION', leftX, curLeftY, leftWidth);
+curLeftY = drawSectionHeading('EDUCATION', leftX, curLeftY, leftWidth, 'education');
 
 const educationList = [
   {
@@ -185,7 +224,7 @@ educationList.forEach(edu => {
 curLeftY += 8;
 
 // 3. SKILLS
-curLeftY = drawSectionHeading('SKILLS & EXPERTISE', leftX, curLeftY, leftWidth);
+curLeftY = drawSectionHeading('SKILLS & EXPERTISE', leftX, curLeftY, leftWidth, 'skills');
 
 const skills = [
   'SEO (On-Page & Off-Page)',
@@ -212,7 +251,7 @@ skills.forEach(skill => {
 curLeftY += 12;
 
 // 4. LANGUAGES
-curLeftY = drawSectionHeading('LANGUAGES', leftX, curLeftY, leftWidth);
+curLeftY = drawSectionHeading('LANGUAGES', leftX, curLeftY, leftWidth, 'languages');
 
 [
   { lang: 'Hindi', level: 'Native / Primary' },
@@ -236,7 +275,7 @@ curLeftY = drawSectionHeading('LANGUAGES', leftX, curLeftY, leftWidth);
 let curRightY = topY;
 
 // 1. WORK EXPERIENCE
-curRightY = drawSectionHeading('WORK EXPERIENCE', rightX, curRightY, rightWidth);
+curRightY = drawSectionHeading('WORK EXPERIENCE', rightX, curRightY, rightWidth, 'experience');
 
 // Experience 1
 doc.setTextColor(textDark[0], textDark[1], textDark[2]);
@@ -316,7 +355,7 @@ exp2Bullets.forEach(bullet => {
 curRightY += 20;
 
 // 2. PERSONAL DETAILS
-curRightY = drawSectionHeading('PERSONAL DETAILS', rightX, curRightY, rightWidth);
+curRightY = drawSectionHeading('PERSONAL DETAILS', rightX, curRightY, rightWidth, 'personal');
 
 const personalDetails = [
   { label: 'Date of Birth', val: '17 August 2004' },
@@ -348,4 +387,4 @@ const pdfOutput = doc.output('arraybuffer');
 const outputPath = path.join(process.cwd(), 'public', 'Mohan_Kumar_Resume.pdf');
 fs.writeFileSync(outputPath, Buffer.from(pdfOutput));
 
-console.log('Full-page resume PDF successfully generated at:', outputPath, 'Size:', pdfOutput.byteLength);
+console.log('Full-page vector resume PDF successfully generated at:', outputPath, 'Size:', pdfOutput.byteLength);

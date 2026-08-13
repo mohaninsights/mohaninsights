@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { X, Download, Printer, ExternalLink, FileText, CheckCircle2, Phone, Mail, MapPin, Briefcase, GraduationCap, Award, Globe, Loader2 } from "lucide-react";
+import { X, Download, Printer, ExternalLink, FileText, CheckCircle2, Phone, Mail, MapPin, Briefcase, GraduationCap, Award, Globe, User, Loader2 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
@@ -233,8 +233,10 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                     {/* Summary */}
                     <div>
                       <div className="flex items-center gap-2 mb-2 border-b border-slate-200 pb-1.5">
-                        <span className="px-3.5 py-1 bg-[#132043] text-white rounded-full text-[11px] font-bold tracking-wider uppercase flex items-center gap-1.5 shadow-sm">
-                          <FileText className="w-3.5 h-3.5" />
+                        <span className="px-3 py-1 bg-[#132043] text-white rounded-full text-[11px] font-bold tracking-wider uppercase flex items-center gap-2 shadow-sm">
+                          <span className="w-4 h-4 rounded-full bg-white flex items-center justify-center text-[#132043] shrink-0">
+                            <FileText className="w-2.5 h-2.5 stroke-[2.5]" />
+                          </span>
                           PROFESSIONAL SUMMARY
                         </span>
                       </div>
@@ -246,8 +248,10 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                     {/* Education */}
                     <div>
                       <div className="flex items-center gap-2 mb-3 border-b border-slate-200 pb-1.5">
-                        <span className="px-3.5 py-1 bg-[#132043] text-white rounded-full text-[11px] font-bold tracking-wider uppercase flex items-center gap-1.5 shadow-sm">
-                          <GraduationCap className="w-3.5 h-3.5" />
+                        <span className="px-3 py-1 bg-[#132043] text-white rounded-full text-[11px] font-bold tracking-wider uppercase flex items-center gap-2 shadow-sm">
+                          <span className="w-4 h-4 rounded-full bg-white flex items-center justify-center text-[#132043] shrink-0">
+                            <GraduationCap className="w-2.5 h-2.5 stroke-[2.5]" />
+                          </span>
                           EDUCATION
                         </span>
                       </div>
@@ -273,8 +277,10 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                     {/* Skills */}
                     <div>
                       <div className="flex items-center gap-2 mb-2.5 border-b border-slate-200 pb-1.5">
-                        <span className="px-3.5 py-1 bg-[#132043] text-white rounded-full text-[11px] font-bold tracking-wider uppercase flex items-center gap-1.5 shadow-sm">
-                          <Award className="w-3.5 h-3.5" />
+                        <span className="px-3 py-1 bg-[#132043] text-white rounded-full text-[11px] font-bold tracking-wider uppercase flex items-center gap-2 shadow-sm">
+                          <span className="w-4 h-4 rounded-full bg-white flex items-center justify-center text-[#132043] shrink-0">
+                            <Award className="w-2.5 h-2.5 stroke-[2.5]" />
+                          </span>
                           SKILLS & EXPERTISE
                         </span>
                       </div>
@@ -315,8 +321,10 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                     {/* Languages */}
                     <div>
                       <div className="flex items-center gap-2 mb-2 border-b border-slate-200 pb-1.5">
-                        <span className="px-3.5 py-1 bg-[#132043] text-white rounded-full text-[11px] font-bold tracking-wider uppercase flex items-center gap-1.5 shadow-sm">
-                          <Globe className="w-3.5 h-3.5" />
+                        <span className="px-3 py-1 bg-[#132043] text-white rounded-full text-[11px] font-bold tracking-wider uppercase flex items-center gap-2 shadow-sm">
+                          <span className="w-4 h-4 rounded-full bg-white flex items-center justify-center text-[#132043] shrink-0">
+                            <Globe className="w-2.5 h-2.5 stroke-[2.5]" />
+                          </span>
                           LANGUAGES
                         </span>
                       </div>
@@ -338,8 +346,10 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                     {/* Work Experience */}
                     <div>
                       <div className="flex items-center gap-2 mb-4 border-b border-slate-200 pb-1.5">
-                        <span className="px-3.5 py-1 bg-[#132043] text-white rounded-full text-[11px] font-bold tracking-wider uppercase flex items-center gap-1.5 shadow-sm">
-                          <Briefcase className="w-3.5 h-3.5" />
+                        <span className="px-3 py-1 bg-[#132043] text-white rounded-full text-[11px] font-bold tracking-wider uppercase flex items-center gap-2 shadow-sm">
+                          <span className="w-4 h-4 rounded-full bg-white flex items-center justify-center text-[#132043] shrink-0">
+                            <Briefcase className="w-2.5 h-2.5 stroke-[2.5]" />
+                          </span>
                           WORK EXPERIENCE
                         </span>
                       </div>
@@ -385,7 +395,10 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                     {/* Personal Details */}
                     <div>
                       <div className="flex items-center gap-2 mb-3 border-b border-slate-200 pb-1.5">
-                        <span className="px-3 py-1 bg-[#132043] text-white rounded-full text-[11px] font-bold tracking-wider uppercase flex items-center gap-1.5 shadow-sm">
+                        <span className="px-3 py-1 bg-[#132043] text-white rounded-full text-[11px] font-bold tracking-wider uppercase flex items-center gap-2 shadow-sm">
+                          <span className="w-4 h-4 rounded-full bg-white flex items-center justify-center text-[#132043] shrink-0">
+                            <User className="w-2.5 h-2.5 stroke-[2.5]" />
+                          </span>
                           PERSONAL DETAILS
                         </span>
                       </div>
