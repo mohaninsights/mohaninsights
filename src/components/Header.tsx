@@ -4,9 +4,10 @@ import { Menu, X, ArrowUpRight, MessageSquare, Printer, FileText } from "lucide-
 
 interface HeaderProps {
   onNavClick: (sectionId: string) => void;
+  onResumeClick?: () => void;
 }
 
-export default function Header({ onNavClick }: HeaderProps) {
+export default function Header({ onNavClick, onResumeClick }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
@@ -105,11 +106,12 @@ export default function Header({ onNavClick }: HeaderProps) {
 
           {/* Action Call to Action Button */}
           <div className="hidden lg:flex items-center gap-3">
-            <a
-              href="/Mohan_Kumar_Resume.pdf"
-              download="Mohan_Kumar_Resume.pdf"
+            <button
+              onClick={() => {
+                onResumeClick?.();
+              }}
               className="relative group px-5 py-2.5 rounded-full font-display text-xs tracking-wider font-semibold text-black bg-gradient-to-r from-brand-cyan to-brand-purple hover:scale-105 transition-all duration-300 flex items-center gap-1.5 cursor-pointer shadow-[0_0_20px_rgba(0,242,254,0.4)] hover:shadow-[0_0_30px_rgba(0,242,254,0.7)] border border-brand-cyan/20 overflow-visible"
-              title="Download Resume PDF"
+              title="View & Download Resume"
             >
               {/* Pulsing ring around button */}
               <span className="absolute -inset-[2px] rounded-full bg-gradient-to-r from-brand-cyan to-brand-purple opacity-45 blur-[4px] group-hover:opacity-100 transition-opacity duration-300 animate-ping [animation-duration:3s]" />
@@ -118,7 +120,7 @@ export default function Header({ onNavClick }: HeaderProps) {
                 <span>Resume</span>
                 <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </span>
-            </a>
+            </button>
             <button
               onClick={() => handleLinkClick("contact")}
               className="relative group px-5 py-2.5 rounded-full font-display text-xs tracking-wider font-semibold text-black bg-white hover:bg-brand-cyan hover:text-black hover:scale-105 transition-all duration-300 shadow-md hover:shadow-[0_0_15px_rgba(0,242,254,0.4)] flex items-center gap-1.5 cursor-pointer border border-transparent hover:border-brand-cyan"
@@ -171,18 +173,17 @@ export default function Header({ onNavClick }: HeaderProps) {
                 </button>
               ))}
 
-              <a
-                href="/Mohan_Kumar_Resume.pdf"
-                download="Mohan_Kumar_Resume.pdf"
+              <button
                 onClick={() => {
                   setIsOpen(false);
+                  onResumeClick?.();
                 }}
                 className="w-full mt-2 py-3.5 rounded-xl bg-gradient-to-r from-brand-cyan via-brand-cyan/95 to-brand-purple text-black font-display font-bold text-center text-sm flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(0,242,254,0.35)] relative overflow-hidden"
               >
                 <FileText className="w-4.5 h-4.5" />
-                <span>Download Resume</span>
+                <span>View / Download Resume</span>
                 <ArrowUpRight className="w-4 h-4" />
-              </a>
+              </button>
 
               <button
                 onClick={() => handleLinkClick("contact")}

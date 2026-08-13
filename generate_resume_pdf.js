@@ -4,68 +4,72 @@ import path from 'path';
 
 const doc = new PDFDocument({
   size: 'A4',
-  margin: 0
+  margin: 0,
+  info: {
+    Title: 'Mohan Kumar Resume',
+    Author: 'Mohan Kumar',
+    Subject: 'SEO Executive Resume',
+    Keywords: 'SEO, Search Engine Optimization, Resume, Mohan Kumar'
+  }
 });
 
 const outputPath = path.join(process.cwd(), 'public', 'Mohan_Kumar_Resume.pdf');
 const stream = fs.createWriteStream(outputPath);
 doc.pipe(stream);
 
-// Page Dimensions
+// Page Dimensions (A4 in points: 595.28 x 841.89)
 const pageWidth = 595.28;
 const pageHeight = 841.89;
 
-// Color Palette (Navy, Slate, Dark Blue, Gray, Accent Blue)
+// Color Palette
 const primaryNavy = '#0F2537';
 const headerBg = '#132E48';
 const accentBlue = '#1A6DBB';
-const textDark = '#222222';
-const textMuted = '#555555';
-const lightBg = '#F8FAFC';
+const textDark = '#1E293B';
+const textMuted = '#475569';
 const borderLine = '#CBD5E1';
 
-// Top Banner
-doc.rect(0, 0, pageWidth, 110).fill(primaryNavy);
+// Top Navy Header Banner
+doc.rect(0, 0, pageWidth, 100).fill(primaryNavy);
 
-// Name
+// Candidate Name
 doc.fillColor('#FFFFFF')
    .font('Helvetica-Bold')
-   .fontSize(28)
-   .text('MOHAN KUMAR', 40, 25, { characterSpacing: 1.5 });
+   .fontSize(26)
+   .text('MOHAN KUMAR', 40, 22, { characterSpacing: 1 });
 
-// Title
+// Professional Title
 doc.fillColor('#38BDF8')
    .font('Helvetica-Bold')
-   .fontSize(13)
-   .text('SEO EXECUTIVE', 40, 60, { characterSpacing: 2 });
+   .fontSize(12)
+   .text('SEO EXECUTIVE', 40, 56, { characterSpacing: 1.5 });
 
-// Contact Info Bar Below Header
-doc.rect(0, 110, pageWidth, 32).fill('#E2E8F0');
+// Contact Info Bar
+doc.rect(0, 100, pageWidth, 28).fill('#E2E8F0');
 
 doc.fillColor(textDark)
    .font('Helvetica-Bold')
-   .fontSize(9.5);
+   .fontSize(9);
 
-// Contact items
-doc.text('📞  8585974338', 40, 121);
-doc.text('✉️  mohankaka172004@gmail.com', 210, 121);
-doc.text('📍  New Delhi', 470, 121);
+doc.text('Phone: 8585974338', 40, 109);
+doc.text('Email: mohankaka172004@gmail.com', 200, 109);
+doc.text('Location: New Delhi, India', 440, 109);
 
-// Two Column Setup
+// Two Column Layout Coordinates
 const leftX = 35;
 const leftWidth = 230;
 const rightX = 285;
 const rightWidth = 275;
-let topY = 160;
+let topY = 145;
 
-// Helper function for section headings
+// Helper function for Section Headings
 function drawSectionHeading(text, x, y, width) {
-  doc.rect(x, y, width, 22).fill(headerBg);
+  doc.rect(x, y, width, 20).fill(headerBg);
   doc.fillColor('#FFFFFF')
      .font('Helvetica-Bold')
-     .fontSize(10.5)
-     .text(text, x + 10, y + 6, { characterSpacing: 1 });
-  return y + 28;
+     .fontSize(10)
+     .text(text, x + 8, y + 5, { characterSpacing: 1 });
+  return y + 26;
 }
 
 // ==================== LEFT COLUMN ====================
@@ -81,10 +85,10 @@ doc.fillColor(textMuted)
      'Results-driven SEO Executive with 1.5+ years of experience in handling websites, improving search engine rankings, and driving organic traffic. Skilled in keyword research, competitor analysis, site audits, on-page and off-page SEO, link building, and performance tracking using Google Search Console and Google Analytics.',
      leftX + 2,
      curLeftY,
-     { width: leftWidth - 4, align: 'justify', lineGap: 3 }
+     { width: leftWidth - 4, align: 'left', lineGap: 3 }
    );
 
-curLeftY += 85;
+curLeftY += 82;
 
 // 2. EDUCATION
 curLeftY = drawSectionHeading('EDUCATION', leftX, curLeftY, leftWidth);
@@ -102,7 +106,7 @@ const educationList = [
   },
   {
     title: 'Senior Secondary High School',
-    inst: 'Central Board of Secondary Education (CBSE)',
+    inst: 'CBSE',
     date: 'Completed 2022'
   }
 ];
@@ -123,7 +127,7 @@ educationList.forEach(edu => {
      .fontSize(7.5)
      .text(edu.date, leftX + 2, curLeftY + 22);
 
-  curLeftY += 36;
+  curLeftY += 34;
 });
 
 curLeftY += 5;
@@ -145,18 +149,18 @@ const skills = [
 ];
 
 skills.forEach(skill => {
-  doc.fillColor(accentBlue).fontSize(8).text('•', leftX + 4, curLeftY);
+  doc.fillColor(accentBlue).fontSize(9).text('•', leftX + 4, curLeftY);
   doc.fillColor(textDark).font('Helvetica').fontSize(8.5).text(skill, leftX + 14, curLeftY);
-  curLeftY += 14;
+  curLeftY += 13.5;
 });
 
-curLeftY += 10;
+curLeftY += 8;
 
 // 4. LANGUAGES
 curLeftY = drawSectionHeading('LANGUAGES', leftX, curLeftY, leftWidth);
 
-['Hindi', 'English'].forEach(lang => {
-  doc.fillColor(accentBlue).fontSize(8).text('•', leftX + 4, curLeftY);
+['Hindi (Native)', 'English (Professional)'].forEach(lang => {
+  doc.fillColor(accentBlue).fontSize(9).text('•', leftX + 4, curLeftY);
   doc.fillColor(textDark).font('Helvetica').fontSize(8.5).text(lang, leftX + 14, curLeftY);
   curLeftY += 14;
 });
@@ -171,20 +175,20 @@ curRightY = drawSectionHeading('WORK EXPERIENCE', rightX, curRightY, rightWidth)
 // Experience 1
 doc.fillColor(textDark)
    .font('Helvetica-Bold')
-   .fontSize(10.5)
+   .fontSize(10)
    .text('Divine Astro Vastu Science LLP – Acharya Ganesh', rightX + 2, curRightY);
 
 doc.fillColor(accentBlue)
    .font('Helvetica-Bold')
-   .fontSize(9)
-   .text('SEO Executive', rightX + 2, curRightY + 14);
+   .fontSize(8.5)
+   .text('SEO Executive', rightX + 2, curRightY + 13);
 
 doc.fillColor('#64748B')
    .font('Helvetica-Bold')
    .fontSize(8)
-   .text('📅  August 2025 – August 2026', rightX + 2, curRightY + 26);
+   .text('August 2025 – August 2026', rightX + 2, curRightY + 25);
 
-curRightY += 40;
+curRightY += 38;
 
 const exp1Bullets = [
   'Handled the complete website and SEO activities.',
@@ -196,33 +200,33 @@ const exp1Bullets = [
 ];
 
 exp1Bullets.forEach(bullet => {
-  doc.fillColor(accentBlue).fontSize(8).text('•', rightX + 6, curRightY);
+  doc.fillColor(accentBlue).fontSize(9).text('•', rightX + 6, curRightY);
   doc.fillColor(textDark)
      .font('Helvetica')
      .fontSize(8.5)
-     .text(bullet, rightX + 16, curRightY, { width: rightWidth - 20, lineGap: 2 });
-  curRightY += doc.heightOfString(bullet, { width: rightWidth - 20 }) + 5;
+     .text(bullet, rightX + 16, curRightY, { width: rightWidth - 20, lineGap: 1.5 });
+  curRightY += doc.heightOfString(bullet, { width: rightWidth - 20 }) + 4;
 });
 
-curRightY += 15;
+curRightY += 12;
 
 // Experience 2
 doc.fillColor(textDark)
    .font('Helvetica-Bold')
-   .fontSize(10.5)
+   .fontSize(10)
    .text('ThinkBizz Hightech', rightX + 2, curRightY);
 
 doc.fillColor(accentBlue)
    .font('Helvetica-Bold')
-   .fontSize(9)
-   .text('SEO Intern', rightX + 2, curRightY + 14);
+   .fontSize(8.5)
+   .text('SEO Intern', rightX + 2, curRightY + 13);
 
 doc.fillColor('#64748B')
    .font('Helvetica-Bold')
    .fontSize(8)
-   .text('📅  December 2024 – June 2025', rightX + 2, curRightY + 26);
+   .text('December 2024 – June 2025', rightX + 2, curRightY + 25);
 
-curRightY += 40;
+curRightY += 38;
 
 const exp2Bullets = [
   'Performed off-page SEO activities.',
@@ -231,15 +235,15 @@ const exp2Bullets = [
 ];
 
 exp2Bullets.forEach(bullet => {
-  doc.fillColor(accentBlue).fontSize(8).text('•', rightX + 6, curRightY);
+  doc.fillColor(accentBlue).fontSize(9).text('•', rightX + 6, curRightY);
   doc.fillColor(textDark)
      .font('Helvetica')
      .fontSize(8.5)
      .text(bullet, rightX + 16, curRightY, { width: rightWidth - 20 });
-  curRightY += 15;
+  curRightY += 14;
 });
 
-curRightY += 25;
+curRightY += 20;
 
 // 2. PERSONAL DETAILS
 curRightY = drawSectionHeading('PERSONAL DETAILS', rightX, curRightY, rightWidth);
@@ -253,10 +257,10 @@ const personalDetails = [
 personalDetails.forEach(detail => {
   doc.fillColor(textDark).font('Helvetica-Bold').fontSize(8.5).text(`${detail.label} :`, rightX + 4, curRightY);
   doc.fillColor(textMuted).font('Helvetica').fontSize(8.5).text(detail.val, rightX + 100, curRightY);
-  curRightY += 16;
+  curRightY += 15;
 });
 
-// Bottom Banner
+// Bottom Navy Banner
 doc.rect(0, pageHeight - 16, pageWidth, 16).fill(primaryNavy);
 
 doc.end();

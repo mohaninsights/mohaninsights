@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useState } from "react";
 import ThreeBackground from "./components/ThreeBackground";
 import Header from "./components/Header";
 import HeroPoster from "./components/HeroPoster";
@@ -9,14 +9,33 @@ import CaseStudy from "./components/CaseStudy";
 import Experience from "./components/Experience";
 import Contact from "./components/Contact";
 import ThankYou from "./components/ThankYou";
+import ResumeModal from "./components/ResumeModal";
 import { motion } from "motion/react";
 
 export default function App() {
+  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
+
   // Smooth scroll helper
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
+  const handleOpenResume = () => {
+    setIsResumeModalOpen(true);
+
+    // Also trigger direct PDF file download silently
+    try {
+      const link = document.createElement("a");
+      link.href = "/Mohan_Kumar_Resume.pdf";
+      link.download = "Mohan_Kumar_Resume.pdf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (e) {
+      console.log("Auto-download triggered", e);
     }
   };
 
@@ -32,12 +51,12 @@ export default function App() {
         <ThreeBackground />
 
         {/* Sticky Glassmorphic Header */}
-        <Header onNavClick={scrollToSection} />
+        <Header onNavClick={scrollToSection} onResumeClick={handleOpenResume} />
 
         {/* Structured Sections */}
         <main>
           {/* Poster Section as Home */}
-          <HeroPoster onBtnClick={scrollToSection} />
+          <HeroPoster onBtnClick={scrollToSection} onResumeClick={handleOpenResume} />
 
           {/* About Section */}
           <About onBtnClick={scrollToSection} />
@@ -60,6 +79,12 @@ export default function App() {
 
         {/* Thank You Section */}
         <ThankYou onLinkClick={scrollToSection} />
+
+        {/* Full-Screen Interactive Resume Modal */}
+        <ResumeModal
+          isOpen={isResumeModalOpen}
+          onClose={() => setIsResumeModalOpen(false)}
+        />
       </motion.div>
     </div>
   );
