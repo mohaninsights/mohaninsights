@@ -291,7 +291,7 @@ doc.text('SEO Executive', rightX, curRightY + 14);
 doc.setTextColor(textMuted[0], textMuted[1], textMuted[2]);
 doc.setFont('helvetica', 'bold');
 doc.setFontSize(8.5);
-doc.text('August 2025 – August 2026  |  Full-time', rightX, curRightY + 27);
+doc.text('August 2025 - August 2026  |  Full-time', rightX, curRightY + 27);
 
 curRightY += 42;
 
@@ -331,7 +331,7 @@ doc.text('SEO Intern', rightX, curRightY + 14);
 doc.setTextColor(textMuted[0], textMuted[1], textMuted[2]);
 doc.setFont('helvetica', 'bold');
 doc.setFontSize(8.5);
-doc.text('December 2024 – June 2025  |  Internship', rightX, curRightY + 27);
+doc.text('December 2024 - June 2025  |  Internship', rightX, curRightY + 27);
 
 curRightY += 42;
 
