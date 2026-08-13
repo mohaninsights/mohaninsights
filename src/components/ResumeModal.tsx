@@ -38,53 +38,42 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
   const handleDownloadPDF = async () => {
     setIsDownloading(true);
     try {
-      // 1. Fetch backend generated static PDF file
-      const response = await fetch("/Mohan_Kumar_Resume.pdf?v=" + Date.now());
-      if (response.ok) {
-        const buffer = await response.arrayBuffer();
-        if (buffer.byteLength > 1000) {
-          const pdfBlob = new Blob([buffer], { type: "application/pdf" });
-          const url = window.URL.createObjectURL(pdfBlob);
-          const link = document.createElement("a");
-          link.href = url;
-          link.download = "Mohan_Kumar_Resume.pdf";
-          document.body.appendChild(link);
-          link.click();
-          setTimeout(() => {
-            document.body.removeChild(link);
-            window.URL.revokeObjectURL(url);
-            setIsDownloading(false);
-          }, 300);
-          return;
-        }
-      }
+      // Direct standard download link trigger
+      const link = document.createElement("a");
+      link.href = "/Mohan_Kumar_Resume.pdf";
+      link.download = "Mohan_Kumar_Resume.pdf";
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     } catch (err) {
-      console.warn("Static PDF fetch failed, fallback to client-side canvas render:", err);
-    }
-
-    // 2. Client-side canvas rendering fallback via html2canvas & jsPDF
-    if (resumeRef.current) {
-      try {
-        const canvas = await html2canvas(resumeRef.current, {
-          scale: 2,
-          useCORS: true,
-          logging: false,
-          backgroundColor: "#FFFFFF"
-        });
-        const imgData = canvas.toDataURL("image/jpeg", 0.98);
-        const pdf = new jsPDF("p", "pt", "a4");
-        const pdfWidth = pdf.internal.pageSize.getWidth();
-        const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-        pdf.addImage(imgData, "JPEG", 0, 0, pdfWidth, pdfHeight);
-        pdf.save("Mohan_Kumar_Resume.pdf");
-      } catch (renderError) {
-        console.error("Canvas PDF render failed, opening direct window:", renderError);
+      console.warn("Direct download failed, falling back to client jsPDF:", err);
+      if (resumeRef.current) {
+        try {
+          const canvas = await html2canvas(resumeRef.current, {
+            scale: 2,
+            useCORS: true,
+            logging: false,
+            backgroundColor: "#FFFFFF"
+          });
+          const imgData = canvas.toDataURL("image/jpeg", 0.98);
+          const pdf = new jsPDF("p", "pt", "a4");
+          const pdfWidth = pdf.internal.pageSize.getWidth();
+          const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+          pdf.addImage(imgData, "JPEG", 0, 0, pdfWidth, pdfHeight);
+          pdf.save("Mohan_Kumar_Resume.pdf");
+        } catch (renderError) {
+          window.open("/Mohan_Kumar_Resume.pdf", "_blank");
+        }
+      } else {
         window.open("/Mohan_Kumar_Resume.pdf", "_blank");
       }
-    } else {
-      window.open("/Mohan_Kumar_Resume.pdf", "_blank");
+    } finally {
+      setTimeout(() => {
+        setIsDownloading(false);
+      }, 600);
     }
-    setIsDownloading(false);
   };
 
   const handleOpenNewTab = () => {
