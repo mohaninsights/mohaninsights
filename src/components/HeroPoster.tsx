@@ -117,17 +117,18 @@ export default function HeroPoster({ onBtnClick }: HeroPosterProps) {
         {/* Bottom Right: Highlighted Resume & Contact CTAs */}
         <div className="flex flex-col sm:flex-row items-center gap-3.5 w-full sm:w-auto">
           {/* Extremely highlighted, eye-catchy glowing Resume button */}
-          <button
-            onClick={() => window.print()}
+          <a
+            href="/Mohan_Kumar_Resume.pdf"
+            download="Mohan_Kumar_Resume.pdf"
             className="group relative w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-gradient-to-r from-brand-cyan to-brand-purple text-black font-sans font-extrabold uppercase tracking-[0.12em] text-xs sm:text-sm hover:scale-105 transition-all duration-300 shadow-[0_0_25px_rgba(0,242,254,0.45)] hover:shadow-[0_0_35px_rgba(0,242,254,0.75)] cursor-pointer overflow-visible"
-            title="View or Print Resume PDF"
+            title="Download Mohan Kumar's Resume PDF"
           >
             <div className="relative flex items-center gap-2">
               <FileText className="w-4 h-4 text-black" />
               <span>Get Resume</span>
               <ArrowUpRight className="w-4 h-4 text-black group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </div>
-          </button>
+          </a>
 
           <button
             onClick={() => onBtnClick("contact")}
