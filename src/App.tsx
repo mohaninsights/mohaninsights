@@ -25,18 +25,6 @@ export default function App() {
 
   const handleOpenResume = () => {
     setIsResumeModalOpen(true);
-
-    // Also trigger direct PDF file download silently
-    try {
-      const link = document.createElement("a");
-      link.href = "/Mohan_Kumar_Resume.pdf";
-      link.download = "Mohan_Kumar_Resume.pdf";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    } catch (e) {
-      console.log("Auto-download triggered", e);
-    }
   };
 
   return (

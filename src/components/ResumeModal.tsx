@@ -1,6 +1,8 @@
-import React, { useEffect } from "react";
-import { X, Download, Printer, ExternalLink, FileText, CheckCircle2, Phone, Mail, MapPin, Briefcase, GraduationCap, Award, Globe } from "lucide-react";
+import React, { useEffect, useRef, useState } from "react";
+import { X, Download, Printer, ExternalLink, FileText, CheckCircle2, Phone, Mail, MapPin, Briefcase, GraduationCap, Award, Globe, Loader2 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
 
 interface ResumeModalProps {
   isOpen: boolean;
@@ -8,6 +10,9 @@ interface ResumeModalProps {
 }
 
 export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
+  const resumeRef = useRef<HTMLDivElement>(null);
+  const [isDownloading, setIsDownloading] = useState(false);
+
   // Lock body scroll when modal is open
   useEffect(() => {
     if (isOpen) {
@@ -29,24 +34,57 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [onClose]);
 
-  // Direct Download Trigger Function with Blob fallback
+  // Direct Download Trigger Function with multi-tier fallback
   const handleDownloadPDF = async () => {
+    setIsDownloading(true);
     try {
-      const response = await fetch("/Mohan_Kumar_Resume.pdf");
-      if (!response.ok) throw new Error("Failed to fetch PDF");
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = "Mohan_Kumar_Resume.pdf";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      window.URL.revokeObjectURL(url);
-    } catch (error) {
-      console.error("Direct blob download failed, falling back to direct link", error);
+      // 1. Fetch backend generated static PDF file
+      const response = await fetch("/Mohan_Kumar_Resume.pdf?v=" + Date.now());
+      if (response.ok) {
+        const buffer = await response.arrayBuffer();
+        if (buffer.byteLength > 1000) {
+          const pdfBlob = new Blob([buffer], { type: "application/pdf" });
+          const url = window.URL.createObjectURL(pdfBlob);
+          const link = document.createElement("a");
+          link.href = url;
+          link.download = "Mohan_Kumar_Resume.pdf";
+          document.body.appendChild(link);
+          link.click();
+          setTimeout(() => {
+            document.body.removeChild(link);
+            window.URL.revokeObjectURL(url);
+            setIsDownloading(false);
+          }, 300);
+          return;
+        }
+      }
+    } catch (err) {
+      console.warn("Static PDF fetch failed, fallback to client-side canvas render:", err);
+    }
+
+    // 2. Client-side canvas rendering fallback via html2canvas & jsPDF
+    if (resumeRef.current) {
+      try {
+        const canvas = await html2canvas(resumeRef.current, {
+          scale: 2,
+          useCORS: true,
+          logging: false,
+          backgroundColor: "#FFFFFF"
+        });
+        const imgData = canvas.toDataURL("image/jpeg", 0.98);
+        const pdf = new jsPDF("p", "pt", "a4");
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+        pdf.addImage(imgData, "JPEG", 0, 0, pdfWidth, pdfHeight);
+        pdf.save("Mohan_Kumar_Resume.pdf");
+      } catch (renderError) {
+        console.error("Canvas PDF render failed, opening direct window:", renderError);
+        window.open("/Mohan_Kumar_Resume.pdf", "_blank");
+      }
+    } else {
       window.open("/Mohan_Kumar_Resume.pdf", "_blank");
     }
+    setIsDownloading(false);
   };
 
   const handleOpenNewTab = () => {
@@ -101,11 +139,18 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
               <div className="flex items-center gap-2">
                 <button
                   onClick={handleDownloadPDF}
-                  className="px-3.5 py-2 rounded-xl bg-gradient-to-r from-brand-cyan to-brand-purple text-black font-sans font-bold text-xs flex items-center gap-1.5 hover:scale-105 transition-all shadow-[0_0_15px_rgba(0,242,254,0.4)] cursor-pointer"
+                  disabled={isDownloading}
+                  className="px-3.5 py-2 rounded-xl bg-gradient-to-r from-brand-cyan to-brand-purple text-black font-sans font-bold text-xs flex items-center gap-1.5 hover:scale-105 transition-all shadow-[0_0_15px_rgba(0,242,254,0.4)] cursor-pointer disabled:opacity-50"
                   title="Download PDF File"
                 >
-                  <Download className="w-4 h-4" />
-                  <span className="hidden sm:inline">Download PDF</span>
+                  {isDownloading ? (
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                  ) : (
+                    <Download className="w-4 h-4" />
+                  )}
+                  <span className="hidden sm:inline">
+                    {isDownloading ? "Downloading..." : "Download PDF"}
+                  </span>
                 </button>
 
                 <button
@@ -137,7 +182,7 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
             {/* Scrollable Document Area (Printable Resume) */}
             <div className="flex-1 overflow-y-auto p-4 sm:p-8 bg-[#0F172A] space-y-6">
               {/* Document Paper Container */}
-              <div className="w-full max-w-3xl mx-auto bg-white text-slate-900 rounded-xl shadow-2xl p-6 sm:p-10 font-sans text-sm relative">
+              <div ref={resumeRef} className="w-full max-w-3xl mx-auto bg-white text-slate-900 rounded-xl shadow-2xl p-6 sm:p-10 font-sans text-sm relative">
                 
                 {/* Header Section */}
                 <div className="border-b-2 border-slate-800 pb-5 mb-6">
@@ -352,10 +397,15 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                 </button>
                 <button
                   onClick={handleDownloadPDF}
-                  className="flex-1 sm:flex-none px-6 py-2 rounded-xl bg-gradient-to-r from-brand-cyan to-brand-purple text-black font-display font-bold text-xs flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(0,242,254,0.4)] hover:scale-105 transition-all cursor-pointer"
+                  disabled={isDownloading}
+                  className="flex-1 sm:flex-none px-6 py-2 rounded-xl bg-gradient-to-r from-brand-cyan to-brand-purple text-black font-display font-bold text-xs flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(0,242,254,0.4)] hover:scale-105 transition-all cursor-pointer disabled:opacity-50"
                 >
-                  <Download className="w-4 h-4" />
-                  Download Resume PDF
+                  {isDownloading ? (
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                  ) : (
+                    <Download className="w-4 h-4" />
+                  )}
+                  {isDownloading ? "Generating PDF..." : "Download Resume PDF"}
                 </button>
               </div>
             </div>
