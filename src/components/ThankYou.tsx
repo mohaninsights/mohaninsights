@@ -89,7 +89,7 @@ export default function ThankYou({ onLinkClick }: ThankYouProps) {
           </h3>
           
           <p className="font-sans text-base sm:text-lg text-[var(--text-sub)] leading-relaxed max-w-xl mx-auto mb-10">
-            I'm always open to new digital marketing collaborations, technical SEO audits, and active SMO executive challenges. Let's build something exceptional.
+            I'm always open to new digital marketing collaborations, technical SEO audits, and active search optimization challenges. Let's build something exceptional.
           </p>
 
           {/* Quick Info details */}

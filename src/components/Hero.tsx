@@ -40,7 +40,7 @@ export default function Hero({ onBtnClick }: HeroProps) {
             >
               <Sparkles className="w-3.5 h-3.5 text-brand-cyan animate-pulse" />
               <span className="font-mono text-[10px] text-brand-cyan tracking-widest uppercase font-bold">
-                SEO &amp; SMO Specialized Services
+                SEO Specialized Services
               </span>
             </motion.div>
 

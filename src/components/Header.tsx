@@ -81,7 +81,7 @@ export default function Header({ onNavClick }: HeaderProps) {
                 MohanInsights
               </span>
               <span className="block font-sans text-[10px] text-[var(--text-muted)] tracking-widest uppercase">
-                SEO & SMO Expert
+                SEO Expert
               </span>
             </div>
           </button>

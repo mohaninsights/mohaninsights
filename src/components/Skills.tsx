@@ -29,7 +29,7 @@ export default function Skills() {
     { name: "Schema Markup", category: "Technical", level: 95, icon: Code, color: "from-brand-purple to-brand-cyan" },
     { name: "Google Search Console", category: "Platforms", level: 97, icon: Cpu, color: "from-orange-500 to-amber-500" },
     { name: "Google Analytics", category: "Platforms", level: 94, icon: LineChart, color: "from-yellow-400 to-orange-500" },
-    { name: "SMO", category: "Platforms", level: 93, icon: Share2, color: "from-pink-500 to-rose-500" },
+    { name: "Rank Math & Yoast", category: "Platforms", level: 93, icon: Share2, color: "from-pink-500 to-rose-500" },
     { name: "Content Optimization", category: "Strategy", level: 95, icon: Edit3, color: "from-emerald-400 to-teal-500" },
     { name: "Link Building", category: "Strategy", level: 91, icon: Link2, color: "from-brand-purple to-brand-cyan" },
   ];

@@ -34,7 +34,7 @@ export default function Contact() {
               <div className="space-y-6">
                 {/* Email link detail */}
                 <a
-                  href="mailto:mohankaka172004@gmail.com?subject=SEO%20SMO%20Inquiry%20-%20MohanInsights"
+                  href="mailto:mohankaka172004@gmail.com?subject=SEO%20Inquiry%20-%20MohanInsights"
                   className="flex items-center gap-4 group"
                 >
                   <div className="w-11 h-11 rounded-xl bg-[#00F2FF]/10 border border-[#00F2FF]/20 flex items-center justify-center text-brand-cyan group-hover:bg-[#00F2FF]/20 group-hover:border-[#00F2FF] transition-all duration-300 flex-shrink-0">
@@ -95,7 +95,7 @@ export default function Contact() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mt-auto">
               {/* WhatsApp button */}
               <a
-                href="https://wa.me/918585974338?text=Hi%20Mohan,%20I'm%20interested%20in%20your%20SEO%20and%20SMO%20services!%20Let's%20discuss%20our%20website's%20organic%20traffic%20growth."
+                href="https://wa.me/918585974338?text=Hi%20Mohan,%20I'm%20interested%20in%20your%20SEO%20services!%20Let's%20discuss%20our%20website's%20organic%20traffic%20growth."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="py-3 px-4 rounded-xl bg-[#25d366]/10 hover:bg-[#25d366]/20 border border-[#25d366]/20 hover:border-[#25d366] transition-all flex items-center justify-center gap-2 text-[#25d366] text-xs font-display font-semibold"

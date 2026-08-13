@@ -96,7 +96,7 @@ export default function About({ onBtnClick }: AboutProps) {
                     Hi, I'm Mohan.
                   </h3>
                   <p className="font-sans text-base sm:text-lg text-[var(--text-sub)] leading-relaxed text-center max-w-xl mx-auto">
-                    Known professionally as <strong className="font-semibold text-brand-cyan">Mohan SEO</strong>, I am an SEO &amp; SMO Executive with a passion for improving organic search rankings, boosting Google indexation rates, and scaling social media engagement. I specialize in technical audits, on-page content alignment, and authority building to grow traffic exponentially.
+                    Known professionally as <strong className="font-semibold text-brand-cyan">Mohan SEO</strong>, I am an SEO Executive with a passion for improving organic search rankings, boosting Google indexation rates, and scaling search performance. I specialize in technical audits, on-page content alignment, and authority building to grow traffic exponentially.
                   </p>
 
                   {/* Connect With Me Section */}

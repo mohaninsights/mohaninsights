@@ -63,7 +63,7 @@ export default function ThreeGlobe() {
     const coreMesh = new THREE.Mesh(coreGeometry, coreMaterial);
     globeGroup.add(coreMesh);
 
-    // 3. Orbital Tech Rings (SEO & SMO connections)
+    // 3. Orbital Tech Rings (SEO connections)
     const ringGroup = new THREE.Group();
     globeGroup.add(ringGroup);
 

@@ -1,6 +1,6 @@
 export interface SkillItem {
   name: string;
-  category: "technical" | "strategy" | "smo";
+  category: "technical" | "strategy" | "tools";
   level: number; // 0 - 100 percentage
 }
 
