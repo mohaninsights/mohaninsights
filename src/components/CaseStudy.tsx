@@ -13,7 +13,7 @@ import acharyaGscImg from "../assets/images/regenerated_image_1783338179964.png"
 // @ts-ignore
 import hanishGscImg from "../assets/images/regenerated_image_1783322894982.png";
 // @ts-ignore
-import rankingsImg from "../assets/images/seo_case_study_rankings_1783138894670.jpg";
+import rankingsImg from "../assets/images/regenerated_image_1786689184371.png";
 // @ts-ignore
 import acharyaGaneshLogo from "../assets/images/acharya_ganesh_logo_1783166489996.jpg";
 // @ts-ignore
