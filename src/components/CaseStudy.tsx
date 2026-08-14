@@ -170,7 +170,7 @@ export default function CaseStudy() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-12 sm:mb-16 max-w-full lg:max-w-4xl bg-white/[0.01] border border-white/[0.05] lg:border-white/10 p-5 sm:p-6 rounded-2xl sm:rounded-3xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.03)] lg:hover:border-brand-cyan/30 transition-all duration-500"
+          className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-12 sm:mb-16 lg:mb-8 max-w-full lg:max-w-4xl bg-white/[0.01] border border-white/[0.05] lg:border-white/10 p-5 sm:p-6 rounded-2xl sm:rounded-3xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.03)] lg:hover:border-brand-cyan/30 transition-all duration-500"
         >
           {/* Logo & Main Info */}
           <div className="flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-6">
@@ -225,15 +225,15 @@ export default function CaseStudy() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -30 }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start"
+            className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-6 items-start"
           >
             
-            {/* ==================== LEFT SIDE ==================== */}
-            <div className="lg:col-span-6 space-y-6 lg:space-y-7">
-              
-              {/* 1) Website Preview */}
+            {/* ========================================================= */}
+            {/* ROW 1 (LEFT): Live Website Preview (lg:col-span-7)       */}
+            {/* ========================================================= */}
+            <div className="lg:col-span-7 flex flex-col">
               <div
-                className="relative group rounded-3xl overflow-hidden glass-panel border border-[var(--glass-border)] lg:border-white/10 bg-[var(--bg-card)] p-5 sm:p-6 shadow-[0_20px_50px_rgba(0,0,0,0.4)] transition-all duration-500 hover:shadow-[0_0_40px_rgba(0,242,254,0.2)] hover:border-brand-cyan/40"
+                className="relative group rounded-3xl overflow-hidden glass-panel border border-[var(--glass-border)] lg:border-white/10 bg-[var(--bg-card)] p-5 sm:p-6 shadow-[0_20px_50px_rgba(0,0,0,0.4)] transition-all duration-500 hover:shadow-[0_0_40px_rgba(0,242,254,0.2)] hover:border-brand-cyan/40 h-full flex flex-col justify-between"
               >
                 {/* Card top gradient header */}
                 <div className="flex items-center justify-between mb-4 px-1 pb-2.5 border-b border-white/[0.06]">
@@ -257,7 +257,7 @@ export default function CaseStudy() {
 
                 {/* Inner preview frame */}
                 <div 
-                  className="relative rounded-xl overflow-hidden border border-white/5 lg:border-white/10 bg-[var(--bg-card-heavy)] cursor-pointer group/preview shadow-[0_10px_30px_rgba(0,0,0,0.5)] lg:hover:shadow-[0_20px_50px_rgba(0,242,254,0.2)] transition-all duration-500"
+                  className="relative rounded-xl overflow-hidden border border-white/5 lg:border-white/10 bg-[var(--bg-card-heavy)] cursor-pointer group/preview shadow-[0_10px_30px_rgba(0,0,0,0.5)] lg:hover:shadow-[0_20px_50px_rgba(0,242,254,0.2)] transition-all duration-500 flex-1 flex items-center justify-center"
                   onClick={() => setIsLightboxOpen(true)}
                   title="Click to view full image"
                 >
@@ -280,8 +280,77 @@ export default function CaseStudy() {
                   </div>
                 </div>
               </div>
+            </div>
 
-              {/* 2) Google Search Console Screenshot */}
+            {/* ========================================================= */}
+            {/* ROW 1 (RIGHT): Challenge & Strategies (lg:col-span-5)     */}
+            {/* ========================================================= */}
+            <div className="lg:col-span-5 flex flex-col gap-4 sm:gap-5">
+              
+              {/* 1) Key Challenge Card */}
+              <div
+                className="relative overflow-hidden rounded-3xl glass-panel-heavy border-l-4 border-l-amber-500 border-y border-r border-[var(--glass-border)] lg:border-white/10 bg-[var(--bg-card)] p-5 sm:p-6 shadow-lg lg:hover:border-r-amber-500/30 transition-all duration-300"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="w-9 h-9 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-500 flex-shrink-0 shadow-[0_0_15px_rgba(245,158,11,0.2)]">
+                    <AlertTriangle className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <span className="font-mono text-[9px] uppercase tracking-wider text-amber-500 font-bold block mb-1">
+                      Primary Bottleneck
+                    </span>
+                    <h4 className="font-display font-bold text-sm sm:text-base text-[var(--text-main)] tracking-tight leading-relaxed">
+                      {currentProject.bottleneck}
+                    </h4>
+                  </div>
+                </div>
+              </div>
+
+              {/* 2) Key Strategies Checklist (Grid Layout) */}
+              <div
+                className="rounded-3xl glass-panel border border-[var(--glass-border)] lg:border-white/10 bg-[var(--bg-card)] p-5 sm:p-6 shadow-lg lg:hover:border-brand-cyan/30 transition-all duration-500"
+              >
+                <div className="flex items-center justify-between mb-4 border-b border-white/[0.06] pb-3">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-6 h-6 rounded-lg bg-brand-cyan/10 border border-brand-cyan/20 flex items-center justify-center text-brand-cyan shadow-[0_0_12px_rgba(0,242,254,0.2)]">
+                      <Check className="w-3.5 h-3.5 stroke-[2.5]" />
+                    </div>
+                    <span className="font-mono text-[11px] font-black tracking-wider text-[var(--text-muted)] uppercase">
+                      Proven Execution Strategies
+                    </span>
+                  </div>
+                  <span className="hidden lg:inline-block font-mono text-[10px] text-gray-400 font-bold">
+                    {currentProject.strategies.length} Actions Deployed
+                  </span>
+                </div>
+
+                {/* Grid layout for strategies */}
+                <div className="grid grid-cols-2 gap-2 sm:gap-2.5">
+                  {currentProject.strategies.map((strat, idx) => {
+                    const IconComp = strat.icon;
+                    return (
+                      <div
+                        key={idx}
+                        className="flex items-center gap-2 bg-white/[0.01] border border-[var(--glass-border)] lg:border-white/5 hover:border-brand-cyan/30 lg:hover:bg-brand-cyan/[0.03] px-2.5 py-2 sm:px-3 sm:py-2.5 rounded-xl transition-all duration-300 group/item"
+                      >
+                        <div className="w-5 h-5 rounded-md bg-brand-cyan/5 border border-brand-cyan/10 flex items-center justify-center text-brand-cyan group-hover/item:bg-brand-cyan/15 group-hover/item:border-brand-cyan/30 group-hover/item:scale-105 transition-all shrink-0">
+                          <IconComp className="w-3 h-3" />
+                        </div>
+                        <span className="font-sans text-[10.5px] sm:text-[11px] text-[var(--text-sub)] font-semibold tracking-wide truncate">
+                          {strat.name}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+            </div>
+
+            {/* ========================================================= */}
+            {/* ROW 2 (LEFT): Google Search Console (lg:col-span-6)      */}
+            {/* ========================================================= */}
+            <div className="lg:col-span-6">
               <div
                 className="rounded-3xl overflow-hidden glass-panel border border-[var(--glass-border)] lg:border-white/10 bg-[var(--bg-card)] p-5 sm:p-6 shadow-[0_20px_50px_rgba(0,0,0,0.4)] transition-all duration-500 hover:shadow-[0_0_40px_rgba(189,115,255,0.18)] hover:border-brand-purple/40"
               >
@@ -313,71 +382,12 @@ export default function CaseStudy() {
                   <div className="absolute inset-x-0 h-[1.5px] bg-brand-cyan/50 shadow-[0_0_10px_#00F2FF] top-1/2 animate-pulse pointer-events-none" />
                 </div>
               </div>
-
             </div>
 
-            {/* ==================== RIGHT SIDE ==================== */}
-            <div className="lg:col-span-6 space-y-6 lg:space-y-7">
-              
-              {/* 1) Key Challenge Card */}
-              <div
-                className="relative overflow-hidden rounded-3xl glass-panel-heavy border-l-4 border-l-amber-500 border-y border-r border-[var(--glass-border)] lg:border-white/10 bg-[var(--bg-card)] p-5 sm:p-6 shadow-lg lg:hover:border-r-amber-500/30 transition-all duration-300"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="w-9 h-9 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-500 flex-shrink-0 shadow-[0_0_15px_rgba(245,158,11,0.2)]">
-                    <AlertTriangle className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="font-mono text-[9px] uppercase tracking-wider text-amber-500 font-bold block mb-1">
-                      Primary Bottleneck
-                    </span>
-                    <h4 className="font-display font-bold text-sm sm:text-base text-[var(--text-main)] tracking-tight leading-relaxed">
-                      {currentProject.bottleneck}
-                    </h4>
-                  </div>
-                </div>
-              </div>
-
-              {/* 2) Key Strategies Checklist (Pairs/Grid Layout) */}
-              <div
-                className="rounded-3xl glass-panel border border-[var(--glass-border)] lg:border-white/10 bg-[var(--bg-card)] p-6 sm:p-7 shadow-lg lg:hover:border-brand-cyan/30 transition-all duration-500"
-              >
-                <div className="flex items-center justify-between mb-5 border-b border-white/[0.06] pb-3">
-                  <div className="flex items-center gap-2.5">
-                    <div className="w-6 h-6 rounded-lg bg-brand-cyan/10 border border-brand-cyan/20 flex items-center justify-center text-brand-cyan shadow-[0_0_12px_rgba(0,242,254,0.2)]">
-                      <Check className="w-3.5 h-3.5 stroke-[2.5]" />
-                    </div>
-                    <span className="font-mono text-[11px] font-black tracking-wider text-[var(--text-muted)] uppercase">
-                      Proven Execution Strategies
-                    </span>
-                  </div>
-                  <span className="hidden lg:inline-block font-mono text-[10px] text-gray-400 font-bold">
-                    {currentProject.strategies.length} Actions Deployed
-                  </span>
-                </div>
-
-                {/* Grid layout for strategies */}
-                <div className="grid grid-cols-2 gap-2.5 sm:gap-3">
-                  {currentProject.strategies.map((strat, idx) => {
-                    const IconComp = strat.icon;
-                    return (
-                      <div
-                        key={idx}
-                        className="flex items-center gap-2.5 bg-white/[0.01] border border-[var(--glass-border)] lg:border-white/5 hover:border-brand-cyan/30 lg:hover:bg-brand-cyan/[0.03] px-3 py-2.5 sm:px-3.5 sm:py-3 rounded-xl transition-all duration-300 group/item"
-                      >
-                        <div className="w-6 h-6 rounded-lg bg-brand-cyan/5 border border-brand-cyan/10 flex items-center justify-center text-brand-cyan group-hover/item:bg-brand-cyan/15 group-hover/item:border-brand-cyan/30 group-hover/item:scale-105 transition-all">
-                          <IconComp className="w-3.5 h-3.5" />
-                        </div>
-                        <span className="font-sans text-[11px] sm:text-xs text-[var(--text-sub)] font-semibold tracking-wide truncate">
-                          {strat.name}
-                        </span>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* 3) Keyword Ranking Growth */}
+            {/* ========================================================= */}
+            {/* ROW 2 (RIGHT): Keyword Ranking Growth (lg:col-span-6)     */}
+            {/* ========================================================= */}
+            <div className="lg:col-span-6">
               <div
                 className="rounded-3xl overflow-hidden glass-panel border border-[var(--glass-border)] lg:border-white/10 bg-[var(--bg-card)] p-5 sm:p-6 shadow-lg transition-all duration-500 hover:shadow-[0_0_40px_rgba(0,242,254,0.18)] hover:border-brand-cyan/40"
               >
@@ -409,34 +419,35 @@ export default function CaseStudy() {
                   <div className="absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-brand-cyan/60 to-transparent bottom-4 opacity-50" />
                 </div>
               </div>
+            </div>
 
-              {/* 4) Key Improvement Highlights */}
-              <div className="space-y-4">
-                <span className="font-mono text-[10px] uppercase tracking-widest text-[var(--text-muted)] font-bold block px-1">
-                  ✦ High-Impact Outcomes
-                </span>
-                
-                <div className="grid grid-cols-2 gap-3 sm:gap-3.5">
-                  {currentProject.improvements.map((imp, idx) => (
-                    <motion.div
-                      key={idx}
-                      initial={{ opacity: 0, y: 15 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: idx * 0.04 }}
-                      className="flex items-center gap-3 bg-brand-cyan/[0.02] hover:bg-brand-cyan/[0.06] border border-brand-cyan/10 hover:border-brand-cyan/30 p-3.5 rounded-2xl transition-all duration-300 group/outcome shadow-sm hover:shadow-[0_4px_20px_rgba(0,242,254,0.12)]"
-                    >
-                      <div className="w-5 h-5 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 group-hover/outcome:scale-110 transition-transform shrink-0">
-                        <Check className="w-3 h-3 stroke-[2.5]" />
-                      </div>
-                      <span className="font-display text-[12px] sm:text-[13px] font-bold text-[var(--text-main)] tracking-wide">
-                        {imp}
-                      </span>
-                    </motion.div>
-                  ))}
-                </div>
+            {/* ========================================================= */}
+            {/* ROW 3 (FULL WIDTH): High-Impact Outcomes (lg:col-span-12) */}
+            {/* ========================================================= */}
+            <div className="lg:col-span-12 space-y-4 pt-2">
+              <span className="font-mono text-[10px] uppercase tracking-widest text-[var(--text-muted)] font-bold block px-1">
+                ✦ High-Impact Outcomes
+              </span>
+              
+              <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-3.5">
+                {currentProject.improvements.map((imp, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: idx * 0.04 }}
+                    className="flex items-center gap-3 bg-brand-cyan/[0.02] hover:bg-brand-cyan/[0.06] border border-brand-cyan/10 hover:border-brand-cyan/30 p-3.5 rounded-2xl transition-all duration-300 group/outcome shadow-sm hover:shadow-[0_4px_20px_rgba(0,242,254,0.12)]"
+                  >
+                    <div className="w-5 h-5 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 group-hover/outcome:scale-110 transition-transform shrink-0">
+                      <Check className="w-3 h-3 stroke-[2.5]" />
+                    </div>
+                    <span className="font-display text-[12px] sm:text-[13px] font-bold text-[var(--text-main)] tracking-wide">
+                      {imp}
+                    </span>
+                  </motion.div>
+                ))}
               </div>
-
             </div>
 
           </motion.div>
