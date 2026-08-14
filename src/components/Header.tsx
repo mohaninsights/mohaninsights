@@ -106,6 +106,7 @@ export default function Header({ onNavClick, onResumeClick }: HeaderProps) {
 
           {/* Action Call to Action Button */}
           <div className="hidden lg:flex items-center gap-3">
+            {/* Resume button with subtle premium notification pill */}
             <button
               onClick={() => {
                 onResumeClick?.();
@@ -113,6 +114,12 @@ export default function Header({ onNavClick, onResumeClick }: HeaderProps) {
               className="relative group px-5 py-2.5 rounded-full font-display text-xs tracking-wider font-semibold text-black bg-gradient-to-r from-brand-cyan to-brand-purple hover:scale-105 transition-all duration-300 flex items-center gap-1.5 cursor-pointer shadow-[0_0_20px_rgba(0,242,254,0.4)] hover:shadow-[0_0_30px_rgba(0,242,254,0.7)] border border-brand-cyan/20 overflow-visible"
               title="View & Download Resume"
             >
+              {/* Floating Pill Resume Indicator */}
+              <div className="absolute -top-6 left-1/2 -translate-x-1/2 flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#FACC15] text-black font-mono text-[8.5px] font-bold uppercase tracking-wider shadow-[0_2px_10px_rgba(250,204,21,0.4)] border border-black/10 pointer-events-none whitespace-nowrap z-30">
+                <span>VIEW RESUME</span>
+                <span className="inline-block animate-bounce text-[9px] font-black leading-none [animation-duration:1.4s]">↓</span>
+              </div>
+
               {/* Pulsing ring around button */}
               <span className="absolute -inset-[2px] rounded-full bg-gradient-to-r from-brand-cyan to-brand-purple opacity-45 blur-[4px] group-hover:opacity-100 transition-opacity duration-300 animate-ping [animation-duration:3s]" />
               <span className="relative flex items-center gap-1.5">
@@ -178,10 +185,13 @@ export default function Header({ onNavClick, onResumeClick }: HeaderProps) {
                   setIsOpen(false);
                   onResumeClick?.();
                 }}
-                className="w-full mt-2 py-3.5 rounded-xl bg-gradient-to-r from-brand-cyan via-brand-cyan/95 to-brand-purple text-black font-display font-bold text-center text-sm flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(0,242,254,0.35)] relative overflow-hidden"
+                className="w-full mt-2 py-3.5 px-4 rounded-xl bg-gradient-to-r from-brand-cyan via-brand-cyan/95 to-brand-purple text-black font-display font-bold text-center text-sm flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(0,242,254,0.35)] relative overflow-hidden"
               >
                 <FileText className="w-4.5 h-4.5" />
                 <span>View / Download Resume</span>
+                <span className="ml-auto px-2 py-0.5 rounded-md bg-black/20 text-[10px] font-mono text-black font-black uppercase tracking-wider">
+                  View CV
+                </span>
                 <ArrowUpRight className="w-4 h-4" />
               </button>
 

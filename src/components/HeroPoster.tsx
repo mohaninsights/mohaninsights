@@ -104,6 +104,13 @@ export default function HeroPoster({ onBtnClick, onResumeClick }: HeroPosterProp
               className="group relative w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-gradient-to-r from-brand-cyan to-brand-purple text-black font-sans font-extrabold uppercase tracking-[0.12em] text-xs sm:text-sm hover:scale-105 transition-all duration-300 shadow-[0_0_25px_rgba(0,242,254,0.45)] hover:shadow-[0_0_35px_rgba(0,242,254,0.75)] cursor-pointer overflow-visible"
               title="View & Download Mohan Kumar's Resume"
             >
+              {/* Premium Yellow Pill Status Indicator */}
+              <div className="absolute -top-6.5 left-1/2 -translate-x-1/2 flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#FACC15] text-black font-mono text-[9px] font-bold uppercase tracking-wider shadow-[0_2px_12px_rgba(250,204,21,0.4)] border border-black/10 pointer-events-none whitespace-nowrap z-20">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-700 animate-ping inline-block mr-0.5" />
+                <span>AVAILABLE FOR HIRE</span>
+                <span className="inline-block animate-bounce text-[10px] font-black leading-none [animation-duration:1.4s]">↓</span>
+              </div>
+
               <div className="relative flex items-center gap-2">
                 <FileText className="w-4 h-4 text-black" />
                 <span>Get Resume</span>
@@ -206,6 +213,13 @@ export default function HeroPoster({ onBtnClick, onResumeClick }: HeroPosterProp
               className="group relative flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-gradient-to-r from-brand-cyan to-brand-purple text-black font-sans font-extrabold uppercase tracking-[0.12em] text-xs sm:text-sm hover:scale-105 transition-all duration-300 shadow-[0_0_30px_rgba(0,242,254,0.5)] hover:shadow-[0_0_40px_rgba(0,242,254,0.8)] cursor-pointer overflow-visible"
               title="View & Download Mohan Kumar's Resume"
             >
+              {/* Premium Yellow Pill Status Indicator */}
+              <div className="absolute -top-7 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#FACC15] text-black font-mono text-[9.5px] font-bold uppercase tracking-wider shadow-[0_2px_14px_rgba(250,204,21,0.45)] border border-black/10 pointer-events-none whitespace-nowrap z-20">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-700 animate-ping inline-block" />
+                <span>AVAILABLE FOR HIRE</span>
+                <span className="inline-block animate-bounce text-[11px] font-black leading-none [animation-duration:1.4s]">↓</span>
+              </div>
+
               <FileText className="w-4 h-4 text-black" />
               <span>Get Resume</span>
               <ArrowUpRight className="w-4 h-4 text-black group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
