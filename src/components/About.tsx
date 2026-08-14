@@ -31,7 +31,7 @@ export default function About({ onBtnClick }: AboutProps) {
       name: "Upwork",
       platform: "Freelance Services",
       icon: Briefcase,
-      url: "https://www.upwork.com",
+      url: "https://www.upwork.com/freelancers/~01857b4ffa572b2815?mp_source=share",
       accentClass: "hover:border-[#14a800]/50 hover:bg-[#14a800]/5 hover:shadow-[0_0_30px_rgba(20,168,0,0.15)]",
       iconContainerClass: "bg-[#14a800]/10 border border-[#14a800]/20 text-[#14a800]"
     }
